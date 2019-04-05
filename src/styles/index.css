@@ -1,0 +1,10 @@
+.slick-slide {
+    padding: 0 10px;
+  }
+  
+  .slick-list {
+    margin: 0 1em;
+  }
+* {
+  box-sizing: border-box
+}
