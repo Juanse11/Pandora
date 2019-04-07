@@ -1,15 +1,17 @@
 import React, { Component } from "react";
 import {
   Container,
+  Button,
+  Image,
+  Dropdown,
   Menu,
   Responsive,
   Segment,
   Visibility
 } from "semantic-ui-react";
 import HomePageHeading from "./HomePageHeading";
-import logo from "../../assets/logo.png";
-import background from "../../assets/background.png";
-
+import logo from "../../assets/Pandora.svg";
+import background from "../../assets/background4.png";
 
 const getWidth = () => {
   const isSSR = typeof window === "undefined";
@@ -39,8 +41,8 @@ export default class DesktopContainer extends Component {
             textAlign="center"
             style={{
               padding: "0em",
-              minHeight: 700,
               backgroundImage: `url(${background})`,
+              minHeight: 700,
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
               backgroundSize: "cover",
@@ -50,28 +52,23 @@ export default class DesktopContainer extends Component {
             vertical
           >
             <Menu
-              fixed={fixed ? "top" : null}
-              pointing={!fixed}
-              secondary={!fixed}
               size="large"
-              style={{ border: "none" }}
+              borderless
+              pointing={false}
+              secondary
+              style={{ margin: "0 3em" }}
             >
-              <Container>
-                <Menu.Item position="left">
-                  <Menu.Item as="a" inverted={!fixed}>
-                    <img src={logo} />
-                  </Menu.Item>
-                </Menu.Item>
-
-                <Menu.Item position="right">
-                  <Menu.Item as="a" inverted={!fixed}>
-                    Registrate
-                  </Menu.Item>
-                  <Menu.Item as="a" inverted={!fixed}>
-                    Inicia Sesion
-                  </Menu.Item>
-                </Menu.Item>
-              </Container>
+              <Menu.Item onClick={this.handleItemClick} as="a">
+                <Image size="mini" src={logo} />
+              </Menu.Item>
+              <Menu.Item position="right">
+                <Button style={{ background: "#006beb", color: "#fff", borderRadius: 0 }}>
+                  Registrate
+                </Button>
+                <Button style={{ background: "#f4656d", color: "#fff", borderRadius: 0 }}>
+                  Inicia Sesion
+                </Button>
+              </Menu.Item>
             </Menu>
             <HomePageHeading />
           </Segment>

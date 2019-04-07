@@ -1,12 +1,24 @@
 import React from "react";
-import { Card, Image } from "semantic-ui-react";
-import sport from '../../assets/sports/svg/020-soccer.svg'
+import { Card } from "semantic-ui-react";
 
 
-const CardSliderItem = () => (
-  
-      <Image  style={{ width: '200px'}} size='medium' src= {sport} />
-    
+const CardSliderItem = ({ picture }) => (
+  <Card
+    style={{
+        padding: "0em",
+        minHeight: 240,
+        maxWidth: 195,
+        backgroundImage: `url(${picture})`,
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "80% 80%",
+        backgroundColor: 'transparent',
+        boxShadow: 'none',
+        textAlign: "center"
+      }}
+    href="#card-example-link-card"
+  >
+  </Card>
 );
 
 export default CardSliderItem;

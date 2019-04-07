@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import HomePage from '../components/home/HomePage'
+import HomePage from '../containers/HomePage'
 
 
 const AppRouter = () => (

@@ -1,14 +1,16 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
 
-import CardSliderItem from './CardSliderItem'
+import CardSliderItem from "./CardSliderItem";
 
 export default class CardSlider extends Component {
+
+
   render() {
     const settings = {
       dots: false,
       infinite: true,
-      speed: 1000,
+      speed: 600,
       slidesToShow: 3,
       slidesToScroll: 1,
       initialSlide: 0,
@@ -17,17 +19,21 @@ export default class CardSlider extends Component {
         {
           breakpoint: 1024,
           settings: {
-            slidesToShow: 3,
+            slidesToShow: 2,
             slidesToScroll: 1,
-            infinite: true
+            infinite: true,
+            variableWidth: true
           }
         },
         {
-          breakpoint: 600,
+          breakpoint: 800,
           settings: {
-            slidesToShow: 2,
+            slidesToShow: 1,
             slidesToScroll: 1,
-            infinite: true
+            infinite: true,
+            variableWidth: true,
+
+            centerMode: true
           }
         },
         {
@@ -35,7 +41,10 @@ export default class CardSlider extends Component {
           settings: {
             slidesToShow: 1,
             slidesToScroll: 1,
-            infinite: true
+            infinite: true,
+            variableWidth: true,
+
+            centerMode: true
           }
         }
       ]
@@ -43,25 +52,10 @@ export default class CardSlider extends Component {
     return (
       <div>
         <Slider {...settings}>
-          <CardSliderItem/>
-          <CardSliderItem/>
-          <CardSliderItem/>
-          <CardSliderItem/>
-          <CardSliderItem/>
-          <CardSliderItem/>
-          <CardSliderItem/>
-          <CardSliderItem/>
-          <CardSliderItem/>
-          <CardSliderItem/>
-          <CardSliderItem/>
-          <CardSliderItem/>
-          <CardSliderItem/>
-          <CardSliderItem/>
-          <CardSliderItem/>
-          <CardSliderItem/>
-          <CardSliderItem/>
-          <CardSliderItem/>
-          <CardSliderItem/>
+          {console.log(this.props)}
+          {this.props.items.map((item, index) => (
+            <CardSliderItem picture={item} key={index} />
+          ))}
         </Slider>
       </div>
     );
