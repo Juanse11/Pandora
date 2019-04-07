@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import {
-  Container,
   Button,
   Image,
-  Dropdown,
+  Input,
   Menu,
   Responsive,
   Segment,
@@ -11,7 +10,7 @@ import {
 } from "semantic-ui-react";
 import HomePageHeading from "./HomePageHeading";
 import logo from "../../assets/Pandora.svg";
-import background from "../../assets/background4.png";
+import background from "../../assets/pattern2.png";
 
 const getWidth = () => {
   const isSSR = typeof window === "undefined";
@@ -27,8 +26,7 @@ export default class DesktopContainer extends Component {
 
   render() {
     const { children } = this.props;
-    const { fixed } = this.state;
-
+    
     return (
       <Responsive getWidth={getWidth}>
         <Visibility
@@ -41,31 +39,42 @@ export default class DesktopContainer extends Component {
             textAlign="center"
             style={{
               padding: "0em",
+              minHeight: 740,
               backgroundImage: `url(${background})`,
-              minHeight: 700,
               backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
-              backgroundSize: "cover",
+              backgroundRepeat: "repeat",
               backgroundAttachment: "fixed",
-              backgroundColor: "rgba(255, 249, 192, 0.7)"
+              backgroundColor: "#016bf8"
             }}
             vertical
           >
             <Menu
               size="large"
+              fixed='top'
               borderless
-              pointing={false}
-              secondary
-              style={{ margin: "0 3em" }}
+              pointing={true}
+              style={{ backgroundColor: "#016bf8" }}
             >
               <Menu.Item onClick={this.handleItemClick} as="a">
                 <Image size="mini" src={logo} />
               </Menu.Item>
               <Menu.Item position="right">
-                <Button style={{ background: "#006beb", color: "#fff", borderRadius: 0 }}>
+                <Button
+                  style={{
+                    background: "#006beb",
+                    color: "#fff",
+                    borderRadius: 0
+                  }}
+                >
                   Registrate
                 </Button>
-                <Button style={{ background: "#f4656d", color: "#fff", borderRadius: 0 }}>
+                <Button
+                  style={{
+                    background: "#f4656d",
+                    color: "#fff",
+                    borderRadius: 0
+                  }}
+                >
                   Inicia Sesion
                 </Button>
               </Menu.Item>

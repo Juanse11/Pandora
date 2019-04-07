@@ -10,9 +10,11 @@ class SearchFormContainer extends React.Component {
         fecha: undefined
     }
 
-    onChange = e => {
-        const field = e.target.name
-        const value = e.target.value
+    onChange = (e,data) => {
+        const field = data.name
+        const value = data.value
+        console.log(field,value)
+        
         this.setState(() => ({ [field] : value }))
     }
 

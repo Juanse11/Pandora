@@ -4,14 +4,14 @@ import CardDisplayBox from "../shared/CardDisplayBox";
 
 const TopItemsSection = props => (
   <Segment
-    style={{ padding: "4em 0em", "background-color": "#f3f3f5" }}
+    style={{ padding: "4em 0em", "background-color": "#fff" }}
     vertical
   >
     <Container >
       <Grid container stackable doubling verticalAlign="middle">
         <Grid.Row textAlign="left">
           <Grid.Column width={16}>
-            <Header as="h3" style={{ fontSize: "2em", color: "#f4656d " }}>
+            <Header as="h3" style={{ fontSize: "2em", color: "#484848 " }}>
               Canchas con mayor valoracion
             </Header>
           </Grid.Column>

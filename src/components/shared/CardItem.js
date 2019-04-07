@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Icon, Image, Rating, Segment } from "semantic-ui-react";
+import { Card, Icon, Rating, Segment } from "semantic-ui-react";
 
 const CardItem = () => (
   <Card
@@ -11,7 +11,7 @@ const CardItem = () => (
       style={{
         padding: "0em",
         margin: "0",
-        minHeight: 200,
+        minHeight: 150,
         maxWidth: "100%",
         backgroundImage: `url("https://images.performgroup.com/di/library/omnisport/38/c/spurs-new-stadium-cropped_gat96a7nwka71n72329gu8dvy.jpg?t=-744573367&quality=100")`,
         backgroundPosition: "center",

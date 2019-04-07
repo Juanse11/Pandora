@@ -1,28 +1,61 @@
-import React from 'react'
-import {
-    Button,
-    Form
-  } from "semantic-ui-react"
+import React from "react";
+import { Button, Form, Dropdown } from "semantic-ui-react";
+
+const countryOptions = [
+  { key: "futbol", value: "futbol", text: "Futbol" },
+  { key: "baloncesto", value: "baloncesto", text: "Baloncesto" },
+  { key: "volleyball", value: "volleyball", text: "Volleyball" },
+  { key: "tenis", value: "tenis", text: "Tenis" },
+  { key: "golf", value: "golf", text: "Golf" },
+  { key: "natacion", value: "natacion", text: "Natacion" }
+];
 
 const SearchForm = ({ onChange, onSubmit }) => (
-    <Form style={{ margin: '0em 1em 0em 1em' }} onSubmit={onSubmit}>
-      <label>Hola</label>
-      <Form.Input fluid label="Barrio" name='barrio' placeholder="Escribe un barrio" onChange={onChange} />
-      <Form.Input fluid label="Deporte" name='deporte' placeholder="Selecciona un deporte" onChange={onChange} />
-      <Form.Input fluid label="Fecha" name='fecha' placeholder="Selecciona un dia" onChange={onChange} />
+  <Form onSubmit={onSubmit}>
+    <label>Hola</label>
+    <Form.Input
+      fluid
+      label="Barrio"
+      name="barrio"
+      placeholder="Escribe un barrio"
+      onChange={onChange}
+      style={{ margin: "1em 0" }}
+    />
+    <Form.Field
+      label="Deporte"
+      name="deporte"
+      placeholder="Selecciona un deporte"
+      fluid
+      onChange={onChange}
+      control={Dropdown}
+      options={countryOptions}
+      search
+      selection
+      style={{ margin: "1em 0" }}
+    />
+    <Form.Input
+      fluid
+      label="Fecha"
+      name="fecha"
+      placeholder="Selecciona una fecha"
+      onChange={onChange}
+      style={{ margin: "1em 0" }}
+    />
+    <div style={{ width: '100%'}}>
       <Button
         type="submit"
         style={{
-          "background-color": "#006beb",
+          "background-color": "#f4656d",
           color: "#ffffff",
-          marginLeft: '17.3em',
-          padding: '15px 22px'
+          width: '100%',
+          marginTop: '0.7em'
         }}
-        size='large'
+        size="large"
       >
-        Search
+        Buscar
       </Button>
-    </Form>
-)
+    </div>
+  </Form>
+);
 
-export default SearchForm
+export default SearchForm;

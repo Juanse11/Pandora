@@ -4,8 +4,8 @@ import Slider from "react-slick";
 import CardSliderItem from "./CardSliderItem";
 
 export default class CardSlider extends Component {
-
-
+  
+    
   render() {
     const settings = {
       dots: false,
@@ -52,7 +52,6 @@ export default class CardSlider extends Component {
     return (
       <div>
         <Slider {...settings}>
-          {console.log(this.props)}
           {this.props.items.map((item, index) => (
             <CardSliderItem picture={item} key={index} />
           ))}

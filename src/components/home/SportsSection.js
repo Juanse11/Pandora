@@ -12,7 +12,7 @@ const sports = [sport1, sport2, sport3, sport4, sport5];
 const StyledSegment = styled(Segment)`
   &&& {
     padding: 4em 0em;
-    background-color: #f3f3f5;
+    background-color: #fff;
     border: none;
     margin: 0;
   }
@@ -24,7 +24,7 @@ const SportsSection = () => (
       <Grid container stackable verticalAlign="middle">
         <Grid.Row>
           <Grid.Column width={16}>
-            <Header as="h3" style={{ fontSize: "2em", color: "#f4656d" }}>
+            <Header as="h3" style={{ fontSize: "2em", color: "#484848" }}>
               Prueba otros deportes
             </Header>
           </Grid.Column>
