@@ -1,45 +1,83 @@
 import React from "react";
-import { Card, Icon, Rating, Segment } from "semantic-ui-react";
+import styled from "styled-components";
+import { Card, Icon, Rating } from "semantic-ui-react";
 
-const CardItem = () => (
-  <Card
-    href="#card-example-link-card"
-    style={{ margin: "0 auto", background: "none", boxShadow: "none" }}
-  >
-    <Segment
-      fluid
+const Image = styled.img`
+  object-fit: cover;
+  padding: 0.8em 0.8em;
+  width: 100%;
+  min-height: 285px;
+  height: 100%;
+`;
+
+const StyledCard = styled(Card)`
+  &&& {
+    box-shadow: none;
+    width: 100%;
+    min-height: 285.31px;
+    height: 100%;
+    border: 1px solid rgb(228, 228, 228);
+
+    @media only screen and (min-width: 768px) {
+      width: 300px;
+      min-height: 285px;
+      height: 100%;
+    }
+  }
+`;
+
+const CardItem = ({ title, price, rating, sport, image } = {}) => (
+  <StyledCard href="#card-example-link-card">
+    <Image src={image} />
+    <Card.Content
       style={{
-        padding: "0em",
-        margin: "0",
-        minHeight: 150,
-        maxWidth: "100%",
-        backgroundImage: `url("https://images.performgroup.com/di/library/omnisport/38/c/spurs-new-stadium-cropped_gat96a7nwka71n72329gu8dvy.jpg?t=-744573367&quality=100")`,
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-        backgroundColor: "transparent",
-        boxShadow: "none",
-        textAlign: "center"
+        border: "none"
       }}
-    />
-    <Card.Content style={{ padding: "1em 0em" }}>
-      <Card.Header>Spurs New Stadium - Soledad </Card.Header>
-      <Card.Meta style={{ paddingTop: "0.5em" }}>
+    >
+      <Card.Header
+        style={{ fontWeight: 700, color: "#4f4b65", fontSize: "1.3em" }}
+      >
+        {title}{" "}
+      </Card.Header>
+      <Card.Meta
+        style={{ paddingTop: "0.2em", marginBottom: "0em", fontSize: "0.9em" }}
+      >
         <Icon name="soccer" />
-        <span>Futbol</span>
+        <span>{sport}</span>
       </Card.Meta>
-      <Card.Description>$300,200 COP por hora</Card.Description>
       <Rating
         icon="star"
         disabled
-        defaultRating={4}
-        maxRating={5}
-        size="mini"
-        style={{ marginTop: "0.5em" }}
+        defaultRating={rating}
+        maxRating={1}
+        size="tiny"
+        style={{ marginTop: "0.2em", marginBottom: '1em' }}
       />
-      <span style={{ "padding-left": "5px" }}>25</span>
+      <span
+        style={{
+          "padding-left": "5px",
+          color: "#3a91aac9",
+          fontWeight: 600,
+          fontSize: "1em"
+        }}
+      >
+        {4.95}
+      </span>
+      <Card.Description
+        style={{
+          fontWeight: 700,
+          color: "#4f4b65",
+          fontSize: "1.3em",
+          textAlign: "right"
+        }}
+      >
+        ${price} COP
+        <span style={{ fontWeight: 400, color: "#4f4b65", fontSize: "1rem" }}>
+          /hora
+        </span>
+      </Card.Description>
     </Card.Content>
-  </Card>
+  </StyledCard>
 );
 
 export default CardItem;

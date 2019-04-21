@@ -1,10 +1,9 @@
 import React from "react";
 import HomePageContainer from "../components/Home/HomePageContainer";
-import AboutSection from "../components/Home/AboutSection";
 import MeetSection from '../components/Home/MeetSection'
 import SportsSection from '../components/Home/SportsSection'
 import TopItemsSection from "../components/Home/TopItemsSection";
-import Footer from "../components/shared/footer";
+import Footer from "../components/Home/Footer";
 
 export default class HomePage extends React.Component {
   state = {
@@ -14,7 +13,6 @@ export default class HomePage extends React.Component {
   render() {
     return (
       <HomePageContainer>
-        <AboutSection />
         <MeetSection />
         <SportsSection />
         <TopItemsSection />

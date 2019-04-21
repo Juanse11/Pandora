@@ -1,5 +1,23 @@
 import React from "react";
 import { Button, Form, Dropdown } from "semantic-ui-react";
+import styled from "styled-components";
+import { SingleDatePicker } from 'react-dates'
+
+const ButtonContainer = styled.div`
+  width: 100%;
+  height: 80%;
+  @media only screen and (min-width: 768px) {
+    height: auto;
+    display: flex;
+    justify-content: center;
+  }
+`;
+
+const StyledForm = styled(Form)`
+  @media only screen and (min-width: 768px) {
+    margin: 1em auto;
+  }
+`;
 
 const countryOptions = [
   { key: "futbol", value: "futbol", text: "Futbol" },
@@ -10,52 +28,56 @@ const countryOptions = [
   { key: "natacion", value: "natacion", text: "Natacion" }
 ];
 
-const SearchForm = ({ onChange, onSubmit }) => (
-  <Form onSubmit={onSubmit}>
-    <label>Hola</label>
+const SearchForm = ({ createdAt, onChange, onSubmit, onDateChange, onFocusChange, calendarFocused }) => (
+  <StyledForm onSubmit={onSubmit} size="large">
     <Form.Input
       fluid
-      label="Barrio"
       name="barrio"
-      placeholder="Escribe un barrio"
+      placeholder="Barrio"
       onChange={onChange}
-      style={{ margin: "1em 0" }}
+      style={{ margin: 0, height: '50px' }}
     />
     <Form.Field
-      label="Deporte"
       name="deporte"
-      placeholder="Selecciona un deporte"
+      placeholder="Deporte"
       fluid
       onChange={onChange}
       control={Dropdown}
       options={countryOptions}
       search
       selection
-      style={{ margin: "1em 0" }}
+      style={{ margin: 0, height: '50px' }}
     />
-    <Form.Input
-      fluid
-      label="Fecha"
-      name="fecha"
-      placeholder="Selecciona una fecha"
-      onChange={onChange}
-      style={{ margin: "1em 0" }}
+    <SingleDatePicker
+      date={createdAt}
+      onDateChange={onDateChange}
+      focused={calendarFocused}
+      onFocusChange={onFocusChange}
+      numberOfMonths={1}
+      isOutsideRange={() => false}
+      placeholer="Fecha"
     />
-    <div style={{ width: '100%'}}>
+    <ButtonContainer>
       <Button
         type="submit"
         style={{
-          "background-color": "#f4656d",
-          color: "#ffffff",
-          width: '100%',
-          marginTop: '0.7em'
+          background: "#483df6",
+          fontWeight: 600,
+          color: "#fff",
+          fontSize: "1.2em",
+          border: "1.5px solid #483df6",
+          borderRadius: "0.5rem",
+          width: "100%",
+          alignSelf: "flex-end",
+          height: '50px',
+          marginRight: 0,
+          paddingTop: "0.5em"
         }}
-        size="large"
       >
         Buscar
       </Button>
-    </div>
-  </Form>
+    </ButtonContainer>
+  </StyledForm>
 );
 
 export default SearchForm;

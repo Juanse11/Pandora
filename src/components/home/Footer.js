@@ -1,13 +1,18 @@
 import React from "react";
 import { Container, Header, Segment, Button } from "semantic-ui-react";
+import background from "../../assets/footer2.svg";
 import styled from "styled-components";
 
 const StyledSegment = styled(Segment)`
   &&& {
     padding: 8em 0;
     padding-bottom: 4em;
-    min-height: 100px;
-    background-color: #483df6;
+    min-height: 400px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url(${background});
+    background-color: #fafafe;
     margin: 0;
     border: none;
     border-radius: 0;
@@ -63,11 +68,15 @@ const Footer = () => (
     <Container
       style={{
         display: "flex",
-        height: "100px",
+        height: "400px",
         justifyContent: "center",
         flexDirection: "column"
       }}
     >
+      <Box>
+        <Title>Prueba Pandora. Es gratis.</Title>
+        <CardButton size="medium">EMPEZAR AHORA </CardButton>
+      </Box>
       <p
         style={{
           color: "#ffffff66",
