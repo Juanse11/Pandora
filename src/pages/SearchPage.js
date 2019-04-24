@@ -6,28 +6,19 @@ import { DimmerProvider } from "../components/contexts/DimmerContext";
 
 export default class SearchPage extends React.Component {
   state = {
-    dimmer: false
-  };
-
-  onDimmerChange = e => {
-    this.setState(prevState => {
-      return {
-        dimmer: !prevState.dimmer
-      };
-    });
+    dimmer: false,
+    onDimmerChange: e => {
+      this.setState(prevState => ({ dimmer: !prevState.dimmer }));
+    }
   };
 
   render() {
     return (
-      <DimmerProvider
-        value={{
-          dimmer: this.state.dimmer,
-          onDimmerChange: this.onDimmerChange
-        }}
-      >
-        <div style={{ paddingBottom: "10em", background: '#fafafe' }}>
-          <Header />
-          <Results />
+      <DimmerProvider value={this.state}>
+        <div style={{ paddingBottom: "10em", background: "#fafafe" }}>
+          <Header>
+            <Results />
+          </Header>
         </div>
       </DimmerProvider>
     );

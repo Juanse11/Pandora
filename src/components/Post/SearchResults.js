@@ -3,12 +3,14 @@ import styled from "styled-components";
 import PostList from "../Post/PostListContainer";
 import { Container, Dimmer, Segment } from "semantic-ui-react";
 import { DimmerConsumer } from "../contexts/DimmerContext";
+import Sidebar from './Sidebar'
 
 
 const StyledSegment = styled(Segment)`
   &&&& {
     background: #fff;
     padding: 0;
+    padding-top: 2em;
     margin: 0;
     border: none;
     box-shadow: none;
@@ -29,7 +31,7 @@ const SearchResults = () => (
   <DimmerConsumer>
     {context => (
       <StyledSegment>
-        <Container>
+        <Container fluid>
           <StyledDimmer active={context.dimmer} />
           <PostList />
         </Container>

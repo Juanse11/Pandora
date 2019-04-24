@@ -1,7 +1,8 @@
 import React from "react";
-import { DayPickerSingleDateController } from 'react-dates'
-import styled from 'styled-components'
-import moment from 'moment'
+import { DayPickerSingleDateController } from "react-dates";
+import styled from "styled-components";
+import moment from "moment";
+import FilterWrapper from "../FilterWrapper";
 
 const Box = styled.div`
   &&& {
@@ -9,8 +10,9 @@ const Box = styled.div`
     flex-direction: column;
     height: 100%;
     width: 100%;
-}
-`
+    padding: 10px;
+  }
+`;
 
 const Submit = styled.a`
   &&& {
@@ -26,21 +28,22 @@ const Submit = styled.a`
       text-decoration-color: #3a91aa;
     }
   }
-`
+`;
 
-const DateFilter = ({  date, onDateChange, focused, onFocusChange  }) => (
-  <Box>
-    <DayPickerSingleDateController
-      date={date}
-      onDateChange={onDateChange}
-      focused={true}
-      onFocusChange={onFocusChange}
-      numberOfMonths={1}
-      isOutsideRange={day => (moment().diff(day) >= 0)}
-      hideKeyboardShortcutsPanel
-    />
-    <Submit href='#submit'>Aplicar</Submit>
-  </Box>
+const DateFilter = ({ date, onDateChange, focused, onFocusChange }) => (
+  <FilterWrapper name="Fecha">
+    <Box>
+      <DayPickerSingleDateController
+        date={date}
+        onDateChange={onDateChange}
+        focused={true}
+        onFocusChange={onFocusChange}
+        numberOfMonths={1}
+        isOutsideRange={day => moment().diff(day) >= 0}
+        hideKeyboardShortcutsPanel
+      />
+    </Box>
+  </FilterWrapper>
 );
 
 export default DateFilter;

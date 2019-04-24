@@ -12,6 +12,12 @@ export default class RatingFilterContainer extends React.Component {
     }
   };
 
+  componentDidUpdate (prevProps) {
+    if (prevProps.ratingFilter) {
+      
+    }
+  }
+
   onChange = (e, data) => {
     const field = data.name;
     const value = data.checked;

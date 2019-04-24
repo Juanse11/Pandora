@@ -41,20 +41,26 @@ body,
 .ui.form input[type="time"],
 .ui.form input[type="url"],
 .ui.card > .content > .header,
-.ui.cards > .card > .content > .header, h1, h2, h3, h4, h5 {
+.ui.cards > .card > .content > .header,
+input,
+h1,
+h2,
+h3,
+h4,
+h5 {
   font-variant-ligatures: normal !important;
   font-variant-caps: normal !important;
   font-variant-numeric: normal !important;
   font-variant-east-asian: normal !important;
   font-stretch: normal !important;
-  font-family: "Open Sans", sans-serif !important;
+  font-family: "Nunito Sans", sans-serif !important;
 }
 
 .DateInput__input {
   width: 100%;
 }
 
-/* .SingleDatePicker {
+.SingleDatePicker {
   display: block !important;
   margin-bottom: 1em !important;
   border-radius: 5px !important;
@@ -67,7 +73,7 @@ body,
 
 .DateInput {
   border-radius: 5px !important;
-} */
+}
 
 .ui.grid > .row > .stretched.column,
 .ui.grid > .stretched.column:not(.row),
@@ -99,8 +105,7 @@ body,
   display: none !important;
 }
 .buttons---btn-border---1O58b {
-  color: #4f4b65 !important;
-  background-color: #fff !important;
+  background-color: none;
   background-image: none !important;
 }
 
@@ -128,4 +133,9 @@ body,
 
 .DayPicker--horizontal {
   box-shadow: none;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

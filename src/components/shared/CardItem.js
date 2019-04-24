@@ -12,6 +12,11 @@ const Image = styled.img`
 
 const StyledCard = styled(Card)`
   &&& {
+    &:hover{
+      top: 0;
+    }
+    transition: none;
+    position: relative;
     box-shadow: none;
     width: 100%;
     min-height: 285.31px;
@@ -31,7 +36,8 @@ const CardItem = ({ title, price, rating, sport, image } = {}) => (
     <Image src={image} />
     <Card.Content
       style={{
-        border: "none"
+        border: "none",
+        transition: 'none'
       }}
     >
       <Card.Header

@@ -3,7 +3,7 @@ import FiltersList from "./FiltersList";
 import SportFilter from "../SportFIlter/Container"
 import DateFilter from '../DateFilter/Container'
 import RatingFilter from '../RatingFilter/Container'
-// import PriceFilter from '../PriceFilter/Container'
+import PriceFilter from '../PriceFilter/Container'
 // import SortFilter from '../SortFilter/Container'
 // import TypeFilter from '../TypeFilter/Container'
 
@@ -24,31 +24,18 @@ export default class FiltersListContainer extends React.Component {
         component: <RatingFilter />
       },{
         name: "Precio",
-        component: <RatingFilter />
+        component: <PriceFilter />
       },{
-        name: "Tipo",
+        name: "Tipo de Superficie",
         component: <RatingFilter />
       },{
         name: "Orden",
         component: <RatingFilter />
       }
-    ],
-    fecha: undefined,
-    createdAt: undefined,
-    calendarFocused: false
-  };
-
-  onDateChange = createdAt => {
-    if (createdAt) {
-      console.log(createdAt)
-      this.setState(() => ({ createdAt }));
-    }
-  };
-  onFocusChange = ({ focused }) => {
-    this.setState(() => ({ calendarFocused: focused }));
+    ]
   };
 
   render() {
-    return <FiltersList filters={this.state.filters} createdAt={this.state.createdAt} onDateChange={this.onDateChange} onFocusChange={this.onFocusChange} calendarFocused={this.state.calendarFocused}  />;
+    return <FiltersList filters={this.state.filters} />;
   }
 }

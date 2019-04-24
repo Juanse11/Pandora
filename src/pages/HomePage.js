@@ -14,7 +14,6 @@ export default class HomePage extends React.Component {
     return (
       <HomePageContainer>
         <MeetSection />
-        <SportsSection />
         <TopItemsSection />
         <Footer />
       </HomePageContainer>
