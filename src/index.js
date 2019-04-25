@@ -16,6 +16,7 @@ import "normalize.css/normalize.css";
 
 
 const store = configureStore()
+console.log(store.getState())
 const jsx = (
     <Provider store={store}>
         <AppRouter />

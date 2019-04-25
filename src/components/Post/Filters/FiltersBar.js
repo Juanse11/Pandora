@@ -18,13 +18,12 @@ const StyledSegment = styled(Segment)`
     border-bottom: 1px solid rgb(228, 228, 228);
     box-shadow: none;
     padding: 0.5em 24px;
-
-    @media only screen and (max-width: 767px){
+    @media only screen and (max-width: 767px) {
       display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    -ms-overflow-style: -ms-autohiding-scrollbar;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      -ms-overflow-style: -ms-autohiding-scrollbar;
     }
 
     &::-webkit-scrollbar {

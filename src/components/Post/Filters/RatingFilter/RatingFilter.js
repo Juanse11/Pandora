@@ -41,7 +41,7 @@ const Box = styled.div`
     align-items: flex-start;
     width: 100%;
     min-width: 375px;
-    padding: 20px;
+    padding: 24px;
   }
 `;
 

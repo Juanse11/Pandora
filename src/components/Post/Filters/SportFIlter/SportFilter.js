@@ -28,7 +28,7 @@ const Box = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 20px;
+    padding: 24px;
   }
 `;
 

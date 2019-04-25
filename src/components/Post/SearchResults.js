@@ -2,9 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import PostList from "../Post/PostListContainer";
 import { Container, Dimmer, Segment } from "semantic-ui-react";
-import { DimmerConsumer } from "../contexts/DimmerContext";
-import Sidebar from './Sidebar'
+import { connect } from 'react-redux';
 
+import Sidebar from "./Sidebar";
 
 const StyledSegment = styled(Segment)`
   &&&& {
@@ -24,20 +24,21 @@ const StyledDimmer = styled(Dimmer)`
   &&& {
     background-color: #fafafed9;
   }
-`
+`;
 
-
-const SearchResults = () => (
-  <DimmerConsumer>
-    {context => (
-      <StyledSegment>
-        <Container fluid>
-          <StyledDimmer active={context.dimmer} />
-          <PostList />
-        </Container>
-      </StyledSegment>
-    )}
-  </DimmerConsumer>
+const SearchResults = ({ isDimmed }) => (
+  <StyledSegment>
+    <Container fluid>
+      <StyledDimmer active={isDimmed}  />
+      <PostList />
+    </Container>
+  </StyledSegment>
 );
 
-export default SearchResults;
+const mapStateToProps = ({ filters: { isDimmed } }) => {
+  return {
+    isDimmed
+  };
+};
+
+export default connect(mapStateToProps)(SearchResults);

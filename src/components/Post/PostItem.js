@@ -7,6 +7,12 @@ const Image = styled.img`
   width: 100%;
   min-width: 300px;
   height: 100%;
+  border-radius: 3px;
+  padding: 8px;
+  &:hover{
+    padding: 0;
+  }
+  transition: padding 0.2s
 `;
 
 const Box = styled.div`
@@ -22,6 +28,9 @@ const StyledItem = styled(Item)`
       border-radius: 3px;
       box-shadow: none;
       display: flex;
+      &:hover {
+        box-shadow: rgba(0, 0, 0, 0.3) 0 1px 3px;
+      }
   }
 `;
 
@@ -123,7 +132,7 @@ const RatingContainer = styled.div`
 `;
 const PostItem = ({ title, price, rating, sport, image } = {}) => (
   <StyledItem
-   
+   href="#post"
   >
     <Box>
       <Image src={image} />

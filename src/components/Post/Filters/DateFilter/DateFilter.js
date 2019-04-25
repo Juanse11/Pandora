@@ -2,7 +2,7 @@ import React from "react";
 import { DayPickerSingleDateController } from "react-dates";
 import styled from "styled-components";
 import moment from "moment";
-import FilterWrapper from "../FilterWrapper";
+import FilterWrapper from "../FilterWrapperContainer";
 
 const Box = styled.div`
   &&& {
@@ -30,8 +30,19 @@ const Submit = styled.a`
   }
 `;
 
-const DateFilter = ({ date, onDateChange, focused, onFocusChange }) => (
-  <FilterWrapper name="Fecha">
+const DateFilter = ({
+  date,
+  onDateChange,
+  onFocusChange,
+  handleApplyChanges,
+  name,
+  isActive,
+}) => (
+  <FilterWrapper
+    name={name}
+    handleApplyChanges={handleApplyChanges}
+    isActive={isActive}
+  >
     <Box>
       <DayPickerSingleDateController
         date={date}

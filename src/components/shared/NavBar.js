@@ -50,13 +50,14 @@ const SearchItem = styled(Menu.Item)`
 
 const StyledMenu = styled(Menu)`
   &&& {
+    z-index: 9999;
     background-color: #fff;
     display: flex;
     border: none;
     border-bottom: 1px solid rgb(228, 228, 228);
-    margin: 0,
+    margin: 0;
     box-shadow: none;
-    border-radius: ;
+    border-radius: 0;
     border-right: 0;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -80,7 +81,33 @@ const StyledPusher = styled(Sidebar.Pusher)`
     flex-shrink: 1;
     min-width: 0;
     margin: 0;
+  }
+`;
 
+const MenuItemBlock = styled.div`
+  &&& {
+    display: flex;
+    height: 100%;
+    &:hover {
+      padding-top: 2px;
+      border-bottom: 2px solid #483df6;
+      background: none;
+    }
+  }
+`;
+
+const StyledButton = styled(Button)`
+  &&&& {
+    background: none;
+    vertical-align: middle;
+    color: #4f4b65;
+    font-size: 1em;
+    font-weight: 600;
+    border-radius: 0;
+    padding: 0em 16px;
+    &:hover {
+      background: none;
+    }
   }
 `;
 
@@ -89,7 +116,7 @@ export default class NavBar extends React.Component {
 
   handleSidebarHide = () => this.setState({ sidebarOpened: false });
 
-  handleToggle = () => this.setState({ sidebarOpened: true });
+  handleToggle = () => this.setState((prevState) => ({ sidebarOpened: !prevState.sidebarOpened}));
 
   render() {
     const { children } = this.props;
@@ -111,6 +138,8 @@ export default class NavBar extends React.Component {
                 border: "none",
                 padding: "0.5em 0",
                 paddingTop: 0,
+                height: "80px",
+                paddingBottom: 0,
                 borderBottom: "1px solid rgb(228, 228, 228)",
                 boxShadow: "none",
                 borderRadius: 0,
@@ -127,42 +156,15 @@ export default class NavBar extends React.Component {
                 style={{ paddingTop: 0, paddingBottom: 0 }}
                 position="right"
               >
-                <Button
-                  style={{
-                    background: "none",
-                    color: "#4f4b65",
-                    fontSize: "1em",
-                    fontWeight: 600,
-                    borderRadius: 0,
-                    padding: "0em 16px"
-                  }}
-                >
-                  Publica tu Empresa
-                </Button>
-                <Button
-                  style={{
-                    background: "none",
-                    color: "#4f4b65",
-                    fontSize: "1em",
-                    fontWeight: 600,
-                    borderRadius: 0,
-                    padding: "0em 16px"
-                  }}
-                >
-                  Inicia Sesion
-                </Button>
-                <Button
-                  style={{
-                    padding: "0 16px",
-                    background: "none",
-                    color: "#4f4b65",
-                    fontSize: "1em",
-                    fontWeight: 600,
-                    borderRadius: "2px"
-                  }}
-                >
-                  Registrate
-                </Button>
+                <MenuItemBlock>
+                  <StyledButton>Publica tu Empresa</StyledButton>
+                </MenuItemBlock>
+                <MenuItemBlock>
+                  <StyledButton>Inicia Sesion</StyledButton>
+                </MenuItemBlock>
+                <MenuItemBlock>
+                  <StyledButton>Registrate</StyledButton>
+                </MenuItemBlock>
               </Menu.Item>
             </Menu>
           </div>

@@ -24,14 +24,6 @@ const StyledDropdownMenu = styled(Dropdown.Menu)`
 StyledDropdownMenu.propTypes = Dropdown.Menu.propTypes;
 StyledDropdownMenu.defaultProps = Dropdown.Menu.defaultProps;
 
-const Box = styled.div`
-  &&& {
-    display: block;
-    height: 100%;
-    padding: 1em;
-  }
-`;
-
 const StyledToggle = styled(Dropdown.Toggle)`
   &&& {
     &:hover {
@@ -55,6 +47,8 @@ const Submit = styled.a`
     align-self: flex-end;
     font-size: 14px;
     font-weight: 600;
+    margin-right: 38px;
+    margin-bottom: 15px;
     &:hover {
       text-decoration: underline;
       text-decoration-color: #3a91aa;
@@ -62,12 +56,36 @@ const Submit = styled.a`
   }
 `;
 
-const FilterWrapper = ({ name, children, isOpen, isActive, handleApplyChanges, handleDropdownToggle }) => (
-  <Dropdown open={isOpen} onToggle={handleDropdownToggle} onClose={handleDropdownToggle}  >
-    <StyledToggle active={isActive} title={name}  />
+const Box = styled.div`
+  &&& {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+`;
+
+const FilterWrapper = ({
+  name,
+  children,
+  isOpen,
+  isActive,
+  handleDropdownToggle,
+  onClose
+}) => (
+  <Dropdown
+    open={isOpen}
+    onToggle={handleDropdownToggle}
+    onClose={onClose}
+  >
+    <StyledToggle active={isActive} title={name} />
     <StyledDropdownMenu>
-      {children}
-      <Submit onClick={handleApplyChanges} href="#submit">Aplicar</Submit>
+      <Box>
+        {children}
+        <Submit onClick={onClose} href="#submit">
+          Aplicar
+        </Submit>
+      </Box>
     </StyledDropdownMenu>
   </Dropdown>
 );

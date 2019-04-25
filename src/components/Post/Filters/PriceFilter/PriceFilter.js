@@ -1,7 +1,7 @@
 import React from "react";
 import { Input, Label } from "semantic-ui-react";
 import styled from "styled-components";
-import FilterWrapper from "../FilterWrapper";
+import FilterWrapper from "../FilterWrapperContainer";
 
 const Submit = styled.a`
   &&& {
@@ -19,9 +19,11 @@ const Submit = styled.a`
 const Box = styled.div`
   &&& {
     display: flex;
+    height: 100%;
+    width: 100%;
     flex-direction: column;
     align-items: flex-start;
-    padding: 20px 20px;
+    padding: 24px;
   }
 `;
 
@@ -44,17 +46,13 @@ const StyledInput = styled(Input)`
 
 const PriceFilter = ({
   onChange,
-  isOpen,
   handleApplyChanges,
   name,
   isActive,
-  handleDropdownToggle
 }) => (
   <FilterWrapper
-    isOpen={isOpen}
     name={name}
     handleApplyChanges={handleApplyChanges}
-    handleDropdownToggle={handleDropdownToggle}
     isActive={isActive}
   >
     <Box>
@@ -64,7 +62,7 @@ const PriceFilter = ({
         labelPosition="right"
         type="text"
         placeholder="Minimo"
-        name="minPrice"
+        name="minimum"
       >
         <Label
           style={{ background: "#3a91aa", color: "#fff", fontSize: "15px" }}
@@ -84,7 +82,7 @@ const PriceFilter = ({
         labelPosition="right"
         type="text"
         placeholder="Maximo"
-        name="maxPrice"
+        name="maximum"
       >
         <Label
           style={{ background: "#3a91aa", color: "#fff", fontSize: "15px" }}

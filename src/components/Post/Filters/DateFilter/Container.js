@@ -1,25 +1,67 @@
 import React from "react";
-import DateFilter from './DateFilter'
-import moment from 'moment'
-import 'moment/locale/es'
+import DateFilter from "./DateFilter";
+import moment from "moment";
+import { setDate } from "../../../../actions/filters";
+import { connect } from 'react-redux';
+import "moment/locale/es";
 
-export default class DateFilterContainer extends React.Component {
+class DateFilterContainer extends React.Component {
   state = {
-    date: moment(),
-    focused: true
+    date: undefined,
+    name: "Fecha",
+    focused: true,
+    isActive: false,
+    isOpen: undefined
   };
+
+  handleDropdownToggle = () => {
+    this.setState(prevState => ({ isOpen: !prevState.isOpen }));
+  };
+
+  handleApplyChanges = () => {
+    let name = "Fecha"
+    let isActive = false
+    if (this.state.date) {
+      name = `${this.state.date}`
+      isActive = true
+    }
+
+    if (this.state.date !== name) {
+      this.setState({ name, isActive })
+    }
+  }
 
   onDateChange = date => {
     if (date) {
-      console.log(date)
       this.setState({ date });
     }
   };
   onFocusChange = () => {
-    this.setState({ focused: true});
+    this.setState({ focused: true });
   };
 
   render() {
-    return <DateFilter date={this.state.date} onDateChange={this.onDateChange} onFocusChange={this.onFocusChange} focused={this.state.focused}  />;
+    return (
+      <DateFilter
+        date={this.state.date}
+        onDateChange={this.onDateChange}
+        onFocusChange={this.onFocusChange}
+        name={this.state.name}
+        focused={this.state.focused}
+        isActive={this.state.isActive}
+        isOpen={this.state.isOpen}
+        handleApplyChanges={this.handleApplyChanges}
+        handleDropdownToggle={this.handleDropdownToggle}
+      />
+    );
   }
 }
+
+const mapStateToProps = ({ sports }) => ({ sports });
+const mapDispatchToProps = dispatch => {
+  return {
+    setDate: (date) => dispatch(setDate(date))
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(DateFilterContainer)

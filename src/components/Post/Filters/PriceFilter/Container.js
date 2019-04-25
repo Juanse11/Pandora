@@ -5,35 +5,41 @@ import { setMaximumPrice, setMinimumPrice } from "../../../../actions/filters";
 
 class PriceFilterContainer extends React.Component {
   state = {
-    minPrice: 0,
-    maxPrice: 0,
+    minimum: 0,
+    maximum: 0,
     name: "Precio",
-    isActive: false,
-    isOpen: undefined,
+    isActive: false
   };
 
   onChange = (e, data) => {
     const field = data.name;
-    const value = data.value;
-    if (value && (field === "maxPrice")) {
-      var name = `Hasta ${value}`;
-    }
-    console.log(name)
-
-    this.setState(() => ({ [field]: value, name }));
+    const value = Number(data.value);
+    this.setState(() => ({ [field]: value }));
   };
 
-  handleDropdownToggle = () => {
-    console.log(11)
-    this.setState((prevState) => ({ isOpen: !prevState.isOpen}));
-  }
-
   handleApplyChanges = () => {
-    console.log(112)
-    this.props.setMaximumPrice(this.state.maxPrice);
-    this.props.setMinimumPrice(this.state.minPrice);
-    this.handleDropdownToggle()
-    
+    this.handleActiveFilter();
+    this.props.setMaximumPrice(this.state.maximum);
+    this.props.setMinimumPrice(this.state.minimum);
+  };
+
+  handleActiveFilter = () => {
+    let name = "Precio";
+    let isActive = false;
+    if (this.state.minimum && this.state.maximum) {
+      name = `$${this.state.minimum} COP - $${this.state.maximum} COP`;
+      isActive = true;
+    } else if (this.state.minimum) {
+      name = `Desde $${this.state.minimum} COP`;
+      isActive = true;
+    } else if (this.state.maximum) {
+      name = `Hasta $${this.state.maximum} COP`;
+      isActive = true;
+    }
+
+    if (this.state.name !== name) {
+      this.setState({ name, isActive})
+    }
   };
 
   render() {
@@ -41,15 +47,13 @@ class PriceFilterContainer extends React.Component {
       <PriceFilter
         onChange={this.onChange}
         handleApplyChanges={this.handleApplyChanges}
-        handleDropdownToggle={this.handleDropdownToggle}
         isOpen={this.state.isOpen}
         name={this.state.name}
-
+        isActive={this.state.isActive}
       />
     );
   }
 }
-
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -62,7 +66,13 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
+const mapStateToProps = ({ filters: { price } }) => {
+  return {
+    price
+  };
+};
+
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(PriceFilterContainer);

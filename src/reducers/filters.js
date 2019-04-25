@@ -4,12 +4,13 @@ const filtersReducerDefaultState = {
   sortBy: "rating",
   sports: [],
   surfaces: [],
-  ratings: [],
+  rating: undefined,
   date: undefined,
   price: {
     minimum: 0,
-    maximum: undefined
-  }
+    maximum: 0
+  },
+  isDimmed: false
 };
 const filtersReducer = (state = filtersReducerDefaultState, action) => {
   switch (action.type) {
@@ -43,15 +44,10 @@ const filtersReducer = (state = filtersReducerDefaultState, action) => {
         ...state,
         sports: action.sports
       };
-    case "ADD_RATING_FILTER":
+    case "SET_RATING":
       return {
         ...state,
-        ratings: action.ratings
-      };
-    case "REMOVE_RATING_FILTER":
-      return {
-        ...state,
-        ratings: action.ratings
+        rating: action.rating
       };
     case "ADD_SURFACE_FILTER":
       return {
@@ -66,14 +62,24 @@ const filtersReducer = (state = filtersReducerDefaultState, action) => {
     case "SET_MINIMUM_PRICE":
       return {
         ...state,
-        price: action.price
+        price: {
+          ...state.price,
+          minimum: action.price
+        }
       };
     case "SET_MAXIMUM_PRICE":
       return {
         ...state,
-        price: action.price
+        price: {
+          ...state.price,
+          maximum: action.price
+        }
       };
-
+    case "SET_DIMMER":
+      return {
+        ...state,
+        isDimmed: !state.isDimmed
+      }
     default:
       return state;
   }
