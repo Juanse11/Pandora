@@ -1,4 +1,3 @@
-
 const filtersReducerDefaultState = {
   text: "",
   sortBy: "rating",
@@ -37,7 +36,7 @@ const filtersReducer = (state = filtersReducerDefaultState, action) => {
     case "ADD_SPORT_FILTER":
       return {
         ...state,
-        sports: action.sports
+        sports: [...state.sports, action.sport]
       };
     case "REMOVE_SPORT_FILTER":
       return {
@@ -79,7 +78,7 @@ const filtersReducer = (state = filtersReducerDefaultState, action) => {
       return {
         ...state,
         isDimmed: !state.isDimmed
-      }
+      };
     default:
       return state;
   }

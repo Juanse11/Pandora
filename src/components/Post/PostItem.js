@@ -8,11 +8,6 @@ const Image = styled.img`
   min-width: 300px;
   height: 100%;
   border-radius: 3px;
-  padding: 8px;
-  &:hover{
-    padding: 0;
-  }
-  transition: padding 0.2s
 `;
 
 const Box = styled.div`

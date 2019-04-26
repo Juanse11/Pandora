@@ -1,7 +1,7 @@
 import React from "react";
 import { Checkbox, Rating } from "semantic-ui-react";
 import styled from "styled-components";
-import FilterWrapper from "../FilterWrapper";
+import FilterWrapper from "../FilterWrapperContainer";
 
 const Selection = styled.div`
   &&& {
@@ -22,18 +22,14 @@ const StyledCheckbox = styled(Checkbox)`
     }
   }
 `;
-const Submit = styled.a`
+const NumberOfResults = styled.span`
   &&& {
-    color: #3a91aa 
-    align-self: flex-end;
     font-size: 14px;
-    font-weight: 600;
-    &:hover {
-      text-decoration: underline;
-      text-decoration-color: #3a91aa;
-    }
+    margin: 0 0.5em;  
+    color: #00000066;
+    font-weight: 800;
   }
-`;
+`
 const Box = styled.div`
   &&& {
     display: flex;
@@ -61,37 +57,73 @@ const RatingDescription = styled.p`
   }
 `;
 
-const RatingFilter = ({ onChange }) => (
-  <FilterWrapper name="Calificacion">
+const RatingFilter = ({
+  onChange,
+  value,
+  name,
+  isActive,
+  handleApplyChanges
+}) => (
+  <FilterWrapper name={name} isActive={isActive} handleApplyChanges={handleApplyChanges}>
     <Box>
       <Selection>
-        <StyledCheckbox name="4" onChange={onChange} />
+        <StyledCheckbox
+          name="4"
+          onChange={onChange}
+          value={4}
+          checked={value === 4}
+        />
         <StyledRating icon="star" disabled rating={4} maxRating={5} />
         <RatingDescription>
           4 estrellas y más
-          <span style={{ fontSize: "16px", margin: "0 0.5em" }} />
+          <NumberOfResults>
+          (120)
+          </NumberOfResults>
         </RatingDescription>
       </Selection>
       <Selection>
-        <StyledCheckbox name="3" onChange={onChange} />
+        <StyledCheckbox
+          name="3"
+          onChange={onChange}
+          value={3}
+          checked={value === 3}
+        />
         <StyledRating icon="star" disabled rating={3} maxRating={5} />
         <RatingDescription>
           3 estrellas y más
-          <span style={{ fontSize: "16px", margin: "0 0.5em" }} />
+          <NumberOfResults>
+          (120)
+          </NumberOfResults>
         </RatingDescription>
       </Selection>
       <Selection>
-        <StyledCheckbox name="2" onChange={onChange} />
+        <StyledCheckbox
+          name="2"
+          onChange={onChange}
+          value={2}
+          checked={value === 2}
+        />
         <StyledRating icon="star" disabled rating={2} maxRating={5} />
         <RatingDescription>
-          2 estrellas y más<span style={{ fontSize: "16px" }} />
+          2 estrellas y más
+          <NumberOfResults>
+          (120)
+          </NumberOfResults>
         </RatingDescription>
       </Selection>
       <Selection>
-        <StyledCheckbox name="1" onChange={onChange} />
+        <StyledCheckbox
+          name="1"
+          onChange={onChange}
+          value={1}
+          checked={value === 1}
+        />
         <StyledRating icon="star" disabled rating={1} maxRating={5} />
         <RatingDescription>
-          1 estrella y más<span style={{ fontSize: "16px" }} />
+          1 estrella y más
+          <NumberOfResults>
+          (120)
+          </NumberOfResults>
         </RatingDescription>
       </Selection>
     </Box>
