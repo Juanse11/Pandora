@@ -50,7 +50,7 @@ const DateFilter = ({
         focused={true}
         onFocusChange={onFocusChange}
         numberOfMonths={1}
-        isOutsideRange={day => moment().diff(day) >= 0}
+        isOutsideRange={day => moment().diff(day) >= 50000000}
         hideKeyboardShortcutsPanel
       />
     </Box>

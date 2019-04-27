@@ -18,7 +18,7 @@ const Column = styled(Grid.Column)`
 // <Header style={{ fontSize: "2em", fontWeight: 700, alignSelf:'flex-start' }}>
 //         132 Establecimientos{" "}
 //       </Header>
-const PostList = ({ items }) => (
+const PostList = ({ items, isLoading }) => (
   <Grid doubling padded="vertically">
     <Grid.Row
       columns={4}
@@ -37,7 +37,7 @@ const PostList = ({ items }) => (
           computer={12}
           style={{ marginBottom: "20px" }}
         >
-          <Post {...item} />
+          <Post isLoading={isLoading} {...item} />
         </Grid.Column>
       ))}
     </Grid.Row>

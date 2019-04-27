@@ -11,14 +11,18 @@ class PriceFilterContainer extends React.Component {
     isActive: false
   };
 
-  onChange = (e, data) => {
+   formatMoney = (number) => {
+    return number.toLocaleString('es-CO', { style: 'currency', currency: 'COP', minimumFractionDigits: 0 });
+  }
+  onChange = async (e, data) => {
     const field = data.name;
     const value = Number(data.value);
-    this.setState(() => ({ [field]: value }));
+    await this.setState(() => ({ [field]: value }));
+    this.handleActiveFilter();
   };
 
   handleApplyChanges = () => {
-    this.handleActiveFilter();
+    
     this.props.setMaximumPrice(this.state.maximum);
     this.props.setMinimumPrice(this.state.minimum);
   };
@@ -27,13 +31,13 @@ class PriceFilterContainer extends React.Component {
     let name = "Precio";
     let isActive = false;
     if (this.state.minimum && this.state.maximum) {
-      name = `$${this.state.minimum} COP - $${this.state.maximum} COP`;
+      name = `$${this.formatMoney(this.state.minimum).slice(2)} COP - $${this.formatMoney(this.state.maximum).slice(2)} COP`;
       isActive = true;
     } else if (this.state.minimum) {
-      name = `Desde $${this.state.minimum} COP`;
+      name = `Desde $${this.formatMoney(this.state.minimum).slice(2)} COP`;
       isActive = true;
     } else if (this.state.maximum) {
-      name = `Hasta $${this.state.maximum} COP`;
+      name = `Hasta $${this.formatMoney(this.state.maximum).slice(2)} COP`;
       isActive = true;
     }
 

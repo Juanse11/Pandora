@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Icon, Rating, Item, Label } from "semantic-ui-react";
+import { Icon, Rating, Item, Label, Placeholder } from "semantic-ui-react";
 
 const Image = styled.img`
   object-fit: cover;
@@ -10,22 +10,22 @@ const Image = styled.img`
   border-radius: 3px;
 `;
 
-const Box = styled.div`
+const Box = styled(Placeholder)`
   &&& {
-    width: 300px;
+    min-width: 300px;
     height: 200px;
   }
 `;
 
 const StyledItem = styled(Item)`
   &&& {
-      border: 1px solid rgb(235,235,235);
-      border-radius: 3px;
-      box-shadow: none;
-      display: flex;
-      &:hover {
-        box-shadow: rgba(0, 0, 0, 0.3) 0 1px 3px;
-      }
+    border: 1px solid rgb(235, 235, 235);
+    border-radius: 3px;
+    box-shadow: none;
+    display: flex;
+    &:hover {
+      box-shadow: rgba(0, 0, 0, 0.3) 0 1px 3px;
+    }
   }
 `;
 
@@ -125,12 +125,10 @@ const RatingContainer = styled.div`
     margin-top: ${props => (props.rating ? "auto" : 0)};
 }
 `;
-const PostItem = ({ title, price, rating, sport, image } = {}) => (
-  <StyledItem
-   href="#post"
-  >
+const PostItem = ({ title, price, rating, sport, image, isLoading } = {}) => (
+  <StyledItem href="#post">
     <Box>
-      <Image src={image} />
+      <Placeholder.Image style={{width: '100%', height: '100%'}} />
     </Box>
     <Content>
       <RatingContainer>
@@ -140,7 +138,7 @@ const PostItem = ({ title, price, rating, sport, image } = {}) => (
         </Sport>
         <Position>
           <Icon name="map marker alternate" style={{ fontSize: "18px" }} />
-          <span style={{color: '#4f4b65'}}>a 3,5km</span>
+          <span style={{ color: "#4f4b65" }}>a 3,5km</span>
         </Position>
       </RatingContainer>
       <Title>
@@ -151,9 +149,10 @@ const PostItem = ({ title, price, rating, sport, image } = {}) => (
         contra 11 <span>&middot;</span> 9 contra 9
       </Details>
       <Details>
-        Vestidores <span>&middot;</span> Duchas <span>&middot;</span> Cafetería <span>&middot;</span> Parqueadero gratis
+        Vestidores <span>&middot;</span> Duchas <span>&middot;</span> Cafetería{" "}
+        <span>&middot;</span> Parqueadero gratis
       </Details>
-      
+
       <RatingContainer rating>
         <span
           style={{
