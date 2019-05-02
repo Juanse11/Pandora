@@ -118,16 +118,18 @@ const friendOptions = [
 
 const StyledDropdown = styled(Dropdown)`
   &&&&&&& {
-    min-width: 150px;
+    min-width: 180px;
     min-height: 0px;
-    max-width: 150px;
+    max-width: 180px;
     max-height: 40px;
     margin: 0 0.2em;
     margin-right: 0;
     padding: 0;
     padding: 10px 15px;
     padding-right: 40px;
-    
+    & > .text {
+      font-weight: 600;
+    }
   }
 `;
 

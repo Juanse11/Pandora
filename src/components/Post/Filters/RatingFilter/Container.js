@@ -15,11 +15,9 @@ export default class RatingFilterContainer extends React.Component {
   };
 
   handleApplyChanges = () => {
-    console.log("rating");
     let name = this.state.value
-      ? [` ${this.state.value}`, <Icon style={{marginLeft: '0.25rem', fontSize: '15px'}} name="star outline" />, "estrellas en adelante"]
+      ? ` ${this.state.value} ★ en adelante`
       : "Calificacion";
-
     let isActive = this.state.value ? true : false;
     this.setState({ name, isActive });
   };
