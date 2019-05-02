@@ -22,7 +22,7 @@ const Subtitle = styled.p`
     font-size: 2em;
     margin-bottom: 0.5em;
     @media only screen and (min-width: 768px) {
-      font-size: 2em;
+      font-size: 40px;
     }
   }
 `;
@@ -34,7 +34,7 @@ const Title = styled(Header)`
     font-weight: 700;
     margin: 0;
     @media only screen and (min-width: 768px) {
-      font-size: 2.8em;
+      font-size: 45px;
     }
   }
 `;

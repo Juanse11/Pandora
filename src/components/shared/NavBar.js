@@ -14,6 +14,8 @@ import {
 import SearchBar from "../shared/SearchBarContainer";
 import logo from "../../assets/purplePandora.svg";
 import arrow from "../../assets/down-arrow.svg";
+import Register from '../User/Register/RegisterContainer'
+// import Register from '../User/Register/RegisterContainer'
 
 const getWidth = () => {
   const isSSR = typeof window === "undefined";
@@ -160,10 +162,10 @@ export default class NavBar extends React.Component {
                   <StyledButton>Publica tu Empresa</StyledButton>
                 </MenuItemBlock>
                 <MenuItemBlock>
-                  <StyledButton>Inicia Sesion</StyledButton>
+                <StyledButton>Inicia Sesion</StyledButton>
                 </MenuItemBlock>
                 <MenuItemBlock>
-                  <StyledButton>Registrate</StyledButton>
+                  <Register>Registrate</Register>
                 </MenuItemBlock>
               </Menu.Item>
             </Menu>

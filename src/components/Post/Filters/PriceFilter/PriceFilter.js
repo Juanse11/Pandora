@@ -3,19 +3,6 @@ import { Input, Label } from "semantic-ui-react";
 import styled from "styled-components";
 import FilterWrapper from "../FilterWrapperContainer";
 
-const Submit = styled.a`
-  &&& {
-    margin-top: 1.5em;
-    color: #3a91aa 
-    align-self: flex-end;
-    font-size: 14px;
-    font-weight: 600;
-    &:hover {
-      text-decoration: underline;
-      text-decoration-color: #3a91aa;
-    }
-  }
-`;
 const Box = styled.div`
   &&& {
     display: flex;

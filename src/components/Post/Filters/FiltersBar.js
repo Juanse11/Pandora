@@ -6,7 +6,7 @@ import DateFilter from "../Filters/DateFilter/Container";
 import RatingFilter from "../Filters/RatingFilter/Container";
 import PriceFilter from "../Filters/PriceFilter/Container";
 // import SortFilter from '../Filters/SortFilter/Container'
-// import TypeFilter from '../Filters/TypeFilter/Container'
+import TypeFilter from '../Filters/TypeFilter/Container'
 
 const StyledSegment = styled(Segment)`
   &&& {
@@ -38,6 +38,7 @@ const FiltersBar = props => (
     <SportFilter />
     <RatingFilter />
     <PriceFilter />
+    <TypeFilter />
   </StyledSegment>
 );
 

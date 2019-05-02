@@ -1,25 +1,66 @@
 import React from "react";
-import SportFilter from "./SportFilter";
+import TypeFilter from "./TypeFilter";
 
-export default class SportFilterContainer extends React.Component {
+export default class TypeFilterContainer extends React.Component {
   state = {
-    sportFilter: {
-      futbol: undefined,
-      tenis: undefined,
-      beisbol: undefined,
-      basquetbol: undefined,
-      boxeo: undefined,
-      yoga: undefined
-    }
+    types: {
+      sintetico: {
+        name: 'Grama sintética',
+        isChecked: undefined
+      },
+      natural: {
+        name: 'Grama natural',
+        isChecked: undefined
+      },
+      arena: {
+        name: 'Arena',
+        isChecked: undefined
+      },
+      concreto: {
+        name: 'Concreto',
+        isChecked: undefined
+      },
+    },
+    name: "Tipo de terreno",
+    isActive: false
   };
 
   onChange = (e, data) => {
     const field = data.name;
     const value = data.checked;
-    this.setState(() => ({ [field]: value }));
-  }
+    console.log(this.state.types)
+    this.setState(({ types }) => {
+      const newTypes = { ...types };
+      newTypes[field].isChecked = value;
+      return {
+        types: newTypes
+      };
+    });
+  };
+
+  handleApplyChanges = () => {
+    let name = "Tipo de terreno";
+    let isActive = false;
+    const typesSelected = Object.keys(this.state.types).filter((type) => this.state.types[type].isChecked);
+    
+    if (typesSelected.length === 1) {
+      name = `${typesSelected[0][0].toUpperCase()}${typesSelected[0].slice(1)}`;
+      isActive = true;
+    } else if (typesSelected.length > 1) {
+      name = `Tipos de terreno · ${typesSelected.length}`;
+      isActive = true;
+    }
+
+    this.setState({ name, isActive });
+  };
 
   render() {
-    return <SportFilter onChange={this.onChange} />;
+    return (
+      <TypeFilter
+        onChange={this.onChange}
+        handleApplyChanges={this.handleApplyChanges}
+        {...this.state}
+      />
+    );
   }
 }

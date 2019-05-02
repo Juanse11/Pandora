@@ -19,22 +19,22 @@ const Column = styled(Grid.Column)`
 //         132 Establecimientos{" "}
 //       </Header>
 const PostList = ({ items, isLoading }) => (
-  <Grid doubling padded="vertically">
+  <Grid doubling padded="vertically" style={{padding: '20px 0'}}>
     <Grid.Row
       columns={4}
       style={{
         display: "flex",
         flexDirection: "column",
-        alignItems: "center",
-        paddingTop: "32px"
+        padding: 0,
+        alignItems: "center"
       }}
     >
       {items.map((item, index) => (
         <Grid.Column
           key={index}
-          mobile={15}
-          tablet={15}
-          computer={12}
+          mobile={16}
+          tablet={16}
+          computer={16}
           style={{ marginBottom: "20px" }}
         >
           <Post isLoading={isLoading} {...item} />

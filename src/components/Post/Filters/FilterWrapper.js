@@ -43,15 +43,13 @@ StyledToggle.defaultProps = Dropdown.Toggle.defaultProps;
 
 const Submit = styled.a`
   &&& {
-    color: #3a91aa 
+    color: ${props => props.color === 'green' ? "#3a91aa" : "#4f4b65"} 
     align-self: flex-end;
     font-size: 14px;
-    font-weight: 600;
-    margin-right: 38px;
-    margin-bottom: 15px;
+    font-weight: 700;
     &:hover {
       text-decoration: underline;
-      text-decoration-color: #3a91aa;
+      text-decoration-color: ${props => props.color === 'green' ? "#3a91aa" : "#4f4b65"} ;
     }
   }
 `;
@@ -65,6 +63,16 @@ const Box = styled.div`
   }
 `;
 
+const Actions = styled.div`
+  &&& {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 24px;
+    padding-bottom: 24px;
+  }
+`;
+
 const FilterWrapper = ({
   name,
   children,
@@ -73,18 +81,19 @@ const FilterWrapper = ({
   handleDropdownToggle,
   onClose
 }) => (
-  <Dropdown
-    open={isOpen}
-    onToggle={handleDropdownToggle}
-    onClose={onClose}
-  >
+  <Dropdown open={isOpen} onToggle={handleDropdownToggle} onClose={onClose}>
     <StyledToggle active={isActive} title={name} />
     <StyledDropdownMenu>
       <Box>
         {children}
-        <Submit onClick={onClose} href="#submit">
-          Aplicar
-        </Submit>
+        <Actions>
+          <Submit color="black" onClick={onClose} href="#submit">
+            Restablecer
+          </Submit>
+          <Submit color="green" onClick={onClose} href="#submit">
+            Aplicar
+          </Submit>
+        </Actions>
       </Box>
     </StyledDropdownMenu>
   </Dropdown>
