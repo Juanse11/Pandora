@@ -1,28 +1,27 @@
 import React from "react";
 import styled from "styled-components";
 import { Button, Header, Container, Divider, Icon } from "semantic-ui-react";
-import { FacebookButton, GmailButton, EmailButton } from '../SocialNetButtons';
+import { FacebookButton, GmailButton, EmailButton } from "../SocialNetButtons";
 import RegisterForm from "./Form/Container";
 import facebook from "../../../assets/facebook.svg";
 import google from "../../../assets/google.svg";
-import Modal from "./Modal/Container";
+import Modal from "../Modal/Container";
 
 const Title = styled(Header)`
   &&&& {
-    text-align: center;
-    font-size: 20px;
+    text-align: left;
+    font-size: 24px;
     font-weight: 800;
     border-bottom: none;
+    margin: 24px 0;
   }
 `;
-
 
 const ButtonsBox = styled(Container)`
   &&&& {
     width: 100%;
   }
 `;
-
 
 const StyledDivider = styled(Divider)`
   &&& {
@@ -68,13 +67,16 @@ const LoginAction = styled.a`
 
 const Register = ({
   handleEmailClick,
-  isEmailClicked
+  isEmailClicked,
+  handleGoogleAuth,
+  handleFacebookAuth,
+  handleRegisterModalToggle,
+  isLogin,
+  reference
 }) => (
-  <Modal name="Registrate">
+  <Modal name="Registrate" isLogin={isLogin} ref={reference}>
     {isEmailClicked ? (
-      
       <React.Fragment>
-      
         <RegisterHeader>
           <span>Regístrate con </span>
           <a style={{ color: "#3a91aa", cursor: "pointer" }}> Facebook </a>
@@ -89,7 +91,7 @@ const Register = ({
           <StyledDivider />
           <Footer>
             <span>¿Ya tienes una cuenta en Pandora?</span>
-            <LoginAction>Inicia sesion</LoginAction>
+            <LoginAction onClick={handleRegisterModalToggle}>Inicia sesion</LoginAction>
           </Footer>
         </ButtonsBox>
       </React.Fragment>
@@ -97,13 +99,13 @@ const Register = ({
       <React.Fragment>
         <Title>¡Crea una cuenta gratis!</Title>
         <ButtonsBox>
-          <FacebookButton>
+          <FacebookButton onClick={handleFacebookAuth}>
             <Image src={facebook} />
             <span style={{ alignSelf: "flex-end" }}>
               Registrarse con Facebook
             </span>
           </FacebookButton>
-          <GmailButton>
+          <GmailButton onClick={handleGoogleAuth}>
             <Image src={google} />
             <span>Registrarse con Google</span>
           </GmailButton>
@@ -122,7 +124,7 @@ const Register = ({
           <StyledDivider />
           <Footer>
             <span>¿Ya tienes una cuenta en Pandora?</span>
-            <LoginAction>Inicia sesion</LoginAction>
+            <LoginAction onClick={handleRegisterModalToggle}>Inicia sesion</LoginAction>
           </Footer>
         </ButtonsBox>
       </React.Fragment>

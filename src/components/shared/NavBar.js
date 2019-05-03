@@ -1,21 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import {
-  Menu,
-  Segment,
-  Container,
-  Responsive,
-  Sidebar,
-  Icon,
-  Button,
-  Input,
-  Image
-} from "semantic-ui-react";
+import { Menu, Responsive, Sidebar, Button, Image } from "semantic-ui-react";
 import SearchBar from "../shared/SearchBarContainer";
 import logo from "../../assets/purplePandora.svg";
 import arrow from "../../assets/down-arrow.svg";
-import Register from '../User/Register/RegisterContainer'
-// import Register from '../User/Register/RegisterContainer'
+import Register from "../User/Register/RegisterContainer";
+import Login from "../User/Login/LoginContainer";
 
 const getWidth = () => {
   const isSSR = typeof window === "undefined";
@@ -68,7 +58,6 @@ const StyledMenu = styled(Menu)`
     flex-shrink: 1;
     min-width: 0;
     margin: 0;
-
   }
 `;
 
@@ -114,11 +103,28 @@ const StyledButton = styled(Button)`
 `;
 
 export default class NavBar extends React.Component {
-  state = {};
+  constructor(props) {
+    super(props);
+    this.loginElement = React.createRef();
+    this.registerElement = React.createRef();
+  }
+
+  state = { isLogin: false, isRegister: false };
+
+  handleLoginModalToggle = () => {
+    this.loginElement.current.handleOpen();
+    this.registerElement.current.handleClose();
+  };
+
+  handleRegisterModalToggle = () => {
+    this.loginElement.current.handleClose();
+    this.registerElement.current.handleOpen();
+  };
 
   handleSidebarHide = () => this.setState({ sidebarOpened: false });
 
-  handleToggle = () => this.setState((prevState) => ({ sidebarOpened: !prevState.sidebarOpened}));
+  handleToggle = () =>
+    this.setState(prevState => ({ sidebarOpened: !prevState.sidebarOpened }));
 
   render() {
     const { children } = this.props;
@@ -162,10 +168,20 @@ export default class NavBar extends React.Component {
                   <StyledButton>Publica tu Empresa</StyledButton>
                 </MenuItemBlock>
                 <MenuItemBlock>
-                <StyledButton>Inicia Sesion</StyledButton>
+                  <Login
+                    handleLoginModalToggle={this.handleLoginModalToggle}
+                    reference={this.registerElement}
+                  >
+                    Inicia Sesion
+                  </Login>
                 </MenuItemBlock>
                 <MenuItemBlock>
-                  <Register>Registrate</Register>
+                  <Register
+                    handleRegisterModalToggle={this.handleRegisterModalToggle}
+                    reference={this.loginElement}
+                  >
+                    Registrate
+                  </Register>
                 </MenuItemBlock>
               </Menu.Item>
             </Menu>

@@ -54,18 +54,12 @@ const RegisterForm = ({ onChange, onSubmit }) => (
       <StyledInput required onChange={onChange} name="mail" icon="mail" placeholder="Correo electrónico" />
     </Form.Field>
     <Form.Field>
-      <StyledInput required onChange={onChange} name="firstName" icon="user" placeholder="Nombre" />
-    </Form.Field>
-    <Form.Field>
-      <StyledInput required onChange={onChange} name="lastName" icon="user" placeholder="Apellido" />
-    </Form.Field>
-    <Form.Field>
       <StyledInput required onChange={onChange} name="password"  type="password" icon="lock" placeholder="Contraseña" />
     </Form.Field>
     <Form.Field>
-      <Checkbox style={{fontSize: '16px'}} onChange={onChange} name="checkbox" label="Acepto los términos y condiciones" />
+      <Checkbox style={{fontSize: '16px'}} onChange={onChange} name="checkbox" label="Recordarme" />
     </Form.Field>
-    <StyledButton type="submit">Registrarse</StyledButton>
+    <StyledButton type="submit">Iniciar sesión</StyledButton>
   </Form>
 );
 

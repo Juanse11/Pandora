@@ -7,8 +7,6 @@ import firebase from '../../../firebase/firebase'
 
 class FormContainer extends React.Component {
   state = {
-    firstName: '',
-    lastName: '',
     mail: '',
     password: '',
     checkbox: false
@@ -23,9 +21,6 @@ class FormContainer extends React.Component {
 
   onSubmit = e => {
     e.preventDefault();
-    firebase.createUserWithEmailAndPassword(this.state.mail, this.state.password).catch((error) => {
-      console.log(error.code)
-    })
   };
 
   render() {

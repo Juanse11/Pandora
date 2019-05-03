@@ -1,25 +1,19 @@
 import React, { Component } from "react";
-import Register from "./Register";
+import Login from "./Login";
 import { firebase } from "../../firebase/firebase";
 
-export default class RegisterContainer extends Component {
-  state = { isEmailClicked: false };
-
-  handleEmailClick = () => {
-    this.setState(prevState => ({ isEmailClicked: !prevState.isEmailClicked }));
-  };
-
+export default class LoginContainer extends Component {
   handleGoogleAuth = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
-    this.handleSignInWithPopUp(provider)
+    this.handleSignInWithPopUp(provider);
   };
 
   handleFacebookAuth = () => {
-    const provider = new firebase.auth.FacebookAuthProvider()
-    this.handleSignInWithPopUp(provider)
-  }
+    const provider = new firebase.auth.FacebookAuthProvider();
+    this.handleSignInWithPopUp(provider);
+  };
 
-  handleSignInWithPopUp = (provider) => {
+  handleSignInWithPopUp = provider => {
     firebase
       .auth()
       .signInWithPopup(provider)
@@ -35,18 +29,15 @@ export default class RegisterContainer extends Component {
         const credential = error.credential;
         console.log(error);
       });
-  }
+  };
 
   render() {
     return (
-      <Register
-        {...this.state}
-        isLogin={this.props.isLogin}
+      <Login
         reference={this.props.reference}
-        handleRegisterModalToggle={this.props.handleRegisterModalToggle}
+        handleLoginModalToggle={this.props.handleLoginModalToggle}
         handleFacebookAuth={this.handleFacebookAuth}
         handleGoogleAuth={this.handleGoogleAuth}
-        handleEmailClick={this.handleEmailClick}
       />
     );
   }

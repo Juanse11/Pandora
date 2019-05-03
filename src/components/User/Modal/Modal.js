@@ -16,7 +16,7 @@ const Content = styled(Modal.Content)`
   }
 `;
 
-const UserModal = ({ handleOpen, handleClose, modalOpen, children, name }) => (
+const UserModal = ({ handleOpen, handleClose, modalOpen, children, name, isLogin }) => (
   <StyledModal
     trigger={
       <Button
