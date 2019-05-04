@@ -5,6 +5,7 @@
   "dependencies": {
     "@trendmicro/react-dropdown": "^1.3.0",
     "firebase": "^5.11.0",
+    "mapbox-gl": "^0.54.0",
     "moment": "^2.24.0",
     "normalize.css": "^8.0.1",
     "react": "^16.8.6",

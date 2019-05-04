@@ -139,3 +139,8 @@ input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+html, body {
+  height: 100%;
+  margin: 0;
+}

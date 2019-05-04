@@ -1,20 +1,31 @@
 import React from "react";
 
-import PostList from "./PostList";
+import SearchResults from "./SearchResults";
 
-class PostListContainer extends React.Component {
+class SearchResultsContainer extends React.Component {
   state = {
     items: [],
-    isLoading: false
+    isLoading: false,
+    isBlockLayout: true,
+    isListLayout: false
   };
 
   componentDidMount() {
-
     this.handleLoadingClick();
   }
 
+  handleBlockSelection = () => {
+    this.setState({ isBlockLayout: true });
+    this.setState({ isListLayout: false });
+  };
+
+  handleListSelection = () => {
+    this.setState({ isBlockLayout: false });
+    this.setState({ isListLayout: true });
+  };
+
   handleLoadingClick = () => {
-    const items = this.fetchPlaceholderItems()
+    const items = this.fetchPlaceholderItems();
     this.setState({ isLoading: true, items });
     setTimeout(async () => {
       const items = this.fetchItems();
@@ -28,7 +39,7 @@ class PostListContainer extends React.Component {
         price: "300,000",
         rating: 5,
         image:
-          "https://images.performgroup.com/di/library/omnisport/38/c/spurs-new-stadium-cropped_gat96a7nwka71n72329gu8dvy.jpg?t=-744573367&quality=100",
+          "https://wallpapercave.com/wp/V0ANDHu.jpg",
         sport: "Futbol"
       },
       {
@@ -36,7 +47,7 @@ class PostListContainer extends React.Component {
         price: "300,000",
         rating: 5,
         image:
-          "https://images.performgroup.com/di/library/omnisport/38/c/spurs-new-stadium-cropped_gat96a7nwka71n72329gu8dvy.jpg?t=-744573367&quality=100",
+          "https://wallpapercave.com/wp/V0ANDHu.jpg",
         sport: "Futbol"
       },
       {
@@ -44,7 +55,7 @@ class PostListContainer extends React.Component {
         price: "300,000",
         rating: 5,
         image:
-          "https://images.performgroup.com/di/library/omnisport/38/c/spurs-new-stadium-cropped_gat96a7nwka71n72329gu8dvy.jpg?t=-744573367&quality=100",
+          "https://wallpapercave.com/wp/V0ANDHu.jpg",
         sport: "Futbol"
       },
       {
@@ -162,8 +173,14 @@ class PostListContainer extends React.Component {
   };
 
   render() {
-    return <PostList {...this.state} />;
+    return (
+      <SearchResults
+        {...this.state}
+        handleBlockSelection={this.handleBlockSelection}
+        handleListSelection={this.handleListSelection}
+      />
+    );
   }
 }
 
-export default PostListContainer;
+export default SearchResultsContainer;

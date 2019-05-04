@@ -35,8 +35,8 @@ const LogoItem = styled(Menu.Item)`
 
 const SearchItem = styled(Menu.Item)`
   &&& {
-    width: 300px;
-    max-width: 70%;
+    flex-shrink: 1;
+    width: 70%;
   }
 `;
 
@@ -145,6 +145,7 @@ export default class NavBar extends React.Component {
                 backgroundColor: "#fff",
                 border: "none",
                 padding: "0.5em 0",
+                display: "flex",
                 paddingTop: 0,
                 height: "80px",
                 paddingBottom: 0,
@@ -157,17 +158,19 @@ export default class NavBar extends React.Component {
               <LogoItem style={{ paddingRight: "5px", paddingLeft: "24px" }}>
                 <Image size="mini" src={logo} />
               </LogoItem>
-              <Menu.Item style={{ width: "100%", maxWidth: "460px" }}>
+              <Menu.Item
+                style={{ width: "100%", maxWidth: "460px",  flexShrink: '1' }}
+              >
                 <SearchBar />
               </Menu.Item>
               <Menu.Item
-                style={{ paddingTop: 0, paddingBottom: 0 }}
+                style={{ paddingTop: 0, paddingBottom: 0, display: "flex", flexShrink: '1' }}
                 position="right"
               >
-                <MenuItemBlock>
+                <MenuItemBlock style={{  flexShrink: '1'}}>
                   <StyledButton>Publica tu Empresa</StyledButton>
                 </MenuItemBlock>
-                <MenuItemBlock>
+                <MenuItemBlock style={{  flexShrink: '1' }}>
                   <Login
                     handleLoginModalToggle={this.handleLoginModalToggle}
                     reference={this.registerElement}
@@ -175,7 +178,7 @@ export default class NavBar extends React.Component {
                     Inicia Sesion
                   </Login>
                 </MenuItemBlock>
-                <MenuItemBlock>
+                <MenuItemBlock style={{flexGrow: "1", flexShrink: '1' }}>
                   <Register
                     handleRegisterModalToggle={this.handleRegisterModalToggle}
                     reference={this.loginElement}
@@ -214,9 +217,9 @@ export default class NavBar extends React.Component {
             <StyledMenu size="large" borderless pointing={false}>
               <LogoItem
                 onClick={this.handleToggle}
-                style={{ paddingLeft: "24px", paddingRight: "5px" }}
+                style={{ paddingLeft: "24px", paddingRight: "5px", flexShrink: '1' }}
               >
-                <Image size="mini" src={logo} />
+                <Image style={{width: '35px', height: '35px', maxWidth: '2000px'}} src={logo} />
                 <Arrow src={arrow} />
               </LogoItem>
               <SearchItem>

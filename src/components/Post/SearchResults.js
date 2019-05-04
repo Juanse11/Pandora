@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import PostList from "../Post/PostListContainer";
+import PostList from "../Post/PostList";
+import CardList from "../Post/CardList";
+import ResultsMap from './SearchResultsMap'
 import {
   Container,
   Dimmer,
@@ -63,12 +65,12 @@ const SearchResultsHeader = styled.div`
 
 const SearchBox = styled(Container)`
   &&&&& {
-    width: 80%;
+    width: 90%;
   }
 `;
 const ViewOption = styled(Icon)`
   &&&&&&&& {
-    color: #4f4b65;
+    color: ${props => (props.active ? "#3a91aa" : "#4f4b65")};
     cursor: pointer;
     font-size: 15px;
     margin-right: 0.5em;
@@ -84,46 +86,30 @@ const ViewOption = styled(Icon)`
 `;
 const friendOptions = [
   {
-    key: "Precio (Asc)",
-    text: "Precio (Asc)",
-    value: "Precio (Asc)",
+    key: "Precio",
+    text: "Precio",
+    value: "Precio",
     icon: {
-      name: 'money bill alternate outline'
+      name: "money bill alternate outline"
     }
   },
   {
-    key: "Precio (Desc)",
-    text: "Precio (Desc)",
-    value: "Precio (Desc)",
+    key: "Calificacion",
+    text: "Calificacion",
+    value: "Calificacion",
     icon: {
-      name: 'money bill alternate outline'
+      name: "star outline"
     }
-  },
-  {
-    key: "Calificacion (Asc)",
-    text: "Calificacion (Asc)",
-    value: "Calificacion (Asc)",
-    icon: {
-      name: 'star outline'
-    }
-  },{
-    key: "Calificacion (Desc)",
-    text: "Calificacion (Desc)",
-    value: "Calificacion (Desc)",
-    icon: {
-      name: 'star outline'
-    }
-  },
+  }
 ];
 
 const StyledDropdown = styled(Dropdown)`
   &&&&&&& {
-    min-width: 180px;
+    min-width: 150px;
     min-height: 0px;
-    max-width: 180px;
+    max-width: 150px;
     max-height: 40px;
     margin: 0 0.2em;
-    margin-right: 0;
     padding: 0;
     padding: 10px 15px;
     padding-right: 40px;
@@ -134,19 +120,33 @@ const StyledDropdown = styled(Dropdown)`
 `;
 
 // «Barranquilla»
-const SearchResults = ({ isDimmed }) => (
+const SearchResults = ({
+  isDimmed,
+  isBlockLayout,
+  isListLayout,
+  handleBlockSelection,
+  handleListSelection,
+  items,
+  isLoading
+}) => (
   <StyledSegment>
     <SearchBox fluid>
       <Title>Resultados en «Barranquilla»</Title>
       <SearchResultsHeader>
         <Paragraph>300 establecimientos</Paragraph>
 
-        <Paragraph
-          style={{ display: "flex", maxWidth: "100%" }}
-        >
-          <Paragraph style={{ display: "flex"}}>
-            <ViewOption name="block layout" />
-            <ViewOption name="list layout" />
+        <Paragraph style={{ display: "flex", maxWidth: "100%" }}>
+          <Paragraph style={{ display: "flex" }}>
+            <ViewOption
+              onClick={handleBlockSelection}
+              active={isBlockLayout}
+              name="block layout"
+            />
+            <ViewOption
+              onClick={handleListSelection}
+              active={isListLayout}
+              name="list layout"
+            />
           </Paragraph>
 
           <StyledDropdown
@@ -155,12 +155,18 @@ const SearchResults = ({ isDimmed }) => (
             selection
             options={friendOptions}
           />
+          <ViewOption
+            style={{ alignSelf: "center", marginLeft: "0.5em" }}
+            name="sort content ascending"
+          />
         </Paragraph>
       </SearchResultsHeader>
 
       <StyledDimmer active={isDimmed} />
-      <PostList />
+      {isListLayout && <PostList items={items} isLoading={isLoading} />}
+      {isBlockLayout && <CardList items={items} isLoading={isLoading} />}
     </SearchBox>
+    <ResultsMap />
   </StyledSegment>
 );
 

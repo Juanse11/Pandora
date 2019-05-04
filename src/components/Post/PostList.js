@@ -2,13 +2,9 @@ import React from "react";
 import { Grid, Header } from "semantic-ui-react";
 import styled from "styled-components";
 import Post from "./PostItem";
-import Sidebar from "./Sidebar";
 
 const Column = styled(Grid.Column)`
   &&&&&&& {
-    @media only screen and (min-width: 768px) {
-      width: 28% !important;
-    }
   }
 `;
 
@@ -19,21 +15,21 @@ const Column = styled(Grid.Column)`
 //         132 Establecimientos{" "}
 //       </Header>
 const PostList = ({ items, isLoading }) => (
-  <Grid doubling padded="vertically" style={{padding: '20px 0'}}>
+  <Grid doubling padded="vertically">
     <Grid.Row
       columns={4}
       style={{
         display: "flex",
         flexDirection: "column",
-        padding: 0,
-        alignItems: "center"
+        alignItems: "center",
+        paddingTop: "32px"
       }}
     >
       {items.map((item, index) => (
         <Grid.Column
           key={index}
-          mobile={16}
-          tablet={16}
+          mobile={15}
+          tablet={15}
           computer={16}
           style={{ marginBottom: "20px" }}
         >

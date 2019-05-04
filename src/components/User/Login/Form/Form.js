@@ -33,17 +33,17 @@ const StyledButton = styled(Button)`
     font-size: 16px;
     font-weight: 800;
     color: #fff;
-    background: #483df6;
+    background: #3a91aa;
     &:hover {
-      background: #483df6;
+      background: #3a91aa;
       color: #fff;
     }
     &:focus {
-      background: #483df6;
+      background: #3a91aa;
       color: #fff;
     }
     &:active {
-      background: #483df6;
+      background: #3a91aa;
       color: #fff;
     }
   }
