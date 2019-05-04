@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import PostList from "../Post/PostList";
 import CardList from "../Post/CardList";
-import ResultsMap from './SearchResultsMap'
+import ResultsMap from './Map/SearchResultsMap'
 import {
   Container,
   Dimmer,
