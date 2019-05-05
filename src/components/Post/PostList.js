@@ -15,14 +15,14 @@ const Column = styled(Grid.Column)`
 //         132 Establecimientos{" "}
 //       </Header>
 const PostList = ({ items, isLoading }) => (
-  <Grid doubling padded="vertically">
+  <Grid doubling padded="vertically" style={{margin: 0}}>
     <Grid.Row
       columns={4}
       style={{
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        paddingTop: "32px"
+        paddingTop: "20px"
       }}
     >
       {items.map((item, index) => (
@@ -31,7 +31,7 @@ const PostList = ({ items, isLoading }) => (
           mobile={15}
           tablet={15}
           computer={16}
-          style={{ marginBottom: "20px" }}
+          style={{ padding: '10px'}}
         >
           <Post isLoading={isLoading} {...item} />
         </Grid.Column>

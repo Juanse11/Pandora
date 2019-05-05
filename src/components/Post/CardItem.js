@@ -44,7 +44,7 @@ const Content = styled(Card.Content)`
 `;
 
 const ImageBox = styled.div`
-  &&&{
+  &&& {
     height: auto;
     display: flex;
     align-items: stretch;
@@ -53,8 +53,6 @@ const ImageBox = styled.div`
     max-width: 100%;
     overflow: hidden;
     max-height: 100%;
-    
-
   }
 `;
 
@@ -86,7 +84,11 @@ const CardItem = ({ title, price, rating, sport, image, isLoading } = {}) => (
             style={{ marginBottom: "4px", fontSize: "12px", fontWeight: 800 }}
           >
             <Icon name="soccer" />
-            <span>{sport.toUpperCase()}</span>
+            <span>
+              {sport.toUpperCase()}<span>&middot;</span> Grama sintética <span>&middot;</span>
+              Cubierto <span>&middot;</span>
+              11 contra 11 <span>&middot;</span>
+            </span>
           </Card.Meta>
           <Card.Header
             style={{
@@ -113,18 +115,18 @@ const CardItem = ({ title, price, rating, sport, image, isLoading } = {}) => (
             icon="star"
             disabled
             defaultRating={rating}
-            maxRating={1}
+            maxRating={5}
             style={{
               marginTop: "0.2em",
               marginBottom: "1em",
-              fontSize: "12px"
+              fontSize: "10px"
             }}
           />
           <span
             style={{
               "padding-left": "5px",
               color: "#3a91aac9",
-              fontWeight: 600,
+              fontWeight: 700,
               fontSize: "12px"
             }}
           >

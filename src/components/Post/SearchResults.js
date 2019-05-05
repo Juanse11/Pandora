@@ -2,14 +2,15 @@ import React from "react";
 import styled from "styled-components";
 import PostList from "../Post/PostList";
 import CardList from "../Post/CardList";
-import ResultsMap from './Map/SearchResultsMap'
+import ResultsMap from "./Map/SearchResultsMap";
 import {
   Container,
   Dimmer,
   Segment,
   Header,
   Icon,
-  Dropdown
+  Dropdown,
+  Grid
 } from "semantic-ui-react";
 import { connect } from "react-redux";
 
@@ -19,7 +20,7 @@ const StyledSegment = styled(Segment)`
   &&&& {
     background: #fff;
     padding: 0;
-    padding-top: 4em;
+    padding-top: 2em;
     margin: 0;
     border: none;
     box-shadow: none;
@@ -48,6 +49,7 @@ const Paragraph = styled(Header)`
 `;
 const Title = styled(Header)`
   &&& {
+    flex-basis: 100%;
     font-size: 25px;
     color: #4f4b65;
     font-weight: 800;
@@ -60,12 +62,14 @@ const Title = styled(Header)`
 `;
 const SearchResultsHeader = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  padding: 0 10px;
   justify-content: space-between;
 `;
 
 const SearchBox = styled(Container)`
   &&&&& {
-    width: 90%;
+    padding: 10px;
   }
 `;
 const ViewOption = styled(Icon)`
@@ -129,45 +133,52 @@ const SearchResults = ({
   items,
   isLoading
 }) => (
-  <StyledSegment>
-    <SearchBox fluid>
-      <Title>Resultados en «Barranquilla»</Title>
-      <SearchResultsHeader>
-        <Paragraph>300 establecimientos</Paragraph>
+  <Grid style={{ margin: 0 }}>
+    <Grid.Column computer={9} style={{ padding: 0 }}>
+      <StyledSegment>
+        <SearchBox fluid>
+          <SearchResultsHeader>
+            <Title>Resultados en «Barranquilla»</Title>
+            <Paragraph>300 establecimientos</Paragraph>
 
-        <Paragraph style={{ display: "flex", maxWidth: "100%" }}>
-          <Paragraph style={{ display: "flex" }}>
-            <ViewOption
-              onClick={handleBlockSelection}
-              active={isBlockLayout}
-              name="block layout"
-            />
-            <ViewOption
-              onClick={handleListSelection}
-              active={isListLayout}
-              name="list layout"
-            />
-          </Paragraph>
+            <Paragraph style={{ display: "flex", maxWidth: "100%" }}>
+              <Paragraph style={{ display: "flex" }}>
+                <ViewOption
+                  onClick={handleBlockSelection}
+                  active={isBlockLayout}
+                  name="block layout"
+                />
+                <ViewOption
+                  onClick={handleListSelection}
+                  active={isListLayout}
+                  name="list layout"
+                />
+              </Paragraph>
 
-          <StyledDropdown
-            fluid
-            placeholder="Ordenar por"
-            selection
-            options={friendOptions}
-          />
-          <ViewOption
-            style={{ alignSelf: "center", marginLeft: "0.5em" }}
-            name="sort content ascending"
-          />
-        </Paragraph>
-      </SearchResultsHeader>
+              <StyledDropdown
+                fluid
+                placeholder="Ordenar por"
+                selection
+                options={friendOptions}
+              />
+              <ViewOption
+                style={{ alignSelf: "center", marginLeft: "0.5em" , marginRight: 0}}
+                name="sort content ascending"
+              />
+            </Paragraph>
+          </SearchResultsHeader>
 
-      <StyledDimmer active={isDimmed} />
-      {isListLayout && <PostList items={items} isLoading={isLoading} />}
-      {isBlockLayout && <CardList items={items} isLoading={isLoading} />}
-    </SearchBox>
-    <ResultsMap />
-  </StyledSegment>
+          <StyledDimmer active={isDimmed} />
+          {isListLayout && <PostList items={items} isLoading={isLoading} />}
+          {isBlockLayout && <CardList items={items} isLoading={isLoading} />}
+        </SearchBox>
+      </StyledSegment>
+    </Grid.Column>
+
+    <Grid.Column style={{ padding: 0 }} computer={7}>
+      <ResultsMap />
+    </Grid.Column>
+  </Grid>
 );
 
 const mapStateToProps = ({ filters: { isDimmed } }) => {
