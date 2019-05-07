@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import Dropdown from "@trendmicro/react-dropdown";
-import { DimmerConsumer } from "../../contexts/DimmerContext";
 
 const StyledDropdownMenu = styled(Dropdown.Menu)`
   &&& {

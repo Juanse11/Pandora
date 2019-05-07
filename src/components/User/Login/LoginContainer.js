@@ -23,10 +23,6 @@ export default class LoginContainer extends Component {
         console.log(user, token);
       })
       .catch(error => {
-        const errorCode = error.errorCode;
-        const errorMessage = error.message;
-        const email = error.email;
-        const credential = error.credential;
         console.log(error);
       });
   };

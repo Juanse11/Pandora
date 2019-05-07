@@ -1,7 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import Form from "./Form";
-import firebase from '../../../firebase/firebase'
 
 
 

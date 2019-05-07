@@ -10,6 +10,9 @@ import TypeFilter from '../Filters/TypeFilter/Container'
 
 const StyledSegment = styled(Segment)`
   &&& {
+    position: sticky;
+    z-index: 9;
+    top: 80px;
     background: #fff;
     margin: 0;
     border-radius: 0;

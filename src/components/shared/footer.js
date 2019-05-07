@@ -13,51 +13,6 @@ const StyledSegment = styled(Segment)`
     border-radius: 0;
   }
 `;
-
-const Title = styled(Header)`
-  &&& {
-    color: #fff;
-    font-size: 2.6em;
-    font-weight: 700;
-    align-self: center;
-    @media only screen and (min-width: 768px) {
-      font-size: 2.2em;
-      text-align: center;
-    }
-  }
-`;
-const CardButton = styled(Button)`
-  &&& {
-    &:hover {
-      color: #483df6;
-      background: #fff;
-    }
-    background: #fff;
-    color: #483df6;
-    font-weight: 600;
-    font-size: 1em;
-    align-self: center;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-    @media only screen and (min-width: 768px) {
-      padding: 1.5em 2em;
-      margin-top: 1em;
-    }
-  }
-`;
-
-const Box = styled.div`
-  align-self: center;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  padding-top: 30%
-  @media only screen and (min-width: 768px){
-    padding-top: 10%
-
-  }
-`;
-
 const Footer = () => (
   <StyledSegment>
     <Container

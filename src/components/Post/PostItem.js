@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import styled from "styled-components";
-import { Icon, Rating, Item, Label, Placeholder } from "semantic-ui-react";
+import { Icon, Rating, Item,  Placeholder } from "semantic-ui-react";
 
 const Image = styled.img`
   object-fit: cover;
@@ -143,18 +143,6 @@ const PlaceholderImage = styled(Placeholder.Image)`
   }
 `;
 
-const PlaceholderContent = styled(Placeholder)`
-  &&& {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    min-width: 100%;
-  }
-`;
-const PlaceholderRatingBox = styled(Placeholder.Paragraph)`
-  &&& {
-  }
-`;
 
 const PostItem = ({ title, price, rating, sport, image, isLoading } = {}) => (
   <StyledItem href="#post">

@@ -14,22 +14,6 @@ const Box = styled.div`
   }
 `;
 
-const Submit = styled.a`
-  &&& {
-    color: #3a91aa 
-    align-self: flex-end;
-    font-size: 14px;
-    font-weight: 600;
-    margin-top: 15%;
-    margin-right: 3%;
-
-    &:hover {
-      text-decoration: underline;
-      text-decoration-color: #3a91aa;
-    }
-  }
-`;
-
 const DateFilter = ({
   date,
   onDateChange,

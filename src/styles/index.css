@@ -156,3 +156,7 @@ html, body {
   width: auto;
   height: auto;
 }
+
+.ui .dimmer {
+  z-index: 1;
+}

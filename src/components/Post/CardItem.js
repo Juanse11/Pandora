@@ -56,8 +56,22 @@ const ImageBox = styled.div`
   }
 `;
 
-const CardItem = ({ title, price, rating, sport, image, isLoading } = {}) => (
-  <StyledCard href="#card-example-link-card">
+const CardItem = ({
+  title,
+  price,
+  rating,
+  sport,
+  image,
+  isLoading,
+  id,
+  coordinates,
+  handleSelectedPark
+} = {}) => (
+  <StyledCard
+    onMouseEnter={() => handleSelectedPark({ id, coordinates })}
+    onMouseLeave={() => handleSelectedPark({})}
+    href="#card-example-link-card"
+  >
     {isLoading ? (
       <Placeholder>
         <Placeholder.Image style={{ backgroundColor: "#3a91aa7d" }} square />
@@ -85,7 +99,8 @@ const CardItem = ({ title, price, rating, sport, image, isLoading } = {}) => (
           >
             <Icon name="soccer" />
             <span>
-              {sport.toUpperCase()}<span>&middot;</span> Grama sintética <span>&middot;</span>
+              {sport.toUpperCase()}
+              <span>&middot;</span> Grama sintética <span>&middot;</span>
               Cubierto <span>&middot;</span>
               11 contra 11 <span>&middot;</span>
             </span>
@@ -124,7 +139,7 @@ const CardItem = ({ title, price, rating, sport, image, isLoading } = {}) => (
           />
           <span
             style={{
-              "padding-left": "5px",
+              paddingLeft: "5px",
               color: "#3a91aac9",
               fontWeight: 700,
               fontSize: "12px"

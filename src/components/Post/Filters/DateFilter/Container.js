@@ -1,6 +1,5 @@
 import React from "react";
 import DateFilter from "./DateFilter";
-import moment from "moment";
 import { setDate } from "../../../../actions/filters";
 import { connect } from 'react-redux';
 import "moment/locale/es";

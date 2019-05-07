@@ -1,88 +1,156 @@
 import React from "react";
 import styled from "styled-components";
-import { Card, Icon, Rating } from "semantic-ui-react";
+import { Card, Icon, Rating, Placeholder } from "semantic-ui-react";
 
 const Image = styled.img`
+  flex: 1;
   object-fit: cover;
-  padding: 0.8em 0.8em;
+  object-position: 50% 50%;
   width: 100%;
-  min-height: 285px;
   height: 100%;
+  border-radius: 4px !important;
 `;
 
 const StyledCard = styled(Card)`
   &&& {
-    &:hover{
+    &:hover {
+      box-shadow: none;
       top: 0;
     }
-    transition: none;
     position: relative;
     box-shadow: none;
     width: 100%;
-    min-height: 285.31px;
     height: 100%;
-    border: 1px solid rgb(228, 228, 228);
-
+    max-height: 600px;
+    border: none;
+    transition: none;
+    background: #fafafe;
+    &:hover {
+      background: #fafafe;
+    }
     @media only screen and (min-width: 768px) {
-      width: 300px;
-      min-height: 285px;
-      height: 100%;
     }
   }
 `;
 
-const CardItem = ({ title, price, rating, sport, image } = {}) => (
-  <StyledCard href="#card-example-link-card">
-    <Image src={image} />
-    <Card.Content
-      style={{
-        border: "none",
-        transition: 'none'
-      }}
-    >
-      <Card.Header
-        style={{ fontWeight: 700, color: "#4f4b65", fontSize: "1.3em" }}
-      >
-        {title}{" "}
-      </Card.Header>
-      <Card.Meta
-        style={{ paddingTop: "0.2em", marginBottom: "0em", fontSize: "0.9em" }}
-      >
-        <Icon name="soccer" />
-        <span>{sport}</span>
-      </Card.Meta>
-      <Rating
-        icon="star"
-        disabled
-        defaultRating={rating}
-        maxRating={1}
-        size="tiny"
-        style={{ marginTop: "0.2em", marginBottom: '1em' }}
-      />
-      <span
-        style={{
-          "padding-left": "5px",
-          color: "#3a91aac9",
-          fontWeight: 600,
-          fontSize: "1em"
-        }}
-      >
-        {4.95}
-      </span>
-      <Card.Description
-        style={{
-          fontWeight: 700,
-          color: "#4f4b65",
-          fontSize: "1.3em",
-          textAlign: "right"
-        }}
-      >
-        ${price} COP
-        <span style={{ fontWeight: 400, color: "#4f4b65", fontSize: "1rem" }}>
-          /hora
-        </span>
-      </Card.Description>
-    </Card.Content>
+const Content = styled(Card.Content)`
+  &&&&&&&&& {
+    padding: 0;
+    padding-top: 12px;
+    max-height: 115px;
+    height: 100%
+    width: 100%;
+    border: none;
+    transition: none;
+    background: transparent;
+  }
+`;
+
+const ImageBox = styled.div`
+  &&& {
+    height: auto;
+    display: flex;
+    align-items: stretch;
+    align-content: stretch;
+    flex-grow: 1;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+  }
+`;
+
+const CardItem = ({
+  title,
+  price,
+  rating,
+  sport,
+  image,
+  isLoading,
+  id,
+  coordinates,
+  handleSelectedPark
+} = {}) => (
+  <StyledCard
+    href="#card-example-link-card"
+  >
+    {isLoading ? (
+      <Placeholder>
+        <Placeholder.Image style={{ backgroundColor: "#3a91aa7d" }} square />
+      </Placeholder>
+    ) : (
+      <ImageBox>
+        <Image src={image} />
+      </ImageBox>
+    )}
+    <Content>
+      {isLoading ? (
+        <Placeholder>
+          <Placeholder.Header>
+            <Placeholder.Line length="very short" />
+            <Placeholder.Line length="medium" />
+          </Placeholder.Header>
+          <Placeholder.Paragraph>
+            <Placeholder.Line length="short" />
+          </Placeholder.Paragraph>
+        </Placeholder>
+      ) : (
+        <React.Fragment>
+          <Card.Meta
+            style={{ marginBottom: "4px", fontSize: "12px", fontWeight: 800 }}
+          >
+            <Icon name="soccer" />
+            <span>
+              {sport.toUpperCase()}
+              <span>&middot;</span> Grama sintética <span>&middot;</span>
+              Cubierto <span>&middot;</span>
+              11 contra 11 <span>&middot;</span>
+            </span>
+          </Card.Meta>
+          <Card.Header
+            style={{
+              fontWeight: 700,
+              color: "#4f4b65",
+              fontSize: "18px",
+              marginBottom: "4px"
+            }}
+          >
+            {title}
+          </Card.Header>
+          <Card.Description
+            style={{
+              marginTop: 0,
+              fontWeight: 400,
+              color: "#4f4b65",
+              fontSize: "14px",
+              textAlign: "left"
+            }}
+          >
+            ${price} COP por hora
+          </Card.Description>
+          <Rating
+            icon="star"
+            disabled
+            defaultRating={rating}
+            maxRating={5}
+            style={{
+              marginTop: "0.2em",
+              marginBottom: "1em",
+              fontSize: "10px"
+            }}
+          />
+          <span
+            style={{
+              paddingLeft: "5px",
+              color: "#3a91aac9",
+              fontWeight: 700,
+              fontSize: "12px"
+            }}
+          >
+            {4.95}
+          </span>
+        </React.Fragment>
+      )}
+    </Content>
   </StyledCard>
 );
 

@@ -4,11 +4,7 @@ import CardItem from "../CardItem";
 import styled from 'styled-components'
 
 const Column = styled(Grid.Column)`
-  &&&&&&& {
-    @media only screen and (min-width: 768px) {
-      width: 28% !important;
-    }
-  }
+
 `
 
 const CardItemList = ({ items }) => (

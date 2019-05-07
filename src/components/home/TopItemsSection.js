@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Header, Segment, Container, Button } from "semantic-ui-react";
+import { Header, Segment, Container, Button } from "semantic-ui-react";
 import CardList from "../shared/CardItemList/CardItemListContainer";
 import styled from "styled-components";
 

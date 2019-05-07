@@ -1,6 +1,5 @@
 import React from "react";
 import RatingFilter from "./RatingFilter";
-import { Icon } from "semantic-ui-react";
 
 export default class RatingFilterContainer extends React.Component {
   state = {

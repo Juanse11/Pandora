@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Segment, Header, Icon } from "semantic-ui-react";
+import { Header, Icon } from "semantic-ui-react";
 import styled from "styled-components";
 
 const Box = styled.div`

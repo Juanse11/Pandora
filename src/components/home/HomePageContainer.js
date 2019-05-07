@@ -13,11 +13,6 @@ import HomePageHeading from "./HomePageHeading";
 import logo from "../../assets/Pandora.svg";
 import background from "../../assets/pitchblur.jpg";
 
-const getWidth = () => {
-  const isSSR = typeof window === "undefined";
-
-  return isSSR ? Responsive.onlyTablet.minWidth : window.innerWidth;
-};
 
 const StyledSegment = styled(Segment)`
   &&& {

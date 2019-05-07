@@ -1,7 +1,6 @@
 import React from "react";
 import Header from "../components/Post/SearchHeader";
 import Results from "../components/Post/SearchResultsContainer";
-import Footer from "../components/shared/Footer";
 
 export default class SearchPage extends React.Component {
  

@@ -14,7 +14,6 @@ import {
 } from "semantic-ui-react";
 import { connect } from "react-redux";
 
-import Sidebar from "./Sidebar";
 
 const StyledSegment = styled(Segment)`
   &&&& {
@@ -69,7 +68,7 @@ const SearchResultsHeader = styled.div`
 
 const SearchBox = styled(Container)`
   &&&&& {
-    padding: 10px;
+    padding: 14px;
   }
 `;
 const ViewOption = styled(Icon)`
@@ -131,10 +130,12 @@ const SearchResults = ({
   handleBlockSelection,
   handleListSelection,
   items,
-  isLoading
+  isLoading,
+  selectedPark,
+   handleSelectedPark
 }) => (
   <Grid style={{ margin: 0 }}>
-    <Grid.Column computer={9} style={{ padding: 0 }}>
+    <Grid.Column computer={10} style={{ padding: 0 }}>
       <StyledSegment>
         <SearchBox fluid>
           <SearchResultsHeader>
@@ -169,14 +170,14 @@ const SearchResults = ({
           </SearchResultsHeader>
 
           <StyledDimmer active={isDimmed} />
-          {isListLayout && <PostList items={items} isLoading={isLoading} />}
-          {isBlockLayout && <CardList items={items} isLoading={isLoading} />}
+          {isListLayout && <PostList handleSelectedPark={handleSelectedPark} items={items} isLoading={isLoading} />}
+          {isBlockLayout && <CardList handleSelectedPark={handleSelectedPark} items={items} isLoading={isLoading} />}
         </SearchBox>
       </StyledSegment>
     </Grid.Column>
 
-    <Grid.Column style={{ padding: 0 }} computer={7}>
-      <ResultsMap />
+    <Grid.Column style={{ padding: 0 }} computer={6}>
+      <ResultsMap selectedPark={selectedPark} />
     </Grid.Column>
   </Grid>
 );

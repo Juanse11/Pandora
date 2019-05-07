@@ -15,7 +15,6 @@ import basketball from "../../assets/basketball.svg";
 import futbol from "../../assets/futbol.svg";
 import boxing from "../../assets/boxing.svg";
 import yoga from "../../assets/yoga.svg";
-import court from "../../assets/court.svg";
 import background from '../../assets/sportssegment.svg'
 
 const StyledSegment = styled(Segment)`

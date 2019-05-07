@@ -136,12 +136,15 @@ export default class NavBar extends React.Component {
           getWidth={getWidth}
           minWidth={Responsive.onlyTablet.minWidth}
         >
-          <div>
             <Menu
               size="large"
               borderless
               pointing={false}
               style={{
+                position: 'sticky',
+                top: 0,
+                zIndex: 9,
+                margin: 0,
                 backgroundColor: "#fff",
                 border: "none",
                 padding: "0.5em 0",
@@ -188,7 +191,6 @@ export default class NavBar extends React.Component {
                 </MenuItemBlock>
               </Menu.Item>
             </Menu>
-          </div>
           {children}
         </Responsive>
         <Responsive

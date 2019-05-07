@@ -3,7 +3,6 @@ import {
   Grid,
   Segment,
   Container,
-  Header,
   Responsive
 } from "semantic-ui-react";
 import styled from "styled-components";
@@ -21,24 +20,6 @@ const ImageContainer = styled(Grid.Column)`
     display: flex;
     flex-direction: column;
     @media only screen and (min-width: 768px) {
-    }
-  }
-`;
-
-const StyledColumn = styled(Grid.Column)`
-  &&& {
-    padding-top: 5em;
-  }
-`;
-const Title = styled(Header)`
-  &&& {
-    color: #4f4b65;
-    font-size: 2em;
-    font-weight: 600;
-    text-align: center;
-    @media only screen and (min-width: 768px) {
-      font-size: 2.5em;
-      margin: 0;
     }
   }
 `;
