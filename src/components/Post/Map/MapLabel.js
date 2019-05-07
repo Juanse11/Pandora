@@ -1,22 +1,24 @@
 import React from "react";
 import { BaseControl } from "react-map-gl";
 import styled from "styled-components";
+import { Label } from 'semantic-ui-react';
 
-const StyledMarker = styled.div`
+const StyledMarker = styled(Label)`
   &&& {
     position: absolute;
     ${props => ({
-      background: props.active ? "#3a91aa" : "white",
-      zIndex: props.active ? 9 : 1,
+      background: props.isActive ? "#3a91aa" : "white",
+      zIndex: props.isActive ? 9 : 1,
       left: props.x,
       top: props.y,
       padding: "4px 5px 4px 6px",
       fontSize: "14px",
       fontWeight: 800,
-      color: props.active ? "#fff" : "#767676",
+      color: props.isActive ? "#fff" : "#767676",
       boxShadow: "rgba(0, 0, 0, 0.15) 0px 2px 4px 0px",
       border: "1px solid rgba(0, 0, 0, 0.2)",
-      borderRadius: "2px"
+      borderRadius: "2px",
+      transition: 'none'
     })};
   }
 `;
@@ -29,10 +31,11 @@ export default class CustomMarker extends BaseControl {
 
     return (
       <StyledMarker
-        active={this.props.isActive}
+        isActive={this.props.isActive}
         ref={this._containerRef}
         x={x}
         y={y}
+        pointing="below"
       >
         {"$300,000 COP"}
       </StyledMarker>
