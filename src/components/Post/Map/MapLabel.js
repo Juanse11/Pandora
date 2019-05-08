@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Label } from 'semantic-ui-react';
 
 const StyledMarker = styled(Label)`
-  &&& {
+  &&&&&&&& {
     position: absolute;
     ${props => ({
       background: props.isActive ? "#3a91aa" : "white",
@@ -28,13 +28,13 @@ export default class CustomMarker extends BaseControl {
     const { longitude, latitude } = this.props;
 
     const [x, y] = this._context.viewport.project([longitude, latitude]);
-
+    
     return (
       <StyledMarker
         isActive={this.props.isActive}
         ref={this._containerRef}
-        x={x}
-        y={y}
+        x={x-50}
+        y={y-15}
         pointing="below"
       >
         {"$300,000 COP"}

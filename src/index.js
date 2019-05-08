@@ -11,12 +11,12 @@ import '@trendmicro/react-dropdown/dist/react-dropdown.css';
 import 'react-dates/lib/css/_datepicker.css'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import 'mapbox-gl/dist/mapbox-gl.css'
 import "./styles/index.css";
 import "normalize.css/normalize.css";
 
 
 const store = configureStore()
-console.log(store.getState())
 const jsx = (
     <Provider store={store}>
         <AppRouter />
