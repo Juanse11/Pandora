@@ -1,10 +1,10 @@
 import React from "react";
-import { BaseControl } from "react-map-gl";
 import styled from "styled-components";
 import { Label } from 'semantic-ui-react';
 
 const StyledMarker = styled(Label)`
   &&&&&&&& {
+    white-space: nowrap;
     position: absolute;
     ${props => ({
       background: props.isActive ? "#3a91aa" : "white",
@@ -20,21 +20,19 @@ const StyledMarker = styled(Label)`
       borderRadius: "2px",
       transition: 'none'
     })};
+    &::before {
+      transition: none;
+    }
   }
 `;
 
-export default class CustomMarker extends BaseControl {
-  _render() {
-    const { longitude, latitude } = this.props;
-
-    const [x, y] = this._context.viewport.project([longitude, latitude]);
+export default class CustomMarker extends React.PureComponent {
+  render() {
+    
     
     return (
       <StyledMarker
         isActive={this.props.isActive}
-        ref={this._containerRef}
-        x={x-50}
-        y={y-15}
         pointing="below"
       >
         {"$300,000 COP"}

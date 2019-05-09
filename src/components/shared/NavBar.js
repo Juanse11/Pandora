@@ -1,5 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
+import { connect } from "react-redux";
+import { startLogout } from "../../actions/auth";
 import { Menu, Responsive, Sidebar, Button, Image } from "semantic-ui-react";
 import SearchBar from "../shared/SearchBarContainer";
 import logo from "../../assets/purplePandora.svg";
@@ -102,7 +105,7 @@ const StyledButton = styled(Button)`
   }
 `;
 
-export default class NavBar extends React.Component {
+class NavBar extends React.Component {
   constructor(props) {
     super(props);
     this.loginElement = React.createRef();
@@ -127,7 +130,7 @@ export default class NavBar extends React.Component {
     this.setState(prevState => ({ sidebarOpened: !prevState.sidebarOpened }));
 
   render() {
-    const { children } = this.props;
+    const { children, startLogout } = this.props;
     const { sidebarOpened } = this.state;
 
     return (
@@ -136,61 +139,84 @@ export default class NavBar extends React.Component {
           getWidth={getWidth}
           minWidth={Responsive.onlyTablet.minWidth}
         >
-            <Menu
-              size="large"
-              borderless
-              pointing={false}
-              style={{
-                position: 'sticky',
-                top: 0,
-                zIndex: 9,
-                margin: 0,
-                backgroundColor: "#fff",
-                border: "none",
-                padding: "0.5em 0",
-                display: "flex",
-                paddingTop: 0,
-                height: "80px",
-                paddingBottom: 0,
-                borderBottom: "1px solid rgb(228, 228, 228)",
-                boxShadow: "none",
-                borderRadius: 0,
-                borderRight: 0
-              }}
+          <Menu
+            size="large"
+            borderless
+            pointing={false}
+            style={{
+              position: "sticky",
+              top: 0,
+              zIndex: 9,
+              margin: 0,
+              backgroundColor: "#fff",
+              border: "none",
+              padding: "0.5em 0",
+              display: "flex",
+              paddingTop: 0,
+              height: "80px",
+              paddingBottom: 0,
+              borderBottom: "1px solid rgb(228, 228, 228)",
+              boxShadow: "none",
+              borderRadius: 0,
+              borderRight: 0
+            }}
+          >
+            <LogoItem style={{ paddingRight: "5px", paddingLeft: "24px" }}>
+              <Image size="mini" src={logo} />
+            </LogoItem>
+            <Menu.Item
+              style={{ width: "100%", maxWidth: "460px", flexShrink: "1" }}
             >
-              <LogoItem style={{ paddingRight: "5px", paddingLeft: "24px" }}>
-                <Image size="mini" src={logo} />
-              </LogoItem>
-              <Menu.Item
-                style={{ width: "100%", maxWidth: "460px",  flexShrink: '1' }}
-              >
-                <SearchBar />
-              </Menu.Item>
-              <Menu.Item
-                style={{ paddingTop: 0, paddingBottom: 0, display: "flex", flexShrink: '1' }}
-                position="right"
-              >
-                <MenuItemBlock style={{  flexShrink: '1'}}>
-                  <StyledButton>Publica tu Empresa</StyledButton>
+              <SearchBar />
+            </Menu.Item>
+            <Menu.Item
+              style={{
+                paddingTop: 0,
+                paddingBottom: 0,
+                display: "flex",
+                flexShrink: "1"
+              }}
+              position="right"
+            >
+              <MenuItemBlock style={{ flexShrink: "1", whiteSpace: "nowrap" }}>
+                <StyledButton>Publica tu Empresa</StyledButton>
+              </MenuItemBlock>
+              {console.log(this.props.isUserLoggedIn)
+              }
+              {this.props.isUserLoggedIn ? (
+                <MenuItemBlock
+                  style={{ flexShrink: "1", whiteSpace: "nowrap" }}
+                >
+                  <StyledButton onClick={startLogout}>
+                    Cerrar sesion
+                  </StyledButton>
                 </MenuItemBlock>
-                <MenuItemBlock style={{  flexShrink: '1' }}>
-                  <Login
-                    handleLoginModalToggle={this.handleLoginModalToggle}
-                    reference={this.registerElement}
+              ) : (
+                <React.Fragment>
+                  <MenuItemBlock
+                    style={{ flexShrink: "1", whiteSpace: "nowrap" }}
                   >
-                    Inicia Sesion
-                  </Login>
-                </MenuItemBlock>
-                <MenuItemBlock style={{flexGrow: "1", flexShrink: '1' }}>
-                  <Register
-                    handleRegisterModalToggle={this.handleRegisterModalToggle}
-                    reference={this.loginElement}
+                    <Login
+                      handleLoginModalToggle={this.handleLoginModalToggle}
+                      reference={this.registerElement}
+                    >
+                      Inicia Sesion
+                    </Login>
+                  </MenuItemBlock>
+                  <MenuItemBlock
+                    style={{ flexShrink: "1", whiteSpace: "nowrap" }}
                   >
-                    Registrate
-                  </Register>
-                </MenuItemBlock>
-              </Menu.Item>
-            </Menu>
+                    <Register
+                      handleRegisterModalToggle={this.handleRegisterModalToggle}
+                      reference={this.loginElement}
+                    >
+                      Registrate
+                    </Register>
+                  </MenuItemBlock>
+                </React.Fragment>
+              )}
+            </Menu.Item>
+          </Menu>
           {children}
         </Responsive>
         <Responsive
@@ -219,9 +245,16 @@ export default class NavBar extends React.Component {
             <StyledMenu size="large" borderless pointing={false}>
               <LogoItem
                 onClick={this.handleToggle}
-                style={{ paddingLeft: "24px", paddingRight: "5px", flexShrink: '1' }}
+                style={{
+                  paddingLeft: "24px",
+                  paddingRight: "5px",
+                  flexShrink: "1"
+                }}
               >
-                <Image style={{width: '35px', height: '35px', maxWidth: '2000px'}} src={logo} />
+                <Image
+                  style={{ width: "35px", height: "35px", maxWidth: "2000px" }}
+                  src={logo}
+                />
                 <Arrow src={arrow} />
               </LogoItem>
               <SearchItem>
@@ -235,3 +268,13 @@ export default class NavBar extends React.Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => ({
+  startLogout: () => dispatch(startLogout())
+});
+
+const mapStateToProps = ({ auth }) => ({
+  isUserLoggedIn: !!auth.uid
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar)

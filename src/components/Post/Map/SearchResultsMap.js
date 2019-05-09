@@ -1,10 +1,18 @@
 import React, { useState } from "react";
 import ReactMapGL, { Marker, Popup, NavigationControl } from "react-map-gl";
 import * as parkData from "./skateboard-parks.json";
-import skateboard from "./skateboard.svg";
-import CustomMarker from "./MapLabel";
+import PinPoint from "./MapLabel";
+import styled from 'styled-components'
+
 const TOKEN =
   "pk.eyJ1IjoianVhbnNldiIsImEiOiJjam03MjJoeDUwNmc1M3VxeG81YXkyZ3VrIn0.SXMSsc_6gpJuge-YBOUy3Q"; // Set your mapbox token here
+
+const StyledMarker = styled(Marker)`
+  &&& {
+    z-index: ${props => props.isActive ? '9' : '0'}
+  }
+
+`
 
 export default function ResultsMap(props) {
   const [viewport, setViewport] = useState({
@@ -12,7 +20,7 @@ export default function ResultsMap(props) {
     longitude: -75.6903,
     zoom: 9
   });
-  
+
   return (
     <div
       style={{
@@ -38,12 +46,20 @@ export default function ResultsMap(props) {
             }}
           />
         </div>
-        {parkData.features.map(park => (
-            <CustomMarker
+        {parkData.features.map((park,index) => (
+          <StyledMarker
+          key={`marker-${index}`}
+          draggable
+            offsetLeft={-50}
+            offsetTop={-15}
+            latitude={park.geometry.coordinates[1]}
+            longitude={park.geometry.coordinates[0]}
+            isActive={park.properties.PARK_ID === props.selectedPark.id}
+          >
+            <PinPoint
               isActive={park.properties.PARK_ID === props.selectedPark.id}
-              latitude={park.geometry.coordinates[1]}
-              longitude={park.geometry.coordinates[0]}
             />
+          </StyledMarker>
         ))}
       </ReactMapGL>
     </div>

@@ -16,7 +16,7 @@ const CardItemList = ({ items, isLoading, handleSelectedPark }) => (
       style={{ justifyContent: "space-between", padding: "10px 0" }}
     >
       {items.map((item, index) => (
-        <Column key={index} mobile={15} tablet={8} computer={5}>
+        <Column key={index} mobile={16} tablet={8} computer={5}>
           <CardItem {...item} handleSelectedPark={handleSelectedPark} isLoading={isLoading} />
         </Column>
       ))}

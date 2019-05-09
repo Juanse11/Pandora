@@ -95,7 +95,14 @@ const CardItem = ({
       ) : (
         <React.Fragment>
           <Card.Meta
-            style={{ marginBottom: "4px", fontSize: "12px", fontWeight: 800 }}
+            style={{
+              marginBottom: "4px",
+              fontSize: "12px",
+              fontWeight: 800,
+              textOverflow: "ellipsis",
+              whiteSpace: "nowrap",
+              overflow: "hidden"
+            }}
           >
             <Icon name="soccer" />
             <span>
@@ -110,7 +117,9 @@ const CardItem = ({
               fontWeight: 700,
               color: "#4f4b65",
               fontSize: "18px",
-              marginBottom: "4px"
+              marginBottom: "4px",
+              wordWrap: 'break-all',
+              whiteSpace:'normal'
             }}
           >
             {title}
@@ -121,7 +130,10 @@ const CardItem = ({
               fontWeight: 400,
               color: "#4f4b65",
               fontSize: "14px",
-              textAlign: "left"
+              textAlign: "left",
+              textOverflow: "ellipsis",
+              whiteSpace: "nowrap",
+              overflow: "hidden"
             }}
           >
             ${price} COP por hora
@@ -134,7 +146,10 @@ const CardItem = ({
             style={{
               marginTop: "0.2em",
               marginBottom: "1em",
-              fontSize: "10px"
+              fontSize: "10px",
+              textOverflow: "ellipsis",
+              whiteSpace: "nowrap",
+              overflow: "hidden"
             }}
           />
           <span
@@ -142,7 +157,10 @@ const CardItem = ({
               paddingLeft: "5px",
               color: "#3a91aac9",
               fontWeight: 700,
-              fontSize: "12px"
+              fontSize: "12px",
+              textOverflow: "ellipsis",
+              whiteSpace: "nowrap",
+              overflow: "hidden"
             }}
           >
             {4.95}

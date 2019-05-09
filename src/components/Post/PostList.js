@@ -17,8 +17,8 @@ const PostList = ({ items, isLoading }) => (
       {items.map((item, index) => (
         <Grid.Column
           key={index}
-          mobile={15}
-          tablet={15}
+          mobile={16}
+          tablet={16}
           computer={16}
           style={{ padding: '10px'}}
         >
