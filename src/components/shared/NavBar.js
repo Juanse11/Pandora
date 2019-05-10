@@ -181,8 +181,6 @@ class NavBar extends React.Component {
               <MenuItemBlock style={{ flexShrink: "1", whiteSpace: "nowrap" }}>
                 <StyledButton>Publica tu Empresa</StyledButton>
               </MenuItemBlock>
-              {console.log(this.props.isUserLoggedIn)
-              }
               {this.props.isUserLoggedIn ? (
                 <MenuItemBlock
                   style={{ flexShrink: "1", whiteSpace: "nowrap" }}

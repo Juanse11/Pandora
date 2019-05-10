@@ -6,10 +6,16 @@ import styled from "styled-components";
 const Column = styled(Grid.Column)`
   &&&&&&& {
     padding: 10px;
+    width: 33% !important;
   }
 `;
 
-const CardItemList = ({ items, isLoading, handleSelectedPark }) => (
+const CardItemList = ({
+  items,
+  isLoading,
+  handleSelectedPark,
+  handleGoToPostPage
+}) => (
   <Grid style={{ margin: 0, paddingTop: "10px" }} doubling centered relaxed>
     <Grid.Row
       columns={4}
@@ -17,7 +23,12 @@ const CardItemList = ({ items, isLoading, handleSelectedPark }) => (
     >
       {items.map((item, index) => (
         <Column key={index} mobile={16} tablet={8} computer={5}>
-          <CardItem {...item} handleSelectedPark={handleSelectedPark} isLoading={isLoading} />
+          <CardItem
+            {...item}
+            handleGoToPostPage={handleGoToPostPage}
+            handleSelectedPark={handleSelectedPark}
+            isLoading={isLoading}
+          />
         </Column>
       ))}
     </Grid.Row>

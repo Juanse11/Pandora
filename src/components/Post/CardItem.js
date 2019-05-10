@@ -65,12 +65,13 @@ const CardItem = ({
   isLoading,
   id,
   coordinates,
-  handleSelectedPark
+  handleSelectedPark,
+  handleGoToPostPage
 } = {}) => (
   <StyledCard
+    onClick={() => handleGoToPostPage(id)}
     onMouseEnter={() => handleSelectedPark({ id, coordinates })}
     onMouseLeave={() => handleSelectedPark({})}
-    href="#card-example-link-card"
   >
     {isLoading ? (
       <Placeholder>

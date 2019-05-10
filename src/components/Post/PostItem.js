@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import styled from "styled-components";
-import { Icon, Rating, Item,  Placeholder } from "semantic-ui-react";
+import { Icon, Rating, Item, Placeholder } from "semantic-ui-react";
 
 const Image = styled.img`
   object-fit: cover;
@@ -139,13 +139,27 @@ const PlaceholderImage = styled(Placeholder.Image)`
     padding-top: 0;
     width: 100%;
     height: 100%;
-    background-color: #3a91aa7d
+    background-color: #3a91aa7d;
   }
 `;
 
-
-const PostItem = ({ title, price, rating, sport, image, isLoading } = {}) => (
-  <StyledItem href="#post">
+const PostItem = ({
+  title,
+  price,
+  rating,
+  sport,
+  image,
+  isLoading,
+  id,
+  coordinates,
+  handleSelectedPark,
+  handleGoToPostPage
+} = {}) => (
+  <StyledItem
+    onClick={() => handleGoToPostPage(id)}
+    onMouseEnter={() => handleSelectedPark({ id, coordinates })}
+    onMouseLeave={() => handleSelectedPark({})}
+  >
     <Box>
       {isLoading ? (
         <PlaceholderBox>
@@ -174,16 +188,16 @@ const PostItem = ({ title, price, rating, sport, image, isLoading } = {}) => (
             style={{
               display: "flex",
               height: "100%",
-              marginTop: '9%'
+              marginTop: "9%"
             }}
           >
-            <div style={{height: '100%', width: '100%'}}>
-              <Placeholder style={{ }}>
+            <div style={{ height: "100%", width: "100%" }}>
+              <Placeholder style={{}}>
                 <Placeholder.Line length="short" />
               </Placeholder>
             </div>
-            <div style={{height: '100%', width: '100%'}}>
-              <Placeholder style={{ textAlign: 'right', marginLeft: '60%' }}>
+            <div style={{ height: "100%", width: "100%" }}>
+              <Placeholder style={{ textAlign: "right", marginLeft: "60%" }}>
                 <Placeholder.Line length="full" />
               </Placeholder>
             </div>

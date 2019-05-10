@@ -8,19 +8,19 @@ exports.seed = function(knex, Promise) {
         {
           title: "Spurs New Stadium - Soledad",
           description: "Parque Tres Postes",
-          sport: "Futbol",
+          sports: ['Futbol 5', 'Futbol 8', 'Futbol 11'],
           address: "Calle 1 con 2"
         },
         {
           title: "Old Trafford",
           description: "Parque La Electrificadora",
-          sport: "Futbol",
+          sports: ['Futbol 5', 'Futbol 8', 'Futbol 11'],
           address: "Calle 185 #250"
         },
         {
           title: "Liga del Atlantico",
           description: "Cancha de tenis",
-          sport: "Tenis",
+          sports: ['Tenis'],
           address: "Al lado del Buenavista"
         },
       ]);

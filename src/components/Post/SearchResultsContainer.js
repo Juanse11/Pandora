@@ -1,5 +1,5 @@
 import React from "react";
-
+import { withRouter } from "react-router-dom";
 import SearchResults from "./SearchResults";
 
 class SearchResultsContainer extends React.Component {
@@ -9,7 +9,7 @@ class SearchResultsContainer extends React.Component {
     isBlockLayout: true,
     isListLayout: false,
     selectedPark: {
-      id: '',
+      id: "",
       coordinates: []
     }
   };
@@ -18,7 +18,11 @@ class SearchResultsContainer extends React.Component {
     this.handleLoadingClick();
   }
 
-  handleSelectedPark = selectedPark => {    
+  handleGoToPostPage = postID => {
+    window.open(`/post/${postID}`);
+  };
+
+  handleSelectedPark = selectedPark => {
     this.setState({ selectedPark });
   };
 
@@ -303,6 +307,7 @@ class SearchResultsContainer extends React.Component {
     return (
       <SearchResults
         {...this.state}
+        handleGoToPostPage={this.handleGoToPostPage}
         handleSelectedPark={this.handleSelectedPark}
         handleBlockSelection={this.handleBlockSelection}
         handleListSelection={this.handleListSelection}
@@ -311,4 +316,4 @@ class SearchResultsContainer extends React.Component {
   }
 }
 
-export default SearchResultsContainer;
+export default withRouter(SearchResultsContainer);

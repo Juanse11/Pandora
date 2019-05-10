@@ -1,10 +1,14 @@
 import React from "react";
-import { Grid  } from "semantic-ui-react";
+import { Grid } from "semantic-ui-react";
 import Post from "./PostItem";
 
-
-const PostList = ({ items, isLoading }) => (
-  <Grid doubling padded="vertically" style={{margin: 0}}>
+const PostList = ({
+  items,
+  isLoading,
+  handleGoToPostPage,
+  handleSelectedPark
+}) => (
+  <Grid doubling padded="vertically" style={{ margin: 0 }}>
     <Grid.Row
       columns={4}
       style={{
@@ -20,9 +24,14 @@ const PostList = ({ items, isLoading }) => (
           mobile={16}
           tablet={16}
           computer={16}
-          style={{ padding: '10px'}}
+          style={{ padding: "10px" }}
         >
-          <Post isLoading={isLoading} {...item} />
+          <Post
+            handleGoToPostPage={handleGoToPostPage}
+            handleSelectedPark={handleSelectedPark}
+            isLoading={isLoading}
+            {...item}
+          />
         </Grid.Column>
       ))}
     </Grid.Row>

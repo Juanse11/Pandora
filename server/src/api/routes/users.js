@@ -1,13 +1,11 @@
-// simeplcode-api/api/routes/users.js
-// Include expressconst express = require("express");
 const express = require("express");
-// Include express router middleware
 const router = express.Router();
 
-// Add a 'get' method to express router for our test route
-router.get("/", function(req, res) {
-  res.send({ msg: "Hello World" });
+const Post = require("../../models/Post");
+
+router.get("/", async function(req, res) {
+  const posts = await Post.query();
+  res.send({ msg: posts });
 });
 
-// Exports the router object
 module.exports = router;

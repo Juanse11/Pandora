@@ -8,21 +8,19 @@ const Image = styled.img`
   object-position: 50% 50%;
   width: 100%;
   height: 100%;
-  border-radius: 4px !important;
+  border-radius: 0 !important;
 `;
 
 const StyledCard = styled(Card)`
   &&& {
+    border-radius: 0 !important;
     &:hover {
-      box-shadow: none;
       top: 0;
     }
     position: relative;
-    box-shadow: none;
     width: 100%;
     height: 100%;
     max-height: 600px;
-    border: none;
     transition: none;
     background: #fafafe;
     &:hover {
@@ -35,19 +33,18 @@ const StyledCard = styled(Card)`
 
 const Content = styled(Card.Content)`
   &&&&&&&&& {
-    padding: 0;
-    padding-top: 12px;
+    border-radius: 0 !important;
+    padding: 12px;
     max-height: 115px;
     height: 100%
     width: 100%;
-    border: none;
     transition: none;
-    background: transparent;
   }
 `;
 
 const ImageBox = styled.div`
   &&& {
+    border-radius: 0 !important;
     height: auto;
     display: flex;
     align-items: stretch;

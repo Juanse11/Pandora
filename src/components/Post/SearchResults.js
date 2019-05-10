@@ -14,7 +14,6 @@ import {
 } from "semantic-ui-react";
 import { connect } from "react-redux";
 
-
 const StyledSegment = styled(Segment)`
   &&&& {
     background: #fff;
@@ -132,7 +131,8 @@ const SearchResults = ({
   items,
   isLoading,
   selectedPark,
-   handleSelectedPark
+  handleSelectedPark,
+  handleGoToPostPage
 }) => (
   <Grid style={{ margin: 0 }}>
     <Grid.Column computer={10} style={{ padding: 0 }}>
@@ -163,15 +163,33 @@ const SearchResults = ({
                 options={friendOptions}
               />
               <ViewOption
-                style={{ alignSelf: "center", marginLeft: "0.5em" , marginRight: 0}}
+                style={{
+                  alignSelf: "center",
+                  marginLeft: "0.5em",
+                  marginRight: 0
+                }}
                 name="sort content ascending"
               />
             </Paragraph>
           </SearchResultsHeader>
 
           <StyledDimmer active={isDimmed} />
-          {isListLayout && <PostList handleSelectedPark={handleSelectedPark} items={items} isLoading={isLoading} />}
-          {isBlockLayout && <CardList handleSelectedPark={handleSelectedPark} items={items} isLoading={isLoading} />}
+          {isListLayout && (
+            <PostList
+              handleGoToPostPage={handleGoToPostPage}
+              handleSelectedPark={handleSelectedPark}
+              items={items}
+              isLoading={isLoading}
+            />
+          )}
+          {isBlockLayout && (
+            <CardList
+              handleGoToPostPage={handleGoToPostPage}
+              handleSelectedPark={handleSelectedPark}
+              items={items}
+              isLoading={isLoading}
+            />
+          )}
         </SearchBox>
       </StyledSegment>
     </Grid.Column>
