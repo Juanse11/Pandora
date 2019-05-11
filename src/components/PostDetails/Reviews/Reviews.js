@@ -1,13 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { Rating, Divider } from "semantic-ui-react";
-const HeaderBox = styled.div`
-  &&& {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-`;
+import { Rating, CommentGroup } from "semantic-ui-react";
+import Subtitle from "../Subtitle";
+import ReviewMessage from './ReviewMessage'
+
 const Title = styled.p`
   &&& {
     margin: 0;
@@ -33,18 +29,26 @@ const StyledRating = styled(Rating)`
 
 const Box = styled.div`
   &&& {
-      display: flex;
-      flex-direction: column;
+    display: flex;
+    flex-direction: column;
   }
-`
+`;
 
 const Reviews = () => (
   <Box>
-    <HeaderBox>
+    <Subtitle>
       <Title>154 evaluaciones</Title>
       <StyledRating icon="star" disabled defaultRating={5} maxRating={5} />
-    </HeaderBox>
-    <Divider style={{ margin: "24px 0" }} />
+    </Subtitle>
+    <CommentGroup style={{margin: 0}} size="large">
+      <ReviewMessage />
+      <ReviewMessage />
+      <ReviewMessage />
+      <ReviewMessage />
+      <ReviewMessage />
+      <ReviewMessage />
+      <ReviewMessage />
+    </CommentGroup>
   </Box>
 );
 

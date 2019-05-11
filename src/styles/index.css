@@ -166,3 +166,8 @@ html, body {
   margin-top: 0
   
 }
+
+.CalendarDay .CalendarMonth__caption {
+  color: #4f4b65 !important;
+}
+

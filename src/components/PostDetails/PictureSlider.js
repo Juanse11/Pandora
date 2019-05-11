@@ -1,11 +1,27 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
 import styled from "styled-components";
+import { Button, Icon } from "semantic-ui-react";
 
 const Image = styled.img`
-  
   width: 100%;
   height: 100%;
+`;
+
+const StyledIcon = styled(Icon)`
+  &&&&&&&& {
+    color: #4f4b65;
+    cursor: pointer;
+    font-size: 15px;
+    margin-right: 0.5em;
+    &:hover {
+      color: #4f4b65;
+    }
+    height: 100%;
+    &::before {
+      height: 100%;
+    }
+  }
 `;
 
 const ImageBox = styled.div`
@@ -18,51 +34,92 @@ const ImageBox = styled.div`
     max-width: 100%;
     width: 350px;
     max-height: 100%;
+    margin-right: 2px;
   }
 `;
 
+const StyledButton = styled(Button)`
+  &&& {
+    position: absolute;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.083em;
+    bottom: 24px;
+    right: 24px;
+    background: #fff;
+    color: #4f4b65;
+    &:hover {
+      background: #fff;
+    }
+    display: flex;
+    padding: 12px 22px;
+  }
+`;
 
 export default class PictureSlider extends Component {
   render() {
     var settings = {
-        dots: false,
-        infinite: false,
-        speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        initialSlide: 0,
-        responsive: [
-          {
-            breakpoint: 1024,
-            settings: {
-              slidesToShow: 3,
-              slidesToScroll: 1,
-              infinite: true,
-              dots: true
-            }
-          },
-          {
-            breakpoint: 600,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 1,
-              initialSlide: 2
-            }
-          },
-          {
-            breakpoint: 480,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1
-            }
+      dots: false,
+      infinite: true,
+      speed: 8000,
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 8000,
+      initialSlide: 0,
+      cssEase: "linear",
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            infinite: true,
+            dots: true
           }
-        ]
-      };
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            initialSlide: 2
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+      ]
+    };
     return (
-      <div style={{padding: '0 20px'}}>
+      <div style={{ position: "relative" }}>
         <Slider {...settings}>
           <ImageBox>
-            
+            <Image src="https://resources.premierleague.com/photos/2019/03/24/cb91e149-7607-4cd6-ba9b-2eb821ed33ca/Totenham-Hotspur-open-new-stadium-action.jpg?width=860&height=573" />
+          </ImageBox>
+          <ImageBox>
+            <Image src="https://resources.premierleague.com/photos/2019/03/24/cb91e149-7607-4cd6-ba9b-2eb821ed33ca/Totenham-Hotspur-open-new-stadium-action.jpg?width=860&height=573" />
+          </ImageBox>
+          <ImageBox>
+            <Image src="https://resources.premierleague.com/photos/2019/03/24/cb91e149-7607-4cd6-ba9b-2eb821ed33ca/Totenham-Hotspur-open-new-stadium-action.jpg?width=860&height=573" />
+          </ImageBox>
+          <ImageBox>
+            <Image src="https://resources.premierleague.com/photos/2019/03/24/cb91e149-7607-4cd6-ba9b-2eb821ed33ca/Totenham-Hotspur-open-new-stadium-action.jpg?width=860&height=573" />
+          </ImageBox>
+          <ImageBox>
+            <Image src="https://resources.premierleague.com/photos/2019/03/24/cb91e149-7607-4cd6-ba9b-2eb821ed33ca/Totenham-Hotspur-open-new-stadium-action.jpg?width=860&height=573" />
+          </ImageBox>
+          <ImageBox>
+            <Image src="https://resources.premierleague.com/photos/2019/03/24/cb91e149-7607-4cd6-ba9b-2eb821ed33ca/Totenham-Hotspur-open-new-stadium-action.jpg?width=860&height=573" />
+          </ImageBox>
+          <ImageBox>
+            <Image src="https://resources.premierleague.com/photos/2019/03/24/cb91e149-7607-4cd6-ba9b-2eb821ed33ca/Totenham-Hotspur-open-new-stadium-action.jpg?width=860&height=573" />
+          </ImageBox>
+          <ImageBox>
             <Image src="https://resources.premierleague.com/photos/2019/03/24/cb91e149-7607-4cd6-ba9b-2eb821ed33ca/Totenham-Hotspur-open-new-stadium-action.jpg?width=860&height=573" />
           </ImageBox>
           <ImageBox>
@@ -84,77 +141,10 @@ export default class PictureSlider extends Component {
             <Image src="https://resources.premierleague.com/photos/2019/03/24/cb91e149-7607-4cd6-ba9b-2eb821ed33ca/Totenham-Hotspur-open-new-stadium-action.jpg?width=860&height=573" />
           </ImageBox>
         </Slider>
+        <StyledButton>
+          <StyledIcon name="grid layout" /> MOSTRAR FOTOS
+        </StyledButton>
       </div>
     );
   }
 }
-
-class Responsive extends Component {
-    render() {
-      var settings = {
-        dots: true,
-        infinite: false,
-        speed: 500,
-        slidesToShow: 4,
-        slidesToScroll: 4,
-        initialSlide: 0,
-        responsive: [
-          {
-            breakpoint: 1024,
-            settings: {
-              slidesToShow: 3,
-              slidesToScroll: 3,
-              infinite: true,
-              dots: true
-            }
-          },
-          {
-            breakpoint: 600,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 2,
-              initialSlide: 2
-            }
-          },
-          {
-            breakpoint: 480,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1
-            }
-          }
-        ]
-      };
-      return (
-        <div style={{padding: '0 20px'}}>
-          <h2> Responsive </h2>
-          <Slider {...settings}>
-            <div>
-              <h3>1</h3>
-            </div>
-            <div>
-              <h3>2</h3>
-            </div>
-            <div>
-              <h3>3</h3>
-            </div>
-            <div>
-              <h3>4</h3>
-            </div>
-            <div>
-              <h3>5</h3>
-            </div>
-            <div>
-              <h3>6</h3>
-            </div>
-            <div>
-              <h3>7</h3>
-            </div>
-            <div>
-              <h3>8</h3>
-            </div>
-          </Slider>
-        </div>
-      );
-    }
-  }

@@ -5,8 +5,10 @@ import styled from "styled-components";
 
 const Column = styled(Grid.Column)`
   &&&&&&& {
-    padding: 10px;
-    width: 33% !important;
+    @media only screen and (min-width: 991px) {
+      padding: 10px;
+      width: 33% !important;
+    }
   }
 `;
 

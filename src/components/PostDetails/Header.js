@@ -34,8 +34,8 @@ const TitleBox = styled.div`
   }
 `;
 
-const Header = ({ rating }) => (
-  <Grid>
+const Header = () => (
+  <Grid style={{margin: 0, marginTop: '24px'}}>
     <Grid.Column computer={10} style={{padding: 0}}>
       <HeaderBox>
         <Sport>FUTBOL SALA</Sport>
