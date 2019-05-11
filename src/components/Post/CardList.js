@@ -16,7 +16,7 @@ const CardItemList = ({
   handleSelectedPark,
   handleGoToPostPage
 }) => (
-  <Grid style={{ margin: 0, paddingTop: "10px" }} doubling centered relaxed>
+  <Grid style={{ margin: 0 }} doubling centered relaxed>
     <Grid.Row
       columns={4}
       style={{ justifyContent: "space-between", padding: "10px 0" }}

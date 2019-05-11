@@ -15,7 +15,7 @@ const PostList = ({
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        paddingTop: "20px"
+        paddingTop: "10px"
       }}
     >
       {items.map((item, index) => (

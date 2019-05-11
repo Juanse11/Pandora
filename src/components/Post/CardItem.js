@@ -52,6 +52,7 @@ const ImageBox = styled.div`
     flex-grow: 1;
     max-width: 100%;
     overflow: hidden;
+    height: 180px;
     max-height: 100%;
   }
 `;
