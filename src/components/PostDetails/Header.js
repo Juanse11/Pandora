@@ -19,7 +19,8 @@ const Sport = styled.span`
 `;
 const Title = styled.h1`
   &&& {
-    font-size: 46px;
+    white-space: normal;
+    font-size: 32px;
     font-weight: 800;
     color: #4f4b65;
     margin: 0;

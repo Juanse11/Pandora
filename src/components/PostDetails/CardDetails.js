@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import LocationInformation from "./LocationInformation";
+import PostMap from './Map'
 
 const Box = styled.div`
   &&& {
@@ -19,9 +20,9 @@ const Image = styled.img`
   max-height: 236px;
 `;
 
-const ImageBox = styled.div`
+const MapBox = styled.div`
   &&& {
-    height: auto;
+    height: 236px;
     display: flex;
     max-width: 100%;
     max-height: 100%;
@@ -30,9 +31,10 @@ const ImageBox = styled.div`
 
 const CardDetails = () => (
   <Box>
-    <ImageBox>
-      <Image src="https://resources.premierleague.com/photos/2019/03/24/cb91e149-7607-4cd6-ba9b-2eb821ed33ca/Totenham-Hotspur-open-new-stadium-action.jpg?width=860&height=573" />
-    </ImageBox>
+
+    <MapBox>
+      <PostMap />
+    </MapBox>
     <LocationInformation />
   </Box>
 );

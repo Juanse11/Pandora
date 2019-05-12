@@ -9,6 +9,7 @@
     "history": "^4.7.2",
     "moment": "^2.24.0",
     "normalize.css": "^8.0.1",
+    "rc-time-picker": "^3.6.4",
     "react": "^16.8.6",
     "react-addons-shallow-compare": "^15.6.0",
     "react-dates": "^12.7.0",

@@ -6,13 +6,15 @@ import Header from "./Header";
 import PictureSlider from "./PictureSlider";
 import CardDetails from "./CardDetails";
 import Reviews from "./Reviews/Reviews";
-import Availability from './Availability/Container'
+import Availability from "./Availability/Container";
+import RelatedPosts from "./RelatedPosts/RelatedPosts";
+import Policies from './Policies'
 
 const StyledContainer = styled(Container)`
   &&&&&&&&&&& {
     max-width: 1080px !important;
     padding: 0 18px;
-
+    padding-bottom: 96px;
     margin-top: 32px;
   }
 `;
@@ -22,19 +24,29 @@ const Content = () => (
     <PictureSlider />
     <StyledContainer>
       <Header rating={5} />
-      <Grid style={{margin: 0, marginTop: '24px'}}>
-        <Grid.Column style={{ padding: 0 }} computer={10}>
-          <Divider style={{ margin: 0,marginBottom: "24px" }} />
+      <Grid style={{ margin: 0, marginTop: "24px" }}>
+        <Grid.Column mobile={16} style={{ padding: 0 }} computer={10}>
+          <Divider style={{ margin: 0, marginBottom: "24px" }} />
           <Availability />
           <Reviews />
+          <Policies />
+          
         </Grid.Column>
         <Grid.Column
           computer={6}
-          style={{ display: "flex", flexDirection: 'column', alignItems: "flex-end", padding: 0 }}
+          mobile={16}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-end",
+            padding: 0
+          }}
         >
           <CardDetails />
         </Grid.Column>
       </Grid>
+      <Divider style={{ margin: '24px 0' }} />
+      <RelatedPosts />
     </StyledContainer>
   </React.Fragment>
 );

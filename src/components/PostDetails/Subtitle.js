@@ -13,6 +13,8 @@ const Box = styled.div`
   &&& {
       display: flex;
       flex-direction: column;
+      margin-top: 24px;
+      margin-bottom: 16px;
   }
 `
 
@@ -21,7 +23,6 @@ const Subtitle = ({ children }) => (
     <HeaderBox>
       {children}
     </HeaderBox>
-    <Divider style={{ margin: "24px 0" }} />
   </Box>
 );
 

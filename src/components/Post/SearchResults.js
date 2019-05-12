@@ -86,7 +86,7 @@ const ViewOption = styled(Icon)`
     }
   }
 `;
-const friendOptions = [
+const sortOptions = [
   {
     key: "Precio",
     text: "Precio",
@@ -160,7 +160,7 @@ const SearchResults = ({
                 fluid
                 placeholder="Ordenar por"
                 selection
-                options={friendOptions}
+                options={sortOptions}
               />
               <ViewOption
                 style={{

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Rating, CommentGroup } from "semantic-ui-react";
+import { Rating, CommentGroup, Divider } from "semantic-ui-react";
 import Subtitle from "../Subtitle";
 import ReviewMessage from './ReviewMessage'
 
@@ -49,6 +49,7 @@ const Reviews = () => (
       <ReviewMessage />
       <ReviewMessage />
     </CommentGroup>
+    <Divider style={{ margin: "24px 0" }} />
   </Box>
 );
 

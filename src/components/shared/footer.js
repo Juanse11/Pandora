@@ -4,10 +4,9 @@ import styled from "styled-components";
 
 const StyledSegment = styled(Segment)`
   &&& {
-    padding: 8em 0;
     padding-bottom: 4em;
     min-height: 100px;
-    background-color: #483df6;
+    background-color: #fff;
     margin: 0;
     border: none;
     border-radius: 0;
@@ -25,7 +24,8 @@ const Footer = () => (
     >
       <p
         style={{
-          color: "#ffffff66",
+          color: "#483df6",
+          fontWeight: 600,
           alignSelf: "center",
           margin: "auto",
           marginBottom: 0

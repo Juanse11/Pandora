@@ -1,6 +1,7 @@
 import React from "react";
 import Availability from "./Availability";
 import { connect } from "react-redux";
+import moment from "moment";
 import "moment/locale/es";
 
 export default class Container extends React.Component {
@@ -8,8 +9,9 @@ export default class Container extends React.Component {
     date: undefined,
     focused: true,
     isActive: false,
+    startTimeValue: moment(),
+    endTimeValue: moment()
   };
-
 
   handleApplyChanges = () => {
     let name = "Fecha";
@@ -33,6 +35,13 @@ export default class Container extends React.Component {
     this.setState({ focused: true });
   };
 
+  handleStartTimeChange = value => {
+    this.setState({ startTimeValue: value });
+  };
+
+  handleEndTimeChange = value => {
+    this.setState({ endTimeValue: value });
+  };
   render() {
     return (
       <Availability
@@ -41,6 +50,9 @@ export default class Container extends React.Component {
         onFocusChange={this.onFocusChange}
         focused={this.state.focused}
         isActive={this.state.isActive}
+        handleStartTimeChange={this.handleStartTimeChange}
+        handleEndTimeChange={this.handleEndTimeChange}
+        isLoading={false}
       />
     );
   }

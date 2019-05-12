@@ -167,7 +167,13 @@ html, body {
   
 }
 
-.CalendarDay .CalendarMonth__caption {
-  color: #4f4b65 !important;
+
+.slick-slide {
+  padding-right: 2px;
 }
 
+.rc-time-picker-panel-input {
+  color: #4f4b65;
+  font-size: 14px;
+  font-weight: 600;
+}

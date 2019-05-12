@@ -34,7 +34,6 @@ const ImageBox = styled.div`
     max-width: 100%;
     width: 350px;
     max-height: 100%;
-    margin-right: 2px;
   }
 `;
 

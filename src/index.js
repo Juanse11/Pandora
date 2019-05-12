@@ -34,7 +34,9 @@ const renderApp = () => {
 };
 
 firebase.auth().onAuthStateChanged(user => {
-  if (user) {
+  if (user) {      
+    console.log(firebase.auth().currentUser);
+    
       store.dispatch(login(user.uid))
     console.log("log in");
     renderApp()
