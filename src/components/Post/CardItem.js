@@ -106,12 +106,11 @@ const CardItem = ({
               overflow: "hidden"
             }}
           >
-            <Icon name="soccer" />
+            <Icon name="table tennis" />
             <span>
               {sport.toUpperCase()}
-              <span>&middot;</span> Grama sintética <span>&middot;</span>
-              Cubierto <span>&middot;</span>
-              11 contra 11 <span>&middot;</span>
+              <span> &middot;</span>GRAMA SINTÉTICA <span>&middot;</span>
+              CUBIERTO <span>&middot;</span>
             </span>
           </Card.Meta>
           <Card.Header

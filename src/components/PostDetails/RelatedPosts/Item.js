@@ -13,6 +13,7 @@ const Image = styled.img`
 
 const StyledCard = styled(Card)`
   &&& {
+    cursor: pointer;
     &:hover {
       box-shadow: none;
       top: 0;
@@ -104,9 +105,8 @@ const Item = ({
             <Icon name="soccer" />
             <span>
               {sport.toUpperCase()}
-              <span>&middot;</span> Grama sintética <span>&middot;</span>
-              Cubierto <span>&middot;</span>
-              11 contra 11 <span>&middot;</span>
+              <span> &middot;</span>GRAMA SINTÉTICA <span>&middot;</span>
+              CUBIERTO <span>&middot;</span>
             </span>
           </Card.Meta>
           <Card.Header

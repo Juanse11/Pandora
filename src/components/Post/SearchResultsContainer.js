@@ -19,7 +19,7 @@ class SearchResultsContainer extends React.Component {
   }
 
   handleGoToPostPage = postID => {
-    window.open(`/post/${postID}`);
+    window.open(`/publicacion/${postID}`);
   };
 
   handleSelectedPark = selectedPark => {

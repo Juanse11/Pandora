@@ -59,7 +59,7 @@ const Submit = styled.a`
 
 const HourPicker = ({ handleEndTimeChange, handleStartTimeChange }) => (
   <Box>
-    <Title>Selecciona las fechas para ver la disponibilidad</Title>
+    <Title>Selecciona una fecha para ver la disponibilidad</Title>
     <BoxTime>
       <StyledTimePicker
         use12Hours={true}

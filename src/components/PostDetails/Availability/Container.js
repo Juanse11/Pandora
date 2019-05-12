@@ -10,7 +10,8 @@ export default class Container extends React.Component {
     focused: true,
     isActive: false,
     startTimeValue: moment(),
-    endTimeValue: moment()
+    endTimeValue: moment(),
+    isLoading: false
   };
 
   handleApplyChanges = () => {
@@ -53,6 +54,7 @@ export default class Container extends React.Component {
         handleStartTimeChange={this.handleStartTimeChange}
         handleEndTimeChange={this.handleEndTimeChange}
         isLoading={false}
+        isSubmit={false}
       />
     );
   }

@@ -68,7 +68,8 @@ const Availability = ({
   onFocusChange,
   handleEndTimeChange,
   handleStartTimeChange,
-  isLoading
+  isLoading,
+  isSubmit
 }) => (
   <Box>
     <Subtitle>
@@ -91,7 +92,7 @@ const Availability = ({
           handleStartTimeChange={handleStartTimeChange}
           handleEndTimeChange={handleEndTimeChange}
         />
-        {isLoading ? (
+        {isSubmit && (isLoading ? (
           <Loader
             style={{ marginTop: "46px" }}
             active={isLoading}
@@ -110,7 +111,7 @@ const Availability = ({
               <SelectOption>Elegir</SelectOption>
             </DateOptions>
           </React.Fragment>
-        )}
+        ))}
       </Grid.Column>
     </Grid>
     <Divider style={{ margin: "24px 0" }} />
