@@ -1,6 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import SearchResults from "./SearchResults";
+import { connect } from "react-redux";
 import API from "../../api/api";
 
 class SearchResultsContainer extends React.Component {
@@ -15,8 +16,15 @@ class SearchResultsContainer extends React.Component {
     }
   };
 
+  componentDidUpdate(prevProps) {
+    console.log(prevProps.filters);
+    console.log(this.props.filters);
+
+    console.log(Object.is(prevProps.filters, this.props.filters));
+  }
+
   componentDidMount() {
-    this.handleLoadingClick();
+    this.getPosts();
   }
 
   handleGoToPostPage = postID => {
@@ -37,17 +45,21 @@ class SearchResultsContainer extends React.Component {
     this.setState({ isListLayout: true });
   };
 
-  handleLoadingClick = async () => {
+  getPosts = async () => {
     let items = this.fetchPlaceholderItems();
 
     await this.setState({ isLoading: true, items });
     items = await this.fetchItems();
     console.log(items);
-    
+
     await this.setState(() => ({ items, isLoading: false }));
   };
   fetchItems = async () => {
-    const response = await API.get(`posts/`);    
+    const response = await API.get(`posts/`, {
+      params: {
+        lol: 2
+      }
+    });
     return response.data.posts;
   };
 
@@ -187,4 +199,10 @@ class SearchResultsContainer extends React.Component {
   }
 }
 
-export default withRouter(SearchResultsContainer);
+const mapStateToProps = ({ filters }) => {
+  return {
+    filters
+  };
+};
+
+export default connect(mapStateToProps)(withRouter(SearchResultsContainer));

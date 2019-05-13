@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import FilterWrapper from "./FilterWrapper";
-import { setDimmer } from "../../../actions/filters";
+import { setDimmer } from "../../../actions/modal";
 
 class FilterWrapperContainer extends React.Component {
   state = {

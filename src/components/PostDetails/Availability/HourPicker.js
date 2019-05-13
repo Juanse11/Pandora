@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import {} from "semantic-ui-react";
+import { Button } from "semantic-ui-react";
 import "rc-time-picker/assets/index.css";
 import moment from "moment";
 import TimePicker from "rc-time-picker";
@@ -25,6 +25,7 @@ const StyledTimePicker = styled(TimePicker)`
     margin-top: 12px;
     max-width: 47%;
     & > input {
+      cursor: pointer;
       font-size: 14px;
       color: #4f4b65;
       padding: 10px 15px;
@@ -42,8 +43,10 @@ const BoxTime = styled.div`
   }
 `;
 
-const Submit = styled.a`
+const Submit = styled(Button)`
   &&& {
+    background: none;
+    padding: 0;
     cursor: pointer;
     margin-top: 12px;
     color: #3a91aa;
@@ -51,8 +54,22 @@ const Submit = styled.a`
     font-size: 14px;
     font-weight: 700;
     &:hover {
+      background: none;
+      color: #3a91aa;
       text-decoration: underline;
       text-decoration-color: #3a91aa;
+    }
+    &:hover {
+      background: none;
+      color: #3a91aa;
+    }
+    &:focus {
+      background: none;
+      color: #3a91aa;
+    }
+    &:active {
+      background: none;
+      color: #3a91aa;
     }
   }
 `;
@@ -60,7 +77,8 @@ const Submit = styled.a`
 const HourPicker = ({
   handleEndTimeChange,
   handleStartTimeChange,
-  handleSubmit
+  handleSubmit,
+  isSubmit
 }) => (
   <Box>
     <Title>Selecciona una fecha para ver la disponibilidad</Title>

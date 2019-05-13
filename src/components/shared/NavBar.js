@@ -272,7 +272,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = ({ auth }) => ({
-  isUserLoggedIn: !!auth.uid
+  isUserLoggedIn: !!auth.user
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar)

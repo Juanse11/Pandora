@@ -33,7 +33,11 @@ const Content = ({ post }) => (
           <Grid style={{ margin: 0, marginTop: "24px" }}>
             <Grid.Column mobile={16} style={{ padding: 0 }} computer={10}>
               <Divider style={{ margin: 0, marginBottom: "24px" }} />
-              <Availability price={post.price} />
+              <Availability
+                postID={post.id}
+                sellerID={post.sellerID}
+                price={post.price}
+              />
               <Reviews rating={post.rating} />
               <Policies />
             </Grid.Column>

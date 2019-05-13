@@ -1,7 +1,9 @@
 import React from "react";
 import SportFilter from "./SportFilter";
+import { connect } from "react-redux";
+import { setSportsFilter } from "../../../../actions/filters";
 
-export default class SportFilterContainer extends React.Component {
+class SportFilterContainer extends React.Component {
   state = {
     sports: {
       futbol: undefined,
@@ -30,16 +32,20 @@ export default class SportFilterContainer extends React.Component {
   handleApplyChanges = () => {
     let name = "Deporte";
     let isActive = false;
-    const sportsSelected = Object.keys(this.state.sports).filter((sport) => this.state.sports[sport]);
-    
+    const sportsSelected = Object.keys(this.state.sports).filter(
+      sport => this.state.sports[sport]
+    );
+
     if (sportsSelected.length === 1) {
-      name = `${sportsSelected[0][0].toUpperCase()}${sportsSelected[0].slice(1)}`;
+      name = `${sportsSelected[0][0].toUpperCase()}${sportsSelected[0].slice(
+        1
+      )}`;
       isActive = true;
     } else if (sportsSelected.length > 1) {
       name = `Deportes · ${sportsSelected.length}`;
       isActive = true;
     }
-
+    this.props.setSportsFilter(sportsSelected);
     this.setState({ name, isActive });
   };
 
@@ -53,3 +59,22 @@ export default class SportFilterContainer extends React.Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setSportsFilter: sports => {
+      dispatch(setSportsFilter(sports));
+    }
+  };
+};
+
+const mapStateToProps = ({ filters: { sports } }) => {
+  return {
+    sports
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SportFilterContainer);

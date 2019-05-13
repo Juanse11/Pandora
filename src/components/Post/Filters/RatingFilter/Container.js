@@ -1,7 +1,10 @@
 import React from "react";
 import RatingFilter from "./RatingFilter";
+import { connect } from "react-redux";
+import { setRating } from "../../../../actions/filters";
+import Container from "../PriceFilter/Container";
 
-export default class RatingFilterContainer extends React.Component {
+class RatingFilterContainer extends React.Component {
   state = {
     value: undefined,
     name: "Calificacion",
@@ -13,11 +16,12 @@ export default class RatingFilterContainer extends React.Component {
     this.setState(() => ({ value }));
   };
 
-  handleApplyChanges = () => {
+  handleApplyChanges = async () => {
     let name = this.state.value
       ? ` ${this.state.value} ★ en adelante`
       : "Calificacion";
     let isActive = this.state.value ? true : false;
+    this.props.setRating(this.state.value);
     this.setState({ name, isActive });
   };
 
@@ -31,3 +35,22 @@ export default class RatingFilterContainer extends React.Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setRating: rating => {
+      dispatch(setRating(rating));
+    }
+  };
+};
+
+const mapStateToProps = ({ filters: { rating } }) => {
+  return {
+    rating
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(RatingFilterContainer);

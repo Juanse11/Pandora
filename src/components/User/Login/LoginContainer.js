@@ -18,9 +18,8 @@ export default class LoginContainer extends Component {
       .auth()
       .signInWithPopup(provider)
       .then(result => {
-        const token = result.credential.accessToken;
-        const user = result.user;
-        console.log(user, token);
+        const token = result.credential.idToken;
+        console.log(token);
       })
       .catch(error => {
         console.log(error);

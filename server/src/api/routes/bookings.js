@@ -3,7 +3,7 @@ const router = express.Router();
 
 const Booking = require("../../models/Booking");
 
-router.get("/", async function(req, res) {
+router.get("/", async function(req, res) {  
   const bookings = await Booking.query()
     .where("dateTimeFrom", "<=", req.query.dateTimeTo)
     .andWhere("dateTimeTo", ">=", req.query.dateTimeFrom);
@@ -11,7 +11,7 @@ router.get("/", async function(req, res) {
 });
 
 router.post("/", async function(req, res) {
-  console.log(req);
+  console.log(req.body);
 
   res.send({});
 });

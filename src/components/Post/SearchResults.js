@@ -202,7 +202,7 @@ const SearchResults = ({
   </Grid>
 );
 
-const mapStateToProps = ({ filters: { isDimmed } }) => {
+const mapStateToProps = ({ modal: { isDimmed } }) => {
   return {
     isDimmed
   };

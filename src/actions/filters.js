@@ -14,7 +14,5 @@ export const setDate = date => ({ type: "SET_DATE", date });
 export const setRating = rating => ({ type: "SET_RATING", rating });
 export const setMinimumPrice = price => ({ type: "SET_MINIMUM_PRICE", price });
 export const setMaximumPrice = price => ({ type: "SET_MAXIMUM_PRICE", price });
-export const setDimmer = () => ({ type: "SET_DIMMER" });
-
-export const addSportFilter = sport => ({ type: "ADD_SPORT_FILTER", sport });
-export const removeSportFilter = sport => ({ type: "REMOVE_SPORT_FILTER", sport });
+export const setSportsFilter = sports => ({ type: "SET_SPORTS_FILTER", sports});
+export const setSurfacesFilter = surfaces => ({ type: "SET_SURFACES_FILTER", surfaces});

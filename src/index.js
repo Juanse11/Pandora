@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-
+import API from "./api/api";
 import AppRouter, { history } from "./routers/AppRouter";
 import configureStore from "./store/configureStore";
 
@@ -15,8 +15,7 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import "./styles/index.css";
 import "normalize.css/normalize.css";
 import { firebase } from "./components/firebase/firebase";
-import { login, logout } from './actions/auth';
-
+import { login, logout } from "./actions/auth";
 
 const store = configureStore();
 const jsx = (
@@ -29,21 +28,22 @@ let hasRendered = false;
 const renderApp = () => {
   if (!hasRendered) {
     ReactDOM.render(jsx, document.getElementById("root"));
-    hasRendered = true
-}
+    hasRendered = true;
+  }
 };
 
-firebase.auth().onAuthStateChanged(user => {
-  if (user) {      
-    console.log(firebase.auth().currentUser);
+firebase.auth().onAuthStateChanged(async user => {
+  if (user) {
+    const token = await user.getIdToken()
+    console.log(token);
     
-      store.dispatch(login(user.uid))
+    store.dispatch(login(user));
     console.log("log in");
-    renderApp()
+    renderApp();
   } else {
-      console.log('log out');
-      
-      store.dispatch(logout())
-      renderApp()
+    console.log("log out");
+
+    store.dispatch(logout());
+    renderApp();
   }
 });

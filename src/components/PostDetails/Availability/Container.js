@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import moment from "moment";
 import "moment/locale/es";
 
-import API from '../../../api/api'
+import API from "../../../api/api";
 
 export default class Container extends React.Component {
   state = {
@@ -13,7 +13,14 @@ export default class Container extends React.Component {
     isActive: false,
     startTimeValue: moment(),
     endTimeValue: moment(),
-    isLoading: false
+    dateTimeFrom: "",
+    dateTimeTo: "",
+    isLoading: false,
+    isSubmit: false,
+    bookings: [],
+    bookingDate: "",
+    bookingStartTimeValue: "",
+    bookingEndTimeValue: ""
   };
 
   handleApplyChanges = () => {
@@ -29,56 +36,78 @@ export default class Container extends React.Component {
     }
   };
 
-  onDateChange = date => {
+  onDateChange = async date => {
     if (date) {
-      this.setState({ date: date.startOf("day") });
+      await this.setState({ date: date.startOf("day") });
+      this.handleSubmit();
     }
   };
   onFocusChange = () => {
     this.setState({ focused: true });
   };
 
-  handleStartTimeChange = value => {
-    this.setState({ startTimeValue: value });
+  handleStartTimeChange = async value => {
+    this.handleSubmit();
+    await this.setState({ startTimeValue: value });
+    this.handleSubmit();
   };
 
-  handleEndTimeChange = value => {
-    this.setState({ endTimeValue: value });
+  handleEndTimeChange = async value => {
+    this.handleSubmit();
+    await this.setState({ endTimeValue: value });
+    this.handleSubmit();
   };
 
-  handleSubmit = () => {
+  handleSubmit = async () => {
     if (
       this.state.startTimeValue &&
       this.state.endTimeValue &&
       this.state.date
     ) {
-      let startDate = this.state.date.clone().add({
+      this.setState({ isLoading: true, isSubmit: true });
+      let dateTimeFrom = this.state.date.clone().add({
         hours: this.state.startTimeValue.hour(),
         minutes: this.state.startTimeValue.minute()
       });
 
-      let endDate = this.state.date.clone().add({
+      let dateTimeTo = this.state.date.clone().add({
         hours: this.state.endTimeValue.hour(),
         minutes: this.state.endTimeValue.minute()
       });
-      console.log(startDate.format(), endDate.format());
-      
+      this.setState({ dateTimeFrom, dateTimeTo });
+      const response = await API.get(
+        `bookings?dateTimeTo=${dateTimeTo.format()}&dateTimeFrom=${dateTimeFrom.format()}`
+      );
+      console.log(response.data);
+
+      this.setState(prevState => ({
+        bookings: response.data.bookings,
+        isLoading: false
+      }));
     }
+  };
+
+  handleBooking = async () => {
+    const response = API.post(`bookings`, {
+      postID: this.props.postID,
+      sellerID: this.props.sellerID,
+      buyerID: 200,
+      dateTimeTo: this.state.dateTimeTo.format(),
+      dateTimeFrom: this.state.dateTimeFrom.format()
+    });
+    console.log(response.data);
   };
 
   render() {
     return (
       <Availability
-        date={this.state.date}
+        {...this.state}
         onDateChange={this.onDateChange}
         onFocusChange={this.onFocusChange}
-        focused={this.state.focused}
-        isActive={this.state.isActive}
+        handleBooking={this.handleBooking}
         handleStartTimeChange={this.handleStartTimeChange}
         handleEndTimeChange={this.handleEndTimeChange}
         handleSubmit={this.handleSubmit}
-        isLoading={false}
-        isSubmit={false}
         price={this.props.price}
       />
     );

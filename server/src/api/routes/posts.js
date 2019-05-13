@@ -4,15 +4,15 @@ const router = express.Router();
 const Post = require("../../models/Post");
 
 router.get("/", async function(req, res) {
-  console.log('hola amigos');
-  
+  console.log("req.query: ", req.query);
+
   const posts = await Post.query();
   res.status(200).send({ posts });
 });
 
 router.get("/:id", async function(req, res) {
   const post = await Post.query().findById(req.params.id);
-  res.status(200).send({ post })
+  res.status(200).send({ post });
 });
 
 router.post("/:id", async function(req, res) {
