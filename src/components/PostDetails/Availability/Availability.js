@@ -75,7 +75,7 @@ const Availability = ({
     <Subtitle>
       <Title>Disponibilidad</Title>
     </Subtitle>
-    <Grid>
+    <Grid style={{marginTop: '-14px'}}>
       <Grid.Column style={{ padding: 0 }} computer={8}>
         <DayPickerSingleDateController
           date={date}

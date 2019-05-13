@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
 
-const Post = require("../../models/Post");
+const User = require("../../models/User");
 
-router.get("/", async function(req, res) {
-  const posts = await Post.query();
-  res.send({ msg: posts });
+router.get("/:id", async function(req, res) {
+  const userPosts = await User.query().findById(req.params.id).eager('posts');
+  res.send({ userPosts });
 });
 
 module.exports = router;

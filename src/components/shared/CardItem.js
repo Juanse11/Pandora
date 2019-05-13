@@ -108,7 +108,6 @@ const CardItem = ({
               fontWeight: 700,
               color: "#4f4b65",
               fontSize: "18px",
-              marginBottom: "4px"
             }}
           >
             {title}
