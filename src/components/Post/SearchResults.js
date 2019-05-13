@@ -195,7 +195,9 @@ const SearchResults = ({
     </Grid.Column>
 
     <Grid.Column style={{ padding: 0 }} computer={6}>
-      <ResultsMap selectedPark={selectedPark} />
+      {!isLoading && (
+        <ResultsMap items={items} selectedPark={selectedPark} />
+      )}
     </Grid.Column>
   </Grid>
 );

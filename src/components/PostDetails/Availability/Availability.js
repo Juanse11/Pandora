@@ -69,13 +69,15 @@ const Availability = ({
   handleEndTimeChange,
   handleStartTimeChange,
   isLoading,
-  isSubmit
+  isSubmit,
+  price,
+  handleSubmit
 }) => (
   <Box>
     <Subtitle>
       <Title>Disponibilidad</Title>
     </Subtitle>
-    <Grid style={{marginTop: '-14px'}}>
+    <Grid style={{ marginTop: "-14px" }}>
       <Grid.Column style={{ padding: 0 }} computer={8}>
         <DayPickerSingleDateController
           date={date}
@@ -89,29 +91,40 @@ const Availability = ({
       </Grid.Column>
       <Grid.Column computer={8}>
         <HourPicker
+          handleSubmit={handleSubmit}
           handleStartTimeChange={handleStartTimeChange}
           handleEndTimeChange={handleEndTimeChange}
         />
-        {isSubmit && (isLoading ? (
-          <Loader
-            style={{ marginTop: "46px" }}
-            active={isLoading}
-            inline="centered"
-          />
-        ) : (
-          <React.Fragment>
-            <DateInfo style={{paddingTop: '16px'}}>domingo, 26 de mayo</DateInfo>
-            <Divider style={{ margin: "16px 0" }} />
-            <DateOptions>
-              <DateOptionsDescription>
-                <DateInfo>14:30 - 20:00</DateInfo>
-                <DateInfo>$371,715 COP por hora</DateInfo>
-                <DateInfo>10 canchas libres de 10</DateInfo>
-              </DateOptionsDescription>
-              <SelectOption>Elegir</SelectOption>
-            </DateOptions>
-          </React.Fragment>
-        ))}
+        {isSubmit &&
+          (isLoading ? (
+            <Loader
+              style={{ marginTop: "46px" }}
+              active={isLoading}
+              inline="centered"
+            />
+          ) : (
+            <React.Fragment>
+              <DateInfo style={{ paddingTop: "16px" }}>
+                domingo, 26 de mayo
+              </DateInfo>
+              <Divider style={{ margin: "16px 0" }} />
+              <DateOptions>
+                <DateOptionsDescription>
+                  <DateInfo>14:30 - 20:00</DateInfo>
+                  <DateInfo>
+                    {price.toLocaleString("es-CO", {
+                      style: "currency",
+                      currency: "COP",
+                      minimumFractionDigits: 0
+                    })}
+                    COP por hora
+                  </DateInfo>
+                  <DateInfo>10 canchas libres de 10</DateInfo>
+                </DateOptionsDescription>
+                <SelectOption>Elegir</SelectOption>
+              </DateOptions>
+            </React.Fragment>
+          ))}
       </Grid.Column>
     </Grid>
     <Divider style={{ margin: "24px 0" }} />

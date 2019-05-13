@@ -8,7 +8,7 @@ import CardDetails from "./CardDetails";
 import Reviews from "./Reviews/Reviews";
 import Availability from "./Availability/Container";
 import RelatedPosts from "./RelatedPosts/RelatedPosts";
-import Policies from './Policies'
+import Policies from "./Policies";
 
 const StyledContainer = styled(Container)`
   &&&&&&&&&&& {
@@ -19,35 +19,47 @@ const StyledContainer = styled(Container)`
   }
 `;
 
-const Content = () => (
+const Content = ({ post }) => (
   <React.Fragment>
-    <PictureSlider />
-    <StyledContainer>
-      <Header rating={5} />
-      <Grid style={{ margin: 0, marginTop: "24px" }}>
-        <Grid.Column mobile={16} style={{ padding: 0 }} computer={10}>
-          <Divider style={{ margin: 0, marginBottom: "24px" }} />
-          <Availability />
-          <Reviews />
-          <Policies />
-          
-        </Grid.Column>
-        <Grid.Column
-          computer={6}
-          mobile={16}
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "flex-end",
-            padding: 0
-          }}
-        >
-          <CardDetails />
-        </Grid.Column>
-      </Grid>
-      <Divider style={{ margin: '24px 0' }} />
-      <RelatedPosts />
-    </StyledContainer>
+    {post.coordinates.length > 0 && (
+      <React.Fragment>
+        <PictureSlider pictures={post.pictures} />
+        <StyledContainer>
+          <Header
+            title={post.title}
+            sports={post.sports}
+            rating={post.rating}
+          />
+          <Grid style={{ margin: 0, marginTop: "24px" }}>
+            <Grid.Column mobile={16} style={{ padding: 0 }} computer={10}>
+              <Divider style={{ margin: 0, marginBottom: "24px" }} />
+              <Availability price={post.price} />
+              <Reviews rating={post.rating} />
+              <Policies />
+            </Grid.Column>
+            <Grid.Column
+              computer={6}
+              mobile={16}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-end",
+                padding: 0
+              }}
+            >
+              <CardDetails
+                coordinates={post.coordinates}
+                services={post.services}
+                address={post.address}
+                sports={post.sports}
+              />
+            </Grid.Column>
+          </Grid>
+          <Divider style={{ margin: "24px 0" }} />
+          <RelatedPosts />
+        </StyledContainer>
+      </React.Fragment>
+    )}
   </React.Fragment>
 );
 

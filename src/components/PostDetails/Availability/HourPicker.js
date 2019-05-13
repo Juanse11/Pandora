@@ -57,7 +57,11 @@ const Submit = styled.a`
   }
 `;
 
-const HourPicker = ({ handleEndTimeChange, handleStartTimeChange }) => (
+const HourPicker = ({
+  handleEndTimeChange,
+  handleStartTimeChange,
+  handleSubmit
+}) => (
   <Box>
     <Title>Selecciona una fecha para ver la disponibilidad</Title>
     <BoxTime>
@@ -76,7 +80,7 @@ const HourPicker = ({ handleEndTimeChange, handleStartTimeChange }) => (
         onChange={handleEndTimeChange}
       />
     </BoxTime>
-    <Submit>Aplicar</Submit>
+    <Submit onClick={handleSubmit}>Aplicar</Submit>
   </Box>
 );
 

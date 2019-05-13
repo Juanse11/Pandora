@@ -13,6 +13,8 @@ exports.seed = function(knex, Promise) {
           coordinates: ["51.6043", "0.0664"],
           services: ["Regaderas", "Parqueadero", "Cafeteria"],
           sellerID: 200,
+          price: 40000,
+          rating: 5,
           pictures: [
             "https://images.performgroup.com/di/library/omnisport/38/c/spurs-new-stadium-cropped_gat96a7nwka71n72329gu8dvy.jpg?t=-744573367&quality=100"
           ]
@@ -22,19 +24,24 @@ exports.seed = function(knex, Promise) {
           description: "Parque La Electrificadora",
           sports: ["Futbol 5", "Futbol 8", "Futbol 11"],
           address: "Calle 185 #250",
-          coordinates: ["53.4631", "2.2913"],
+          coordinates: ["53.4631", "-2.2913"],
           services: ["Parqueadero", "Cafeteria"],
           sellerID: 201,
+          price: 250000,
+          rating: 5,
           pictures: ["https://wallpapercave.com/wp/V0ANDHu.jpg"]
         },
         {
+          id: 72,
           title: "Anfield",
           description: "Cancha de tenis",
           sports: ["Tenis"],
           address: "Al lado del Buenavista",
-          coordinates: ["53.4308", "2.9608"],
+          coordinates: ["53.4308", "-2.9608"],
           services: ["Regaderas"],
           sellerID: 201,
+          price: 12000,
+          rating: 4,
           pictures: [
             "http://getwallpapers.com/wallpaper/full/3/d/5/835365-vertical-anfield-wallpapers-1920x1080.jpg"
           ]

@@ -6,7 +6,7 @@ export default class SearchPage extends React.Component {
  
   render() {
     return (
-        <div style={{ paddingBottom: "10em", background: "#fafafe" }}>
+        <div style={{ paddingBottom: "10em" }}>
           <Header>
             <Results />
           </Header>

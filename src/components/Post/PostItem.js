@@ -147,8 +147,8 @@ const PostItem = ({
   title,
   price,
   rating,
-  sport,
-  image,
+  sports,
+  pictures,
   isLoading,
   id,
   coordinates,
@@ -166,7 +166,7 @@ const PostItem = ({
           <PlaceholderImage square />
         </PlaceholderBox>
       ) : (
-        <Image src={image} />
+        <Image src={pictures[0]} />
       )}
     </Box>
     <Content>
@@ -208,7 +208,13 @@ const PostItem = ({
           <RatingContainer>
             <Sport>
               <Icon name="soccer" style={{ fontSize: "12px" }} />
-              {sport.toUpperCase()}
+              {sports.map((sport, index) =>
+                index === sports.length - 1 ? (
+                  <span>{sport.toUpperCase()}</span>
+                ) : (
+                  <span>{sport.toUpperCase()} &middot; </span>
+                )
+              )}
             </Sport>
             <Position>
               <Icon name="map marker alternate" style={{ fontSize: "18px" }} />
@@ -219,8 +225,7 @@ const PostItem = ({
             <span className="cinema">{title}</span>
           </Title>
           <Details>
-            Grama sintética <span>&middot;</span> Cubierto <span>&middot;</span>{" "}
-            11 contra 11 <span>&middot;</span> 9 contra 9
+            Grama sintética <span>&middot;</span> Cubierto
           </Details>
           <Details>
             Vestidores <span>&middot;</span> Duchas <span>&middot;</span>{" "}
@@ -237,7 +242,7 @@ const PostItem = ({
                 fontSize: "12px"
               }}
             >
-              {4.95}
+              {rating}
             </span>
             <StyledRating
               icon="star"
@@ -257,7 +262,12 @@ const PostItem = ({
               &middot; 120
             </span>
             <Price>
-              ${price} COP{" "}
+              {price.toLocaleString("es-CO", {
+                style: "currency",
+                currency: "COP",
+                minimumFractionDigits: 0
+              })}{" "}
+              COP
               <span style={{ fontSize: "14px", fontWeight: 600 }}>/hora</span>
             </Price>
           </RatingContainer>

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import LocationInformation from "./LocationInformation";
-import PostMap from './Map'
+import PostMap from "./Map";
 
 const Box = styled.div`
   &&& {
@@ -29,13 +29,12 @@ const MapBox = styled.div`
   }
 `;
 
-const CardDetails = () => (
+const CardDetails = ({ coordinates, services, address, sports }) => (
   <Box>
-
     <MapBox>
-      <PostMap />
+      <PostMap coordinates={coordinates} />
     </MapBox>
-    <LocationInformation />
+    <LocationInformation sports={sports} services={services} address={address} />
   </Box>
 );
 

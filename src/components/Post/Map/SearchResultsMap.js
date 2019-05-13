@@ -15,11 +15,11 @@ const StyledMarker = styled(Marker)`
 
 export default function ResultsMap(props) {
   const [viewport, setViewport] = useState({
-    latitude: 45.4211,
-    longitude: -75.6903,
+    latitude: 51.509865,
+    longitude: -0.118092,
     zoom: 9
   });
-
+  
   return (
     <div
       style={{
@@ -52,18 +52,16 @@ export default function ResultsMap(props) {
             }}
           />
         </div>
-        {parkData.features.map((park, index) => (
+        {props.items.map((post, index) => (
           <StyledMarker
             key={`marker-${index}`}
             offsetLeft={-50}
             offsetTop={-15}
-            latitude={park.geometry.coordinates[1]}
-            longitude={park.geometry.coordinates[0]}
-            isActive={park.properties.PARK_ID === props.selectedPark.id}
+            latitude={Number(post.coordinates[0])}
+            longitude={Number(post.coordinates[1])}
+            isActive={post.id === props.selectedPark.id}
           >
-            <PinPoint
-              isActive={park.properties.PARK_ID === props.selectedPark.id}
-            />
+            <PinPoint isActive={post.id === props.selectedPark.id} />
           </StyledMarker>
         ))}
       </ReactMapGL>

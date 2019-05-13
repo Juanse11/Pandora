@@ -35,15 +35,22 @@ const TitleBox = styled.div`
   }
 `;
 
-const Header = () => (
-  <Grid style={{margin: 0, marginTop: '24px'}}>
-    <Grid.Column computer={10} style={{padding: 0}}>
+const Header = ({ title, sports }) => (
+  <Grid style={{ margin: 0, marginTop: "24px" }}>
+    <Grid.Column computer={10} style={{ padding: 0 }}>
       <HeaderBox>
-        <Sport>FUTBOL SALA</Sport>
+        <Sport>
+          {sports.map((sport, index) =>
+            index === sports.length - 1 ? (
+              <span key={sport}>{sport.toUpperCase()}</span>
+            ) : (
+              <span key={sport}>{sport.toUpperCase()} &middot; </span>
+            )
+          )}
+        </Sport>
         <TitleBox>
-          <Title>Spurs New Stadium - Soledad</Title>
+          <Title> {title} </Title>
         </TitleBox>
-        
       </HeaderBox>
     </Grid.Column>
   </Grid>

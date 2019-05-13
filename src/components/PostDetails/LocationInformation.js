@@ -67,11 +67,11 @@ const StyledIcon = styled(Icon)`
   }
 `;
 
-const LocationInformation = () => (
+const LocationInformation = ({ address, services, sports }) => (
   <Box>
     <Item>
       <StyledIcon name="map marker alternate" />
-      <ItemText>Cra 43C #102 - 153</ItemText>
+      <ItemText> {address} </ItemText>
       <ItemAction>Como llegar</ItemAction>
     </Item>
     <Item>
@@ -86,10 +86,16 @@ const LocationInformation = () => (
     </Item>
     <Divider style={{ margin: "16px 0" }} />
     <Item>
-      <StyledIcon style={{alignSelf: 'center'}} name="soccer" />
-      <ItemText >Deportes</ItemText>
+      <StyledIcon style={{ alignSelf: "center" }} name="soccer" />
+      <ItemText>Deportes</ItemText>
       <ItemText style={{ marginLeft: "auto", maxWidth: "130px" }}>
-        Futbol 5 &middot; Futbol 9 &middot; Tenis &middot; Baloncesto
+        {sports.map((sport, index) =>
+          index === sports.length - 1 ? (
+            <span key={sport}>{sport}</span>
+          ) : (
+            <span key={sport}>{sport} &middot;</span>
+          )
+        )}
       </ItemText>
     </Item>
     <Item>
@@ -107,7 +113,6 @@ const LocationInformation = () => (
       <ItemText>Parqueadero</ItemText>
       <ItemText style={{ marginLeft: "auto", maxWidth: "130px" }}>Sí</ItemText>
     </Item>
-    
   </Box>
 );
 

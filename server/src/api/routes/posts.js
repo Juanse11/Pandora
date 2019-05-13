@@ -4,18 +4,20 @@ const router = express.Router();
 const Post = require("../../models/Post");
 
 router.get("/", async function(req, res) {
-  const post = await Post.query();
-  res.send({ post });
+  console.log('hola amigos');
+  
+  const posts = await Post.query();
+  res.status(200).send({ posts });
 });
 
 router.get("/:id", async function(req, res) {
   const post = await Post.query().findById(req.params.id);
-  res.send({ post })
+  res.status(200).send({ post })
 });
 
 router.post("/:id", async function(req, res) {
   await Post.query().insert(req.body);
-  res.send({ message: "Post added succesfully" });
+  res.status(200).send({ message: "Post added succesfully" });
 });
 
 module.exports = router;

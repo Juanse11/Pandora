@@ -34,11 +34,11 @@ const PinPoint = styled(Icon)`
   }
 `;
 
-export default function PostMap({ latitude, longitude }) {
+export default function PostMap({ coordinates }) {
   const [viewport, setViewport] = useState({
-    latitude: 51.6039605,
-    longitude: -0.066408,
-    zoom: 13
+    latitude: Number(coordinates[0]),
+    longitude: Number(coordinates[1]),
+    zoom: 14
   });
 
   return (
@@ -61,11 +61,11 @@ export default function PostMap({ latitude, longitude }) {
         <Marker
           offsetLeft={-25}
           offsetTop={-50}
-          latitude={51.6039605}
-          longitude={-0.066408}
+          latitude={Number(coordinates[0])}
+          longitude={Number(coordinates[1])}
         >
           <div style={{ width: "50px", height: "50px" }}>
-            <img src={pin} width="50" height="50" />
+            <img src={pin} width="50" height="50" alt="map" />
           </div>
         </Marker>
       </ReactMapGL>

@@ -61,8 +61,8 @@ const CardItem = ({
   title,
   price,
   rating,
-  sport,
-  image,
+  sports,
+  pictures,
   isLoading,
   id,
   coordinates,
@@ -80,7 +80,7 @@ const CardItem = ({
       </Placeholder>
     ) : (
       <ImageBox>
-        <Image src={image} />
+        <Image src={pictures[0]} />
       </ImageBox>
     )}
     <Content>
@@ -108,9 +108,15 @@ const CardItem = ({
           >
             <Icon name="table tennis" />
             <span>
-              {sport.toUpperCase()}
-              <span> &middot;</span>GRAMA SINTÉTICA <span>&middot;</span>
-              CUBIERTO <span>&middot;</span>
+              {sports.map((sport, index) =>
+                index === sports.length - 1 ? (
+                  <span key={sport}>{sport.toUpperCase()}</span>
+                ) : (
+                  <span key={sport}>{sport.toUpperCase()} &middot;</span>
+                )
+              )}
+              <span>&middot;</span>GRAMA SINTÉTICA <span>&middot; </span>
+              CUBIERTO
             </span>
           </Card.Meta>
           <Card.Header
@@ -118,8 +124,8 @@ const CardItem = ({
               fontWeight: 700,
               color: "#4f4b65",
               fontSize: "18px",
-              wordWrap: 'break-all',
-              whiteSpace:'normal'
+              wordWrap: "break-all",
+              whiteSpace: "normal"
             }}
           >
             {title}
@@ -136,7 +142,12 @@ const CardItem = ({
               overflow: "hidden"
             }}
           >
-            ${price} COP por hora
+            {price.toLocaleString("es-CO", {
+              style: "currency",
+              currency: "COP",
+              minimumFractionDigits: 0
+            })}{" "}
+            COP por hora
           </Card.Description>
           <Rating
             icon="star"
@@ -163,7 +174,7 @@ const CardItem = ({
               overflow: "hidden"
             }}
           >
-            {4.95}
+            {rating}
           </span>
         </React.Fragment>
       )}
