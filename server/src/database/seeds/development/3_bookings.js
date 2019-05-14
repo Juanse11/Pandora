@@ -11,7 +11,7 @@ exports.seed = function(knex, Promise) {
           quantity: 1,
           buyerID: 201,
           sellerID: 200,
-          postID: 72
+          postID: 79
         },
         {
           dateTimeFrom: '2019-05-24T02:00:00-05:00',
@@ -19,7 +19,7 @@ exports.seed = function(knex, Promise) {
           quantity: 1,
           buyerID: 202,
           sellerID: 200,
-          postID: 72
+          postID: 79
         }    
       ]);
     });

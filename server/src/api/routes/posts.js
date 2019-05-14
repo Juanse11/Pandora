@@ -2,11 +2,33 @@ const express = require("express");
 const router = express.Router();
 
 const Post = require("../../models/Post");
+const knex = Post.knex();
 
 router.get("/", async function(req, res) {
-  console.log("req.query: ", req.query);
+  const filters = req.query;
+  let {
+    text = '',
+    sortBy,
+    price: { maximum } = {},
+    price: { minimum } = {},
+    sports = ['Futbol 11', 'Futsal', 'Tenis'],
+    rating
+  } = filters;
 
-  const posts = await Post.query();
+  maximum = maximum ? Number(maximum) : undefined;
+  minimum = minimum ? Number(minimum) : undefined;
+  rating = rating ? Number(rating) : undefined;
+  
+
+  const sports2 = ["Futbol 11", "Tenis"];
+  const posts = await Post.query()
+    .skipUndefined()
+    .where(knex.raw("? && sports", [sports]))
+    .where("price", ">=", minimum)
+    .andWhere("price", "<=", maximum)
+    .where("rating", ">=", rating)
+    .where(knex.raw('lower("city")'), "like", `%${text}%`);
+
   res.status(200).send({ posts });
 });
 
