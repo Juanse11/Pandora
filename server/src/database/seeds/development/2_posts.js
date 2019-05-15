@@ -19,7 +19,7 @@ exports.seed = function(knex, Promise) {
           pictures: [
             "http://3.bp.blogspot.com/-c81VSqJ94s8/TnjE5l5WxrI/AAAAAAAAAR0/WtmeEQ1grDo/s1600/DSCF1816.JPG",
             "https://scontent.fbog11-1.fna.fbcdn.net/v/t1.0-9/46493737_2359793787381841_9115983419069693952_n.jpg?_nc_cat=110&_nc_ht=scontent.fbog11-1.fna&oh=a004badb8ca5ebc07b12d6be144fb6e2&oe=5D5EBBD5",
-            "https://scontent.fbog11-1.fna.fbcdn.net/v/t1.0-9/46493737_2359793787381841_9115983419069693952_n.jpg?_nc_cat=110&_nc_ht=scontent.fbog11-1.fna&oh=a004badb8ca5ebc07b12d6be144fb6e2&oe=5D5EBBD5",
+            "https://scontent.fbog11-1.fna.fbcdn.net/v/t1.0-9/46493737_2359793787381841_9115983419069693952_n.jpg?_nc_cat=110&_nc_ht=scontent.fbog11-1.fna&oh=a004badb8ca5ebc07b12d6be144fb6e2&oe=5D5EBBD5"
           ],
           city: "Barranquilla"
         },
@@ -139,6 +139,23 @@ exports.seed = function(knex, Promise) {
             "https://lh3.googleusercontent.com/-myfyexxa7NE/XKsbK3aZS_I/AAAAAAAAy94/ULQTVasQyr8sBymwv5GjHiwWn3UIZ8VfgCLIBGAYYCw/w960-h960-n-o-k-v1/",
             "https://lh3.googleusercontent.com/-KH5VgCI9cGQ/W61ovbpqVSI/AAAAAAAANj0/PICMJ1wEMeQNexcSEGi4iUI5r-LCxvEsACLIBGAYYCw/w960-h960-n-o-k-v1/",
             "https://i2.wp.com/www.parqueygrama.com/wp-content/uploads/2017/12/cancha-futbol-la8fc.png?ssl=1"
+          ],
+          city: "Barranquilla"
+        },
+        {
+          title: "Parque Distrital de las raquetas",
+          description: "Cancha de tenis",
+          sports: ["Tenis"],
+          address: "Cra 52 #100-103",
+          coordinates: ["11.01514", "-74.82780"],
+          services: ["Regaderas"],
+          sellerID: 201,
+          price: 12000,
+          rating: 5,
+          pictures: [
+            "http://barranquilla2018.com/wp/wp-content/uploads/2017/07/parque-raquetas-2.jpg",
+            "http://barranquilla2018.com/wp/wp-content/uploads/2017/07/parque-raquetas-1.jpg",
+            "https://www.elheraldo.co/sites/default/files/styles/width_860/public/articulo/2017/11/06/raquetas-18.jpg?itok=NG_AwGP3"
           ],
           city: "Barranquilla"
         }

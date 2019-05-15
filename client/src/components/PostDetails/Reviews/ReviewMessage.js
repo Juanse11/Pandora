@@ -28,16 +28,15 @@ const CommentText = styled(Comment.Text)`
 
 const Avatar = styled(Comment.Avatar)`
   &&&&& {
-      width: 48px;
+    width: 48px;
   }
-`
+`;
 
 const StyledComment = styled(Comment)`
   &&&&& {
     margin-bottom: 32px;
   }
-
-`
+`;
 
 const ReviewMessage = () => (
   <StyledComment>
@@ -45,12 +44,12 @@ const ReviewMessage = () => (
     <Comment.Content>
       <Author as="a">Matt</Author>
       <CreatedAt>
-        <div>Today at 5:42PM</div>
+        <div>25 de Junio</div>
       </CreatedAt>
       <CommentText>
-        新宿歌舞伎町にある100億円の巨大ロボットと女性ダンサーが躍るレストランです。空前絶後のエンターテイメントショーを見ながら、飲食をお楽しみ下さい！
-        Robot restaurant is for one-time experience in Japan. Not sure if you
-        will like or hate but it will be A memory of Japan.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et lorem
+        dignissim, placerat eros ultrices, tempor massa. Nullam pellentesque mi
+        a augue molestie dapibus.
       </CommentText>
     </Comment.Content>
   </StyledComment>

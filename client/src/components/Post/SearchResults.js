@@ -129,6 +129,7 @@ const SearchResults = ({
   handleBlockSelection,
   handleListSelection,
   items,
+  text,
   isLoading,
   selectedPark,
   handleSelectedPark,
@@ -139,8 +140,8 @@ const SearchResults = ({
       <StyledSegment>
         <SearchBox fluid>
           <SearchResultsHeader>
-            <Title>Resultados en «Barranquilla»</Title>
-            <Paragraph>300 establecimientos</Paragraph>
+            <Title>Resultados en «{text}»</Title>
+            <Paragraph>{items.length} establecimientos</Paragraph>
 
             <Paragraph style={{ display: "flex", maxWidth: "100%" }}>
               <Paragraph style={{ display: "flex" }}>

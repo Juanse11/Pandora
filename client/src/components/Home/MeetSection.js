@@ -13,7 +13,7 @@ import whistle from "../../assets/whistle.svg";
 import MeetSectionItem from "./MeetSectionItem";
 
 const description =
-  "Review individual items on your TransUnion credit report, get personalized recommendations and discover potential areas of improvement.";
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et lorem dignissim, placerat eros ultrices, tempor massa. Nullam pellentesque mi a augue molestie dapibus.";
 
 const ImageContainer = styled(Grid.Column)`
   &&&&& {
@@ -76,11 +76,11 @@ const MeetSection = () => (
             verticalAlign="middle"
             floated="left"
           >
-            <MeetSectionItem
-              image={court}
-              description={description}
-              title="Review items on your credit report securely online."
-            />
+          <MeetSectionItem
+          image={whistle}
+          description={description}
+          title="Descubre establecimientos deportivos en tu ciudad"
+        />
           </AboutBlock>
           <ImageContainer floated="right" computer={7} mobile={14}>
             <Image style={{alignSelf: 'center'}} src={canchas} />
@@ -94,7 +94,7 @@ const MeetSection = () => (
             <MeetSectionItem
               image={whistle}
               description={description}
-              title="Review items on your credit report securely online."
+              title="Inscríbete a uno de nuestros cursos."
             />
           </Grid.Column>
         </Responsive>
@@ -105,10 +105,11 @@ const MeetSection = () => (
             verticalAlign="middle"
             floated="left"
           >
+            
             <MeetSectionItem
-              image={whistle}
+              image={court}
               description={description}
-              title="Review items on your credit report securely online."
+              title="Inscríbete a uno de nuestros cursos."
             />
           </AboutBlock>
           <Grid.Column

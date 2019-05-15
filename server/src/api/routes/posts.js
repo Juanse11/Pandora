@@ -7,23 +7,26 @@ const knex = Post.knex();
 router.get("/", async function(req, res) {
   const filters = req.query;
   let {
-    text = '',
+    text = "",
     sortBy,
     price: { maximum } = {},
     price: { minimum } = {},
-    sports = ['Futbol 11', 'Futsal', 'Tenis'],
+    sports = ["Futbol 11", "Futsal", "Tenis"],
     rating
   } = filters;
 
   maximum = maximum ? Number(maximum) : undefined;
   minimum = minimum ? Number(minimum) : undefined;
   rating = rating ? Number(rating) : undefined;
-  
+  console.log(sports);
 
-  const sports2 = ["Futbol 11", "Tenis"];
   const posts = await Post.query()
     .skipUndefined()
-    .where(knex.raw("? && sports", [sports]))
+    .where(
+      knex.raw("? && sports", [
+        [...sports.map(elem => elem.charAt(0).toUpperCase() + elem.slice(1))]
+      ])
+    )
     .where("price", ">=", minimum)
     .andWhere("price", "<=", maximum)
     .where("rating", ">=", rating)
@@ -37,9 +40,9 @@ router.get("/:id", async function(req, res) {
   res.status(200).send({ post });
 });
 
-router.post("/:id", async function(req, res) {
-  await Post.query().insert(req.body);
-  res.status(200).send({ message: "Post added succesfully" });
+router.post("/", async function(req, res) {
+  const response = await Post.query().insert(req.body);
+  res.status(200).send({ response });
 });
 
 module.exports = router;

@@ -8,6 +8,7 @@ import qs from "qs";
 class SearchResultsContainer extends React.Component {
   state = {
     items: [],
+    text: "Barranquilla",
     isLoading: true,
     isBlockLayout: true,
     isListLayout: false,
@@ -20,6 +21,7 @@ class SearchResultsContainer extends React.Component {
   componentDidUpdate(prevProps) {
     if (!Object.is(prevProps.filters, this.props.filters)) {
       this.getPosts();
+      this.setState({ text: this.props.filters.text });
     }
   }
 
@@ -51,7 +53,7 @@ class SearchResultsContainer extends React.Component {
     await this.setState({ isLoading: true, items });
     items = await this.fetchItems();
     console.log(items);
-    
+
     await this.setState(() => ({ items, isLoading: false }));
   };
   fetchItems = async () => {

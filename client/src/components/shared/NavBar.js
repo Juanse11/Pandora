@@ -9,7 +9,7 @@ import logo from "../../assets/purplePandora.svg";
 import arrow from "../../assets/down-arrow.svg";
 import Register from "../User/Register/RegisterContainer";
 import Login from "../User/Login/LoginContainer";
-
+import CreatePost from '../User/CreatePost/CreatePost'
 const getWidth = () => {
   const isSSR = typeof window === "undefined";
 
@@ -179,7 +179,7 @@ class NavBar extends React.Component {
               position="right"
             >
               <MenuItemBlock style={{ flexShrink: "1", whiteSpace: "nowrap" }}>
-                <StyledButton>Publica tu Empresa</StyledButton>
+                <CreatePost />
               </MenuItemBlock>
               {this.props.isUserLoggedIn ? (
                 <MenuItemBlock

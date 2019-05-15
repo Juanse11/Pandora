@@ -37,7 +37,7 @@ const Box = styled.div`
 const Reviews = () => (
   <Box>
     <Subtitle>
-      <Title>154 evaluaciones</Title>
+      <Title>7 evaluaciones</Title>
       <StyledRating icon="star" disabled defaultRating={5} maxRating={5} />
     </Subtitle>
     <CommentGroup style={{margin: 0}} size="large">

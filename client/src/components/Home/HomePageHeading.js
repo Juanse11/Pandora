@@ -78,9 +78,7 @@ const HomePageHeading = () => (
           verticalAlign="top"
         >
           <Title as="h1">Pandora.</Title>
-          <Subtitle>
-            Lorem ipsum dolor sit amet, consectetur adipiscing.
-          </Subtitle>
+          <Subtitle>Recreación y deporte al instante.</Subtitle>
         </Grid.Column>
         <StyledColumn
           floated="right"
@@ -88,11 +86,7 @@ const HomePageHeading = () => (
           computer={6}
           verticalAlign="bottom"
         >
-          <FormTitle
-            className="searchForm__header"
-            as="h1"
-            textAlign="left"
-          >
+          <FormTitle className="searchForm__header" as="h1" textAlign="left">
             Encuentra lugares para entrenar cerca de ti.
           </FormTitle>
           <SearchForm />

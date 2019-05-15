@@ -111,7 +111,7 @@ const MeetSectionItem = ({ description, image, title }) => (
 
     <Subtitle>{description}</Subtitle>
     <Action href="#action">
-      Review your credit report
+      Descubre
       <Icon
         style={{ textDecoration: "none" }}
         name="long arrow alternate right"
